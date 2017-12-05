@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -7,9 +7,13 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  public username:any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    public navparams: NavParams) {
 
+    this.username = this.navparams.get('name'); //fungsi ini digunakan untuk menarik data variable
+    
   }
 
 }
