@@ -39,7 +39,12 @@ export class LoginPage {
     };
     this.OzanCredential.LoginUser(data).subscribe((result) => {
       console.log(result, 'RESULT BRO');
-    })
+    }, (error) => {
+        console.log(error.statusCode, 'Gagal Login');
+        
+        //Tolong Tampilkan alert username / password salah
+
+    });
 
   }
 }
