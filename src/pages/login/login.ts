@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
+import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -15,13 +18,16 @@ import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUser
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  public username: any;
-  public password: any;
+
+  public dataLogin: any = OzanUserCredential;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public OzanCredential: OzanUserCredentialApi
+    public OzanCredential: OzanUserCredentialApi,
+    public alertCtrl: AlertController,
+    public storage: Storage
+
   ) {
   }
 
@@ -32,19 +38,24 @@ export class LoginPage {
 
 
   public login() {
-
     const data = {
-      username: this.username,
-      password: this.password
+      username: this.dataLogin.username,
+      password: this.dataLogin.password
     };
     this.OzanCredential.LoginUser(data).subscribe((result) => {
+      this.storage.set('OzanUserCredential', result)
       console.log(result, 'RESULT BRO');
+      this.navCtrl.setRoot('HomePage');
     }, (error) => {
-        console.log(error.statusCode, 'Gagal Login');
-        
-        //Tolong Tampilkan alert username / password salah
-
+      console.log(error.statusCode, 'Gagal Login');
+      let alert = this.alertCtrl.create({
+        title: 'New Friend!',
+        subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+        buttons: ['OK']
+      });
+      alert.present();
     });
-
   }
+
+
 }
