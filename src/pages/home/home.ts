@@ -9,11 +9,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HomePage {
   public username:any;
 
-  constructor(public navCtrl: NavController,
-    public navparams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
 
-    this.username = this.navparams.get('name'); //fungsi ini digunakan untuk menarik data variable
+    this.username = this.navParams.get('name'); //fungsi ini digunakan untuk menarik data variable
     
+  }
+  login() {
+    this.navCtrl.push('LoginPage');
   }
 
 }
