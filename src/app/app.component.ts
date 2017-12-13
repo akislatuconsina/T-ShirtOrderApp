@@ -3,13 +3,16 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { OzanUserCredentialApi } from '../shared/sdk/services/custom/OzanUserCredential';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  
   @ViewChild(Nav) nav: Nav;
-
+  public accessTok: any;
+  public storageData: any;
   rootPage: any = 'LoginPage';
 
   pages: Array<{ title: string, component: any, icons: any }>;
@@ -19,7 +22,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public storage: Storage,
-    public splashScreen: SplashScreen) {
+    public splashScreen: SplashScreen,
+    public ozanusercredentialApi: OzanUserCredentialApi
+  ) {
 
     this.storage.get('ozanStorage').then((ozanStorage) => {
       if (ozanStorage == null || ozanStorage == undefined) {
@@ -38,7 +43,7 @@ export class MyApp {
       { title: 'Order Detail', component: 'HomePage', icons: 'md-cart' },
       { title: 'Laporan Order', component: 'HomePage', icons: 'md-code-download' },
       { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' },
-      { title: 'Logout', component: 'HomePage', icons: 'home' }
+      // { title: 'Logout', component: 'HomePage', icons: 'home' }
     ];
 
   }
@@ -58,6 +63,18 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
   logout() {
-    this.nav.setRoot('LoginPage');
+    this.storage.get('OzanUserCredential').then((result) => {
+      console.log(result);
+      this.storageData = result;
+      this.ozanusercredentialApi.ozanLogout(this.storageData).subscribe(result => {
+        console.log(result);
+        //Direct ke login page
+      }, (error) => {
+        console.log(error, 'error')
+      })
+    })
+    // this.ozanusercredentialApi.ozanLogout()
+    // this.storage.clear();
+    // this.nav.setRoot('LoginPage');
   }
 }
