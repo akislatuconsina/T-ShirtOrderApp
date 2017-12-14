@@ -55,23 +55,21 @@ export class RegistrationPage {
       emailVerified: true,
       roleUser: 'user'
     }
-    this.OzanUserCredentialapi.ozanRegistration(data).subscribe(result => {
-      console.log(result);
-      {
-        let alert = this.alertCtrl.create({
-          title: 'Success',
-          subTitle: 'You can be login now',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                this.navCtrl.setRoot('LoginPage');
-              }
+    this.OzanUserCredentialapi.create(data).subscribe(result => {
+      console.log(result, 'data')
+      let alert = this.alertCtrl.create({
+        title: 'Success',
+        subTitle: 'You can be login now',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.navCtrl.setRoot('LoginPage');
             }
-          ]
-        });
-        alert.present();
-      }
+          }
+        ]
+      });
+      alert.present();
     }, (error) => {
       let alert = this.alertCtrl.create({
         title: 'Alert',

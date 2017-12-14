@@ -589,7 +589,7 @@ export class OzanUserCredentialApi extends BaseLoopBackApi {
    *
    * This method expects a subset of model properties as request parameters.
    *
-   * @returns {object[]} An empty reference that will be
+   * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
