@@ -90,6 +90,9 @@ export class LoginPage {
 
   }
 
+  public presentModal() {
+    this.navCtrl.push('RegistrationPage')
+  }
 
   public login() {
     const data = {
@@ -109,10 +112,11 @@ export class LoginPage {
       });
       alert.present();
     });
-  };
+  }
 
-  public presentModal() {
-    this.navCtrl.push('RegistrationPage')
+ 
+  forgetpassword() {
+    this.navCtrl.push('ForgetpasswordPage')
   }
 }
 

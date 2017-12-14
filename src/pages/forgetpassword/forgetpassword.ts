@@ -44,8 +44,8 @@ export class ForgetpasswordPage {
     }
   }
 
-  // back() {
-  //   this.navCtrl.push('HomePage')
-  // }
+  cancel(){
+    this.navCtrl.push('RegistrationPage')
+  }
 
 }
