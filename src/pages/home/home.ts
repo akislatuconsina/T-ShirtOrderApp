@@ -21,4 +21,16 @@ export class HomePage {
     this.navCtrl.push('LoginPage');
   }
 
+  gotoOrderPage(){
+    this.navCtrl.push('OrderPage')
+  } 
+
+  gotoDetailOrder(){
+    this.navCtrl.push('OrderdetailPage')
+  }
+
+  gotoTestPage(){
+    this.navCtrl.push('TestpagePage')
+  }
+
 }

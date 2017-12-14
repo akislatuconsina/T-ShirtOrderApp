@@ -5,14 +5,13 @@ export interface OzanOrderInterface {
   "id"?: number;
   "orderDate"?: Date;
   "buyerName"?: string;
+  "companyName"?: string;
+  "address"?: string;
   "shippedTo"?: string;
   "invoiceTo"?: string;
   "vendorName"?: string;
   "trackingNo"?: string;
-  "descriptionOrder"?: string;
   "deliveryDate"?: Date;
-  "QtyOrder"?: string;
-  "unitPrice"?: string;
   "amount"?: string;
   "totalAmount"?: string;
   "status"?: string;
@@ -22,14 +21,13 @@ export class OzanOrder implements OzanOrderInterface {
   "id": number;
   "orderDate": Date;
   "buyerName": string;
+  "companyName": string;
+  "address": string;
   "shippedTo": string;
   "invoiceTo": string;
   "vendorName": string;
   "trackingNo": string;
-  "descriptionOrder": string;
   "deliveryDate": Date;
-  "QtyOrder": string;
-  "unitPrice": string;
   "amount": string;
   "totalAmount": string;
   "status": string;
@@ -78,6 +76,14 @@ export class OzanOrder implements OzanOrderInterface {
           name: 'buyerName',
           type: 'string'
         },
+        "companyName": {
+          name: 'companyName',
+          type: 'string'
+        },
+        "address": {
+          name: 'address',
+          type: 'string'
+        },
         "shippedTo": {
           name: 'shippedTo',
           type: 'string'
@@ -94,21 +100,9 @@ export class OzanOrder implements OzanOrderInterface {
           name: 'trackingNo',
           type: 'string'
         },
-        "descriptionOrder": {
-          name: 'descriptionOrder',
-          type: 'string'
-        },
         "deliveryDate": {
           name: 'deliveryDate',
           type: 'Date'
-        },
-        "QtyOrder": {
-          name: 'QtyOrder',
-          type: 'string'
-        },
-        "unitPrice": {
-          name: 'unitPrice',
-          type: 'string'
         },
         "amount": {
           name: 'amount',

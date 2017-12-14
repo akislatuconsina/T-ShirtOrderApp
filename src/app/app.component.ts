@@ -39,9 +39,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: 'HomePage', icons: 'home' },
-      { title: 'Order Online', component: 'MenuPage', icons: 'md-cart' },
-      { title: 'Order Detail', component: 'HomePage', icons: 'md-cart' },
-      { title: 'Laporan Order', component: 'HomePage', icons: 'md-code-download' },
+      { title: 'Order Online', component: 'OrderPage', icons: 'md-cart' },
+      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' },
+      { title: 'Laporan Order', component: 'TestpagePage', icons: 'md-code-download' },
       { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' },
       // { title: 'Logout', component: 'HomePage', icons: 'home' }
     ];
