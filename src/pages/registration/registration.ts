@@ -81,4 +81,9 @@ export class RegistrationPage {
       alert.present();
     });
   }
+
+  loginpage(){
+    this.navCtrl.push('LoginPage')
+  }
+
 }
