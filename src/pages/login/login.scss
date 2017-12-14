@@ -1,0 +1,80 @@
+page-login {
+    .logo-icon {
+        top: 100%;
+       //  margin-left: 5%;
+      //  height: 50%;
+        width: 100%;
+        margin-bottom: 0%;
+    }
+
+
+    #cloud-layer {
+      background-image: url(../assets/image/cloud-layer.png);
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      margin-right: 100% !important;
+    }
+ 
+      ion-row {
+        align-items: center;
+        text-align: center;
+      }
+ 
+      ion-item {
+          border-radius: 30px !important;
+          padding-left: 10px !important;
+          margin-bottom: 10px;
+          background-color: #f6f6f6;
+          opacity: 0.7;
+          font-size: 0.9em;
+      }
+ 
+      ion-list {
+          margin: 0;
+      }
+
+      .color-text{
+        -webkit-text-fill-color: white;
+      }
+ 
+      .login-button {
+          width: 43em;
+          border-radius: 30px;
+          margin-left: 2em;
+          font-size: 0.9em;
+          border: 1px solid #488aff;
+          background-color: #fff;
+          -webkit-text-fill-color:#488aff;
+      }
+
+      .image-logo{
+        width: 10em;
+        margin-top: 20%;
+        border:1px solid #fbfcfd;
+      }
+ 
+  }
+
+    .main-background{
+      background-color: #488aff;
+      opacity: 1.3;
+      position: absolute;
+      background-size: cover;                     
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 120%;
+      width: 100%;
+    }
+    
+    .div{
+      font-size: 30px;
+      margin-top: 1%;
+      margin-left: 1%;
+      -webkit-text-fill-color: white;
+      
+    }
+
+    .signup-col{
+      margin-right: 5em;
+    }

@@ -5,12 +5,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content class="dit">
     <ion-list>
+        <ion-thumbnail id="bg">
+            <div class="foto-div" [ngStyle]="{'background-image': 'url(' + photo + ')'}" menuClose (click)="onprofile()"></div>
+  
+            <p class="title-menu">Ozan Punya</p>
+            <p class="title-menu">Design Sendiri Guys</p>
+        </ion-thumbnail>
+  
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
+    <button menuClose ion-item (click)="logout()">
+      <ion-icon name="md-exit" item-left></ion-icon>
+    Logout
+    </button>
   </ion-content>
 
 </ion-menu>
