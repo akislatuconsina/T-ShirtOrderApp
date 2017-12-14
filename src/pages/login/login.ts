@@ -106,8 +106,8 @@ export class LoginPage {
     }, (error) => {
       console.log(error.statusCode, 'Gagal Login');
       let alert = this.alertCtrl.create({
-        title: 'New Friend!',
-        subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+        title: 'WANTED!',
+        subTitle: 'Silahkan Cek Username Dan Password',
         buttons: ['OK']
       });
       alert.present();
