@@ -1,5 +1,4 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
-import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
 import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
@@ -110,7 +109,11 @@ export class LoginPage {
       });
       alert.present();
     });
+  };
+
+  public presentModal() {
+    this.navCtrl.push('RegistrationPage')
   }
-
-
 }
+
+
