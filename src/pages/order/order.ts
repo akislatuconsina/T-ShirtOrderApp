@@ -7,6 +7,8 @@ import { OzanLibrary } from './../../shared/sdk/models/OzanLibrary';
 import { OzanOrderProductApi } from './../../shared/sdk/services/custom/OzanOrderProduct';
 import { UUID } from 'angular2-uuid';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
+import { Storage } from '@ionic/storage';
+
 
 
 
@@ -24,6 +26,8 @@ import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
   templateUrl: 'order.html',
 })
 export class OrderPage {
+  
+  public userid: any;
   public datatemp: any;
   public idorder: any;
   @ViewChild('fileInput') fileInput;
@@ -45,13 +49,18 @@ export class OrderPage {
     public ozanlibraryapi: OzanLibraryApi,
     public ozanorderproductapi: OzanOrderProductApi,
     public transfer: FileTransfer,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public storage : Storage
   ) {
     this.filesToUpload = [];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderPage');
+    //console.log('ionViewDidLoad OrderPage');
+    this.storage.get('OzanUserCredential').then((result)=>{
+      this.userid = result.userId;
+      console.log(this.userid, 'this result userId');      
+    })
   }
 
 
@@ -120,10 +129,14 @@ export class OrderPage {
             console.log(this.input, 'INPUT');
 
             const dataOrder = {
+              userId : this.userid,
               buyerName: this.ozanmodel.buyerName,
               companyName: this.ozanmodel.companyName,
               address: this.ozanmodel.address,
               shippedTo: this.ozanmodel.shippedTo,
+              confirmTo: '-',
+              productionStatus: '-',
+              status: 1
             }
 
             this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
@@ -132,7 +145,8 @@ export class OrderPage {
               this.idorder = this.datatemp.id
 
               for (let i = 0; i < this.input.length; i++) {
-                this.input[i]['idorder'] = this.idorder;
+                this.input[i]['idorder']= this.idorder;
+               
                 console.log(this.input[i], 'hasil input');
 
                 this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
