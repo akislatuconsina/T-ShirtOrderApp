@@ -41,7 +41,7 @@ export class MyApp {
       { title: 'Home', component: 'HomePage', icons: 'home' },
       { title: 'Order Online', component: 'OrderPage', icons: 'md-cart' },
       { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' },
-      { title: 'Laporan Order', component: 'TestpagePage', icons: 'md-code-download' },
+      { title: 'Laporan Order', component: 'ReportorderPage', icons: 'md-code-download' },
       { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' },
       // { title: 'Logout', component: 'HomePage', icons: 'home' }
     ];

@@ -26,11 +26,9 @@ export class ReportorderPage {
         
   }
 
-  // viewDP() {
-  //   {
-  //     let modal = this.modalCtrl.create('detailorderPage');
-  //     modal.present();
-  //   }
-  // }
+
+  view(){
+    this.navCtrl.push('DetailreportPage');
+  }
 
 }
