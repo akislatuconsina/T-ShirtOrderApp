@@ -1,12 +1,10 @@
-<!--
-  Generated template for the ReportorderPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header >
 
   <ion-navbar color="primary" class="header">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    
     <ion-title text-center>Report Order</ion-title>
   </ion-navbar>
 
@@ -24,7 +22,7 @@
           </ion-thumbnail>
           <h2>Akis</h2>
           <p>Alfa Mart</p>
-          <button ion-button clear item-end >View</button>
+          <button (click)="view()" ion-button clear item-end >View</button>
         </ion-item>
       </ion-list>
     </ion-col>
@@ -37,7 +35,7 @@
               </ion-thumbnail>
               <h2>Aji Tirta</h2>
               <p>Indo Mart</p>
-              <button ion-button clear item-end >View</button>
+              <button (click)="view()" ion-button clear item-end >View</button>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -46,38 +44,3 @@
 </ion-content>
 
 
-
-
-<!-- <div padding>
-  <ion-segment   [(ngModel)]="Order">
-    <ion-segment-button value="Down Payment">
-
-      Down Payment
-    </ion-segment-button>
-    <ion-segment-button value="Payed">
-      Payed
-    </ion-segment-button>
-  </ion-segment>
-</div>
-
-<div [ngSwitch]="order" >
-  <ion-list>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="assets/imgs/VMD.png">
-      </ion-thumbnail>
-      <h2>Aji Tirta</h2>
-      <h2><button ion-button (click)="viewDP()" >View Detail DP</button>  </h2>
-    </ion-item>
-  </ion-list>
-
-  <ion-list *ngSwitchCase="'Down Payment'" >
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="assets/imgs/VMD.png">
-      </ion-thumbnail>
-      <h2>Akis Latuconsina</h2>
-      <h2><button ion-button (click)="viewDP()" >View Detail DP</button>  </h2>            
-    </ion-item>
-  </ion-list>
-</div> -->

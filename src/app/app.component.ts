@@ -40,8 +40,10 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: 'HomePage', icons: 'md-home' },
       { title: 'Order Online', component: 'OrderPage', icons: 'md-cart' },
-      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' },
+      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' }
       { title: 'Laporan Order', component: 'TestpagePage', icons: 'md-code-download' },
+      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
+      { title: 'Laporan Order', component: 'ReportorderPage', icons: 'md-code-download' },
       { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
     ];
 

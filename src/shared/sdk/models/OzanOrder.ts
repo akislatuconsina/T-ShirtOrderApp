@@ -3,6 +3,7 @@
 declare var Object: any;
 export interface OzanOrderInterface {
   "id"?: number;
+  "userId"?: string;
   "orderDate"?: Date;
   "buyerName"?: string;
   "companyName"?: string;
@@ -14,11 +15,14 @@ export interface OzanOrderInterface {
   "deliveryDate"?: Date;
   "amount"?: string;
   "totalAmount"?: string;
+  "confirmTo"?: string;
+  "productionStatus"?: string;
   "status"?: string;
 }
 
 export class OzanOrder implements OzanOrderInterface {
   "id": number;
+  "userId": string;
   "orderDate": Date;
   "buyerName": string;
   "companyName": string;
@@ -30,6 +34,8 @@ export class OzanOrder implements OzanOrderInterface {
   "deliveryDate": Date;
   "amount": string;
   "totalAmount": string;
+  "confirmTo": string;
+  "productionStatus": string;
   "status": string;
   constructor(data?: OzanOrderInterface) {
     Object.assign(this, data);
@@ -67,6 +73,10 @@ export class OzanOrder implements OzanOrderInterface {
         "id": {
           name: 'id',
           type: 'number'
+        },
+        "userId": {
+          name: 'userId',
+          type: 'string'
         },
         "orderDate": {
           name: 'orderDate',
@@ -110,6 +120,14 @@ export class OzanOrder implements OzanOrderInterface {
         },
         "totalAmount": {
           name: 'totalAmount',
+          type: 'string'
+        },
+        "confirmTo": {
+          name: 'confirmTo',
+          type: 'string'
+        },
+        "productionStatus": {
+          name: 'productionStatus',
           type: 'string'
         },
         "status": {
