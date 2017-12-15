@@ -1,19 +1,16 @@
 page-login {
     .logo-icon {
         top: 100%;
-       //  margin-left: 5%;
-      //  height: 50%;
         width: 100%;
         margin-bottom: 0%;
     }
 
-
     #cloud-layer {
-      background-image: url(../assets/image/cloud-layer.png);
+      background-image: url(../assets/imgs/cloud-layer.png);
       background-size: cover;
-      width: 100%;
-      height: 100%;
-      margin-right: 100% !important;
+      width: 50em;
+      height: 50em;
+      margin-right: 50em;
     }
  
       ion-row {
@@ -39,25 +36,25 @@ page-login {
       }
  
       .login-button {
-          width: 43em;
+          width: 48em;
           border-radius: 30px;
           margin-left: 2em;
           font-size: 0.9em;
-          border: 1px solid #488aff;
-          background-color: #fff;
-          -webkit-text-fill-color:#488aff;
+          border: 1px solid #fff;
+          background-color:#009688;
       }
 
       .image-logo{
-        width: 10em;
-        margin-top: 20%;
+        width: 43em;
+        height: 37em;
+        margin-top: 5%;
         border:1px solid #fbfcfd;
       }
  
   }
 
     .main-background{
-      background-color: #488aff;
+      background-color: #009688;
       opacity: 1.3;
       position: absolute;
       background-size: cover;                     
