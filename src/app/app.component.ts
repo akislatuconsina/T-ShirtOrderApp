@@ -26,8 +26,8 @@ export class MyApp {
     public ozanusercredentialApi: OzanUserCredentialApi
   ) {
 
-    this.storage.get('ozanStorage').then((ozanStorage) => {
-      if (ozanStorage == null || ozanStorage == undefined) {
+    this.storage.get('OzanUserCredential').then((OzanUserCredential) => {
+      if (OzanUserCredential == null || OzanUserCredential == undefined) {
         this.rootPage = 'LoginPage';
       } else {
         this.nav.setRoot('HomePage');
@@ -38,12 +38,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage', icons: 'home' },
+      { title: 'Home', component: 'HomePage', icons: 'md-home' },
       { title: 'Order Online', component: 'OrderPage', icons: 'md-cart' },
-      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' },
+      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' }
       { title: 'Laporan Order', component: 'TestpagePage', icons: 'md-code-download' },
-      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' },
-      // { title: 'Logout', component: 'HomePage', icons: 'home' }
+      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
+      { title: 'Laporan Order', component: 'ReportorderPage', icons: 'md-code-download' },
+      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
     ];
 
   }
@@ -68,13 +69,13 @@ export class MyApp {
       this.storageData = result;
       this.ozanusercredentialApi.ozanLogout(this.storageData).subscribe(result => {
         console.log(result);
+        this.storage.clear();
+        this.nav.setRoot("LoginPage");
         //Direct ke login page
       }, (error) => {
         console.log(error, 'error')
       })
     })
-    // this.ozanusercredentialApi.ozanLogout()
-    // this.storage.clear();
-    // this.nav.setRoot('LoginPage');
+  
   }
 }
