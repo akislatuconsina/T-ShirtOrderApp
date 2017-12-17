@@ -13,7 +13,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   public accessTok: any;
   public storageData: any;
-  rootPage: any = 'LoginPage';
+  rootPage: any;
 
   pages: Array<{ title: string, component: any, icons: any }>;
   public photo: any = 'assets/imgs/ojan.JPG';
@@ -38,14 +38,12 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage', icons: 'md-home' },
+      { title: 'Dashboard', component: 'HomePage', icons: 'md-home' },
       { title: 'Order Online', component: 'OrderPage', icons: 'md-cart' },
-      { title: 'Order Detail', component: 'OrderdetailPage', icons: 'md-cart' }
-      { title: 'Laporan Order', component: 'TestpagePage', icons: 'md-code-download' },
-      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
-      { title: 'Laporan Order', component: 'ReportorderPage', icons: 'md-code-download' },
-      { title: 'Pengaturan Akun', component: 'HomePage', icons: 'md-color-filter' }
+      { title: 'History Order', component: 'OrderdetailPage', icons: 'md-list-box' },
+      { title: 'Report Order', component: 'ReportorderPage', icons: 'md-paper' }
     ];
+
 
   }
 
@@ -64,14 +62,13 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
   logout() {
+    console.log('Logout');
     this.storage.get('OzanUserCredential').then((result) => {
-      console.log(result);
       this.storageData = result;
       this.ozanusercredentialApi.ozanLogout(this.storageData).subscribe(result => {
         console.log(result);
         this.storage.clear();
-        this.nav.setRoot("LoginPage");
-        //Direct ke login page
+        this.nav.setRoot('LoginPage');
       }, (error) => {
         console.log(error, 'error')
       })

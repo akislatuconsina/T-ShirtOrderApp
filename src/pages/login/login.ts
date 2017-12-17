@@ -67,9 +67,10 @@ import { Storage } from '@ionic/storage';
   ]
 })
 export class LoginPage {
-  roleUser: any;
-  dataTemp: {}[];
-  dataUser: any;
+  public idUser: any;
+  public roleUser: any;
+  public dataFind: any;
+  public dataUser: any;
 
   public logoState: any = "in";
   public cloudState: any = "in";
@@ -111,22 +112,32 @@ export class LoginPage {
     this.OzanCredential.LoginUser(data).subscribe((result) => {
       this.dataUser = result;
       console.log(this.dataUser);
-      loader.dismiss();
-      
-      // this.OzanCredential.ozanFindUser(this.dataUser).subscribe((result) => {
-      //   console.log(result, 'Data Find')
-        //   this.dataTemp = result;
-        //   console.log(this.dataTemp)
-        // this.roleUser = this.dataTemp.roleUser;
-        // this.storage.set('OzanUserCredential', result)
-        // console.log(result, 'RESULT BRO');
-        // this.navCtrl.setRoot('HomePage');
-      // });
+
+      this.idUser = this.dataUser.userId;
+
+      const dataId = {
+        id: this.idUser
+      };
+
+      this.OzanCredential.OzanFindUser(dataId).subscribe(result => {
+        this.dataFind = result;
+        console.log(this.dataFind, 'Result Find');
+
+        this.storage.set('OzanUserCredential', this.dataUser);
+        this.storage.set('OzanUserData', this.dataFind);
+        this.navCtrl.setRoot('HomePage');
+
+        loader.dismiss();
+      }, (error) => {
+        console.log('error find user')
+        loader.dismiss();
+      })
     }, (error) => {
+      loader.dismiss();
       console.log(error.statusCode, 'Gagal Login');
       let alert = this.alertCtrl.create({
-        title: 'WANTED!',
-        subTitle: 'Silahkan Cek Username Dan Password',
+        title: 'Login Failed!',
+        subTitle: 'Please check your username and password',
         buttons: ['OK']
       });
       alert.present();

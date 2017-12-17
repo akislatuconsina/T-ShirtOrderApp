@@ -1,30 +1,34 @@
+<ion-split-pane>
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title></ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-content class="dit">
     <ion-list>
-        <ion-thumbnail id="bg">
-            <div class="foto-div" [ngStyle]="{'background-image': 'url(' + photo + ')'}" menuClose (click)="onprofile()"></div>
-  
-            <p class="title-menu">Ozan Punya</p>
-            <p class="title-menu">Design Sendiri Guys</p>
-        </ion-thumbnail>
-  
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <ion-thumbnail id="bg">
+        <div class="foto-div" [ngStyle]="{'background-image': 'url(' + photo + ')'}" menuClose (click)="onprofile()"></div>
+
+        <p class="title-menu">Muhammad Ozan</p>
+        <p class="title-menu">Customer</p>
+      </ion-thumbnail>
+
+      <button class="button-menu" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
+        <ion-icon class="button-menu" name="{{p.icons}}" item-left></ion-icon>
       </button>
     </ion-list>
-    <button menuClose ion-item (click)="logout()">
-      <ion-icon name="md-exit" item-left></ion-icon>
-    Logout
+
+    <button class="button-menu-logout" ion-item (click)="logout()">
+      <div class="title-logout">Setting</div>
+      <ion-icon class="button-menu-logout" name="md-settings" item-left></ion-icon>
+    </button>
+
+    <button class="button-menu" ion-item (click)="logout()">
+      Logout
+      <ion-icon class="button-menu" name="md-exit" item-left></ion-icon>
     </button>
   </ion-content>
 
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>
