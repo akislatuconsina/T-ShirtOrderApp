@@ -10,7 +10,7 @@
         <p class="title-menu">Customer</p>
       </ion-thumbnail>
 
-      <button class="button-menu" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button class="button-menu" menuClose ion-item *ngFor="let p of menuCredential" (click)="openPage(p)">
         {{p.title}}
         <ion-icon class="button-menu" name="{{p.icons}}" item-left></ion-icon>
       </button>

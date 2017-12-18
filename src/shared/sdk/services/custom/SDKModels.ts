@@ -6,6 +6,7 @@ import { OzanOrder } from '../../models/OzanOrder';
 import { OzanLibrary } from '../../models/OzanLibrary';
 import { OzanOrderProduct } from '../../models/OzanOrderProduct';
 import { OzanContainer } from '../../models/OzanContainer';
+import { OzanMenuCredential } from '../../models/OzanMenuCredential';
 
 export interface Models { [name: string]: any }
 
@@ -19,6 +20,7 @@ export class SDKModels {
     OzanLibrary: OzanLibrary,
     OzanOrderProduct: OzanOrderProduct,
     OzanContainer: OzanContainer,
+    OzanMenuCredential: OzanMenuCredential,
     
   };
 
