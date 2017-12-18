@@ -55,6 +55,7 @@ import { OzanOrderApi } from './services/custom/OzanOrder';
 import { OzanLibraryApi } from './services/custom/OzanLibrary';
 import { OzanOrderProductApi } from './services/custom/OzanOrderProduct';
 import { OzanContainerApi } from './services/custom/OzanContainer';
+import { OzanMenuCredentialApi } from './services/custom/OzanMenuCredential';
 /**
 * @module SDKBrowserModule
 * @description
@@ -92,6 +93,7 @@ export class SDKBrowserModule {
         OzanLibraryApi,
         OzanOrderProductApi,
         OzanContainerApi,
+        OzanMenuCredentialApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

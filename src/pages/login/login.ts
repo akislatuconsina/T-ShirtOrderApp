@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
 import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
 import { Storage } from '@ionic/storage';
+import { Events } from 'ionic-angular';
 
 
 /**
@@ -85,8 +86,8 @@ export class LoginPage {
     public OzanCredential: OzanUserCredentialApi,
     public alertCtrl: AlertController,
     public storage: Storage,
-    public loadingCtrl: LoadingController
-
+    public loadingCtrl: LoadingController,
+    public events: Events
   ) {
   }
 
@@ -126,6 +127,8 @@ export class LoginPage {
         this.storage.set('OzanUserCredential', this.dataUser);
         this.storage.set('OzanUserData', this.dataFind);
         this.navCtrl.setRoot('HomePage');
+
+        this.events.publish('ozan:menu');
 
         loader.dismiss();
       }, (error) => {
