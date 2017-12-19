@@ -2,11 +2,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/User';
 import { OzanUserCredential } from '../../models/OzanUserCredential';
-import { OzanOrder } from '../../models/OzanOrder';
-import { OzanLibrary } from '../../models/OzanLibrary';
-import { OzanOrderProduct } from '../../models/OzanOrderProduct';
 import { OzanContainer } from '../../models/OzanContainer';
 import { OzanMenuCredential } from '../../models/OzanMenuCredential';
+import { Ozanorder } from '../../models/Ozanorder';
+import { Ozanorderproduct } from '../../models/Ozanorderproduct';
+import { Ozanlibrary } from '../../models/Ozanlibrary';
 
 export interface Models { [name: string]: any }
 
@@ -16,11 +16,11 @@ export class SDKModels {
   private models: Models = {
     User: User,
     OzanUserCredential: OzanUserCredential,
-    OzanOrder: OzanOrder,
-    OzanLibrary: OzanLibrary,
-    OzanOrderProduct: OzanOrderProduct,
     OzanContainer: OzanContainer,
     OzanMenuCredential: OzanMenuCredential,
+    Ozanorder: Ozanorder,
+    Ozanorderproduct: Ozanorderproduct,
+    Ozanlibrary: Ozanlibrary,
     
   };
 

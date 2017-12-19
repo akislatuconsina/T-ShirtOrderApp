@@ -51,11 +51,11 @@ import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { OzanUserCredentialApi } from './services/custom/OzanUserCredential';
-import { OzanOrderApi } from './services/custom/OzanOrder';
-import { OzanLibraryApi } from './services/custom/OzanLibrary';
-import { OzanOrderProductApi } from './services/custom/OzanOrderProduct';
 import { OzanContainerApi } from './services/custom/OzanContainer';
 import { OzanMenuCredentialApi } from './services/custom/OzanMenuCredential';
+import { OzanorderApi } from './services/custom/Ozanorder';
+import { OzanorderproductApi } from './services/custom/Ozanorderproduct';
+import { OzanlibraryApi } from './services/custom/Ozanlibrary';
 /**
 * @module SDKBrowserModule
 * @description
@@ -89,11 +89,11 @@ export class SDKBrowserModule {
         RealTime,
         UserApi,
         OzanUserCredentialApi,
-        OzanOrderApi,
-        OzanLibraryApi,
-        OzanOrderProductApi,
         OzanContainerApi,
         OzanMenuCredentialApi,
+        OzanorderApi,
+        OzanorderproductApi,
+        OzanlibraryApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

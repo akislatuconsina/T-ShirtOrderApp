@@ -1,34 +1,34 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface OzanLibraryInterface {
+export interface OzanlibraryInterface {
+  "idorder"?: string;
+  "namefile"?: string;
   "id"?: number;
-  "idOrder"?: string;
-  "nameFile"?: string;
 }
 
-export class OzanLibrary implements OzanLibraryInterface {
+export class Ozanlibrary implements OzanlibraryInterface {
+  "idorder": string;
+  "namefile": string;
   "id": number;
-  "idOrder": string;
-  "nameFile": string;
-  constructor(data?: OzanLibraryInterface) {
+  constructor(data?: OzanlibraryInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanLibrary`.
+   * i.e. `Ozanlibrary`.
    */
   public static getModelName() {
-    return "OzanLibrary";
+    return "Ozanlibrary";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of OzanLibrary for dynamic purposes.
+  * This method creates an instance of Ozanlibrary for dynamic purposes.
   **/
-  public static factory(data: OzanLibraryInterface): OzanLibrary{
-    return new OzanLibrary(data);
+  public static factory(data: OzanlibraryInterface): Ozanlibrary{
+    return new Ozanlibrary(data);
   }
   /**
   * @method getModelDefinition
@@ -39,22 +39,22 @@ export class OzanLibrary implements OzanLibraryInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'OzanLibrary',
-      plural: 'OzanLibraries',
-      path: 'OzanLibraries',
+      name: 'Ozanlibrary',
+      plural: 'Ozanlibraries',
+      path: 'Ozanlibraries',
       idName: 'id',
       properties: {
+        "idorder": {
+          name: 'idorder',
+          type: 'string'
+        },
+        "namefile": {
+          name: 'namefile',
+          type: 'string'
+        },
         "id": {
           name: 'id',
           type: 'number'
-        },
-        "idOrder": {
-          name: 'idOrder',
-          type: 'string'
-        },
-        "nameFile": {
-          name: 'nameFile',
-          type: 'string'
         },
       },
       relations: {
