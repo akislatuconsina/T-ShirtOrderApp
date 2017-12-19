@@ -77,9 +77,6 @@ export class MyApp {
 
         this.storageEventUser = this.storageEvent.roleUser;
         console.log(this.storageEventUser, 'STORAGE EVENT');
-
-        this.storageEventNama = this.storageEvent.realm;
-        console.log(this.storageEventNama, 'Hasil nama');
         
         this.storageEventCorporate = this.storageEvent.corporateName;
         console.log(this.storageEventCorporate, 'Hasil Perusahaan');
