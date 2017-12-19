@@ -12,10 +12,14 @@ import { Events } from 'ionic-angular';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  
+  realm: any;
 
   @ViewChild(Nav) nav: Nav;
   public storageEvent: any;
   public storageEventUser: any;
+  public storageEventNama: any;
+  public storageEventCorporate: any;
   public storageData: any;
   public menuCredential: any;
   rootPage: any;
@@ -70,8 +74,17 @@ export class MyApp {
     this.storage.ready().then(() => {
       this.storage.get('OzanUserData').then((result) => {
         this.storageEvent = result;
+
         this.storageEventUser = this.storageEvent.roleUser;
         console.log(this.storageEventUser, 'STORAGE EVENT');
+
+        this.storageEventNama = this.storageEvent.realm;
+        console.log(this.storageEventNama, 'Hasil nama');
+        
+        this.storageEventCorporate = this.storageEvent.corporateName;
+        console.log(this.storageEventCorporate, 'Hasil Perusahaan');
+
+
 
         const dataMenu = {
           roleUser: this.storageEventUser
@@ -105,6 +118,8 @@ export class MyApp {
     console.log('Logout');
     this.storage.get('OzanUserCredential').then((result) => {
       this.storageData = result;
+      this.realm = result;
+
       this.ozanusercredentialApi.ozanLogout(this.storageData).subscribe(result => {
         console.log(result);
         this.storage.clear();
