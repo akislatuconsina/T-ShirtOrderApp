@@ -118,13 +118,80 @@ export class OrderPage {
     this.input.splice(index, 1);
   }
 
-  public sendorder() {
-    let confirm = this.alertctrl.create({
-      title: 'Are You Sure?',
+  // public sendorder() {
+  //   let confirm = this.alertctrl.create({
+  //     title: 'Are You Sure?',
+  //     buttons: [
+  //       {
+  //         text: 'Yes',
+  //         handler: () => {
+  //           console.log(this.input, 'INPUT');
+  //           console.log(this.userid, 'ORDER USER ID')
+  //           const dataOrder = {
+  //             userid : this.userid,
+  //             buyername: this.ozanmodel.buyername,
+  //             companyname: this.ozanmodel.companyname,
+  //             address: this.ozanmodel.address,
+  //             shippedto: this.ozanmodel.shippedto,
+  //             confirmto: '-',
+  //             productionstatus: '-',
+  //             status: 1
+  //           }
+  //           console.log(dataOrder, '123123')
+  //           this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
+  //             console.log(result, 'hasil buyer n dll')
+  //             this.datatemp = result;
+  //             this.idorder = this.datatemp.id
+
+  //             for (let i = 0; i < this.input.length; i++) {
+  //               this.input[i]['idorder']= this.idorder;
+               
+  //               console.log(this.input[i], 'hasil input');
+
+  //               this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
+
+  //                 this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
+  //                   console.log(result, ' hasil photo');
+                    
+  //                 }, (error) => {
+  //                   console.log('Error Upload Name Photo');
+  //                 });
+  //               }, (error) => {
+  //                 console.log(error);
+  //               })
+  //             }
+
+  //           }, (error) => {
+  //             console.log(error)
+  //           });
+  //         }
+  //       },
+  //       {
+  //         text: 'No',
+  //         handler: () => {
+  //           let confirm = this.alertctrl.create({
+  //             title: 'Your Have Canceled',
+  //             buttons: [{
+  //               text: 'Dismiss',
+
+  //             }]
+  //           })
+  //           confirm.present();
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   confirm.present();
+  // }
+
+
+  public sendorder(){
+    let alert = this.alertctrl.create({
+      title: 'Are Your Sure',
       buttons: [
         {
           text: 'Yes',
-          handler: () => {
+          handler: () => { 
             console.log(this.input, 'INPUT');
             console.log(this.userid, 'ORDER USER ID')
             const dataOrder = {
@@ -152,6 +219,7 @@ export class OrderPage {
 
                   this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
                     console.log(result, ' hasil photo');
+                    
                   }, (error) => {
                     console.log('Error Upload Name Photo');
                   });
@@ -163,24 +231,35 @@ export class OrderPage {
             }, (error) => {
               console.log(error)
             });
+
+            let alert = this.alertctrl.create({
+              title: 'Check Detail Order',
+              buttons: [
+                {
+                  text: 'Dismiss',
+                  role: 'cancel',
+                  handler: () => {
+                    this.navCtrl.setRoot('HomePage')
+                    console.log('Cancel clicked');
+                  }
+                },
+              ]
+            });
+            alert.present();         
+            console.log('Cancel clicked');
           }
         },
         {
-          text: 'No',
+          text: 'Cancel',
+          role: 'Cancel',
           handler: () => {
-            let confirm = this.alertctrl.create({
-              title: 'Your Have Canceled',
-              buttons: [{
-                text: 'Dismiss',
-
-              }]
-            })
-            confirm.present();
+            console.log('Buy clicked');
           }
         }
       ]
     });
-    confirm.present();
+    alert.present();
+  }
   }
 
 
@@ -189,7 +268,6 @@ export class OrderPage {
 
 
 
-
-}
+//}
 
 
