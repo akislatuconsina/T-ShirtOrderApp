@@ -56,7 +56,19 @@ export class RegistrationPage {
       roleUser: 'user'
     }
     this.OzanUserCredentialapi.create(data).subscribe(result => {
-      console.log(result, 'data')
+      console.log(result, 'data');
+    
+      this.UserCredential.realm = '';
+      this.UserCredential.alamat = '';
+      this.UserCredential.phoneNumber = '';
+      this.UserCredential.jobPosition = '';
+      this.UserCredential.email = '';
+      this.UserCredential.corporateName = '';
+      this.UserCredential.corporatePhoneNumber = ''; 
+      this.UserCredential.emailCorporate = '';
+      this.UserCredential.username = '';
+      this.UserCredential.password = '';
+
       let alert = this.alertCtrl.create({
         title: 'Success',
         subTitle: 'You can be login now',
