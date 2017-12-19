@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
 import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
 import { Storage } from '@ionic/storage';
-import { Events } from 'ionic-angular';
+import { Events, MenuController  } from 'ionic-angular';
 
 
 /**
@@ -87,13 +87,14 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public storage: Storage,
     public loadingCtrl: LoadingController,
-    public events: Events
+    public events: Events,
+    public menu: MenuController
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-
+    this.menu.enable(false)
   }
 
   public presentModal() {
