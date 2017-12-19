@@ -1,30 +1,46 @@
 page-detailreport {
 
-    .grid{
-        margin-top: 3%;
-        width: 900px;
-        margin-bottom: 5%;
-        background-color:  #009688;
-    }
+    .celltitle{
+        color: white;
+        font-weight: bold;
+        border: solid 1px white;
+        background-color:#488aff;
+        text-align: center;
+        font-size:17px;
+       
+      }
 
-    .item{
+       
+      
+      .textcolor{
+        color:white;
+      }
+
+      .cell{
+        border: solid 1px white;
         background-color: whitesmoke;
-        margin-top: 6.5%;
-        margin-left: -5%
-    }
+        color: #488aff;
+        text-align: center;
+        padding-top: 1.2em;
+      }
 
-    .item1{
-        background-color: whitesmoke;
-        margin-top: 1.5%;
-        margin-bottom: 1.5%;
-        margin-left: -5%
-    }
 
-    .image-slide{
-        margin-top: 2em;
-        margin-bottom: 2em;
-        margin-left: 1.5em;
-        height: 360px;
-        width: 365px;
-    }
+      .button{
+        color :blue ;
+        background-color: whitesmoke; 
+      }
+
+      .segment2{
+        background-color: #f4f4f4;
+        color: #488aff;
+        float: right;
+        margin-top: -0.5cm
+        }
+
+        .tittle{
+          font-size: 10%;
+      }
+
+  
+
 }

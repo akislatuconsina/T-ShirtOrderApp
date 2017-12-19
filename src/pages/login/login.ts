@@ -123,13 +123,14 @@ export class LoginPage {
       this.OzanCredential.OzanFindUser(dataId).subscribe(result => {
         this.dataFind = result;
         console.log(this.dataFind, 'Result Find');
+        
+        this.dataLogin.username = '';
+        this.dataLogin.password = '';
 
         this.storage.set('OzanUserCredential', this.dataUser);
         this.storage.set('OzanUserData', this.dataFind);
         this.navCtrl.setRoot('HomePage');
-
         this.events.publish('ozan:menu');
-
         loader.dismiss();
       }, (error) => {
         console.log('error find user')

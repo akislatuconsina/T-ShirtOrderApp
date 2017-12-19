@@ -2,44 +2,37 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title text-center>Detail Report</ion-title>
+    <ion-title text-center class="tittle">Detail Report</ion-title>
+    <button ion-button (click)="loginpage()" class="segment2">PRINT DATA</button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-grid class="grid">
   <ion-row>
-  <ion-col col-6>
-      <img src="assets/imgs/VMD.png" class="image-slide">
-  </ion-col>
-<ion-col col-6>
+    <ion-col col-1 class="celltitle">No.</ion-col>
+    <ion-col col-2.3 class="celltitle">Company Name</ion-col>
+    <ion-col col-2.3 class="celltitle">Confirm To</ion-col>
+    <ion-col col-2.3 class="celltitle">Paid Status</ion-col>
+    <ion-col col-2.3 class="celltitle">Production Status</ion-col>
+    
+  </ion-row>
 
-  <ion-item class="item">
-      <h4 >Nama Costumer :</h4>
-  </ion-item>
-  <ion-item class="item1">
-      <p >Id Order       :</p>
-    </ion-item >
-    <ion-item class="item1">
-      <p >Deskripsi      :</p>
-    </ion-item>
-  <ion-item class="item1">
-      <p>Size Order     :</p>
-    </ion-item>
-  <ion-item class="item1">
-      <p>Qty Order      :</p>
-    </ion-item>
-  <ion-item class="item1">
-      <p>Unit Price     :</p>
-    </ion-item>
-  <ion-item class="item1"> 
-      <p style="color: deepskyblue">Status :</p>
-      
-    </ion-item>
-</ion-col>
-</ion-row>
-</ion-grid>
+  <ion-row *ngFor = "let datas of viewdata">
+    <ion-col col-1 class="cell">{{datas.id}}</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.params.companyName}}</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.params.confirmTo}}</ion-col>
+    <ion-col col-2.3 class="cell" [hidden]="waitingStatus">Waiting For Payment</ion-col>
+    <ion-col col-2.3 class="cell" [hidden]="payStatus">Payment 50 %</ion-col>
+    <ion-col col-2.3 class="cell" [hidden]="paid">Paid</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.params.productionStatus}}</ion-col>
+    <ion-col col-3 class="button">
+      <button ion-button (click)="Detailorder()">Detail</button>
+      <button ion-button (click)="Editdata()">Edit</button>
+      <button ion-button>Hapus</button>
+    </ion-col>
+  </ion-row>
+
 
 </ion-content>
