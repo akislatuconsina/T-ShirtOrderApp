@@ -6,8 +6,8 @@
       <ion-thumbnail id="bg">
         <div class="foto-div" [ngStyle]="{'background-image': 'url(' + photo + ')'}" menuClose (click)="onprofile()"></div>
 
-        <p class="title-menu">Muhammad Ozan</p>
-        <p class="title-menu">Customer</p>
+        <p class="title-menu"> {{storageEventNama}} </p>
+        <p class="title-menu"> {{storageEventCorporate}} </p>
       </ion-thumbnail>
 
       <button class="button-menu" menuClose ion-item *ngFor="let p of menuCredential" (click)="openPage(p)">

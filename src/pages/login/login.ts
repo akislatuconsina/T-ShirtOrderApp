@@ -68,6 +68,8 @@ import { Events, MenuController  } from 'ionic-angular';
   ]
 })
 export class LoginPage {
+  namaPosisi: any;
+  namaUser: any;
   public idUser: any;
   public roleUser: any;
   public dataFind: any;
@@ -153,6 +155,13 @@ export class LoginPage {
   forgetpassword() {
     this.navCtrl.push('ForgetpasswordPage')
   }
+
+  // variable(){
+  //   this.navCtrl.push('MyApp', {
+  //     nama: this.namaUser
+  //   })
+  // }
+  
 }
 
 
