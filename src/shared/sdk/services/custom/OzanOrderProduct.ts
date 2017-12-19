@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { OzanOrderProduct } from '../../models/OzanOrderProduct';
+import { Ozanorderproduct } from '../../models/Ozanorderproduct';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `OzanOrderProduct` model.
+ * Api services for the `Ozanorderproduct` model.
  */
 @Injectable()
-export class OzanOrderProductApi extends BaseLoopBackApi {
+export class OzanorderproductApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -44,13 +44,13 @@ export class OzanOrderProductApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrderProduct` object.)
+   * This usually means the response is a `Ozanorderproduct` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrderProducts";
+    "/Ozanorderproducts";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -63,7 +63,7 @@ export class OzanOrderProductApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id OzanOrderProduct id
+   * @param {any} id Ozanorderproduct id
    *
    * @param {object} data Request data.
    *
@@ -75,13 +75,13 @@ export class OzanOrderProductApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrderProduct` object.)
+   * This usually means the response is a `Ozanorderproduct` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrderProducts/:id";
+    "/Ozanorderproducts/:id";
     let _routeParams: any = {
       id: id
     };
@@ -108,13 +108,13 @@ export class OzanOrderProductApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrderProduct` object.)
+   * This usually means the response is a `Ozanorderproduct` object.)
    * </em>
    */
   public ozanProduct(params: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrderProducts/ozanProduct";
+    "/Ozanorderproducts/ozanProduct";
     let _routeParams: any = {};
     let _postBody: any = {
       params: params
@@ -126,9 +126,9 @@ export class OzanOrderProductApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanOrderProduct`.
+   * i.e. `Ozanorderproduct`.
    */
   public getModelName() {
-    return "OzanOrderProduct";
+    return "Ozanorderproduct";
   }
 }

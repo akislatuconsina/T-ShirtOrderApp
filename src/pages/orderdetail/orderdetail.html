@@ -30,16 +30,16 @@
 
   <ion-row *ngFor = "let datas of viewdata">
     <ion-col col-1 class="cell">{{datas.id}}</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.params.companyName}}</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.params.confirmTo}}</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.companyname}}</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.confirmto}}</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="waitingStatus">Waiting For Payment</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="payStatus">Payment 50 %</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="paid">Paid</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.params.productionStatus}}</ion-col>
+    <ion-col col-2.3 class="cell">{{datas.productionstatus}}</ion-col>
     <ion-col col-3 class="button">
-      <button ion-button (click)="Detailorder()">Detail</button>
-      <button ion-button (click)="Editdata()">Edit</button>
-      <button ion-button>Hapus</button>
+      <button ion-button (click)="Detailorder()" [hidden]="detailorder">Detail</button>
+      <button ion-button (click)="Editdata()" [hidden]="editdata">Edit</button>
+      <button ion-button  [hidden]="deletedata">Hapus</button>
     </ion-col>
   </ion-row>
 

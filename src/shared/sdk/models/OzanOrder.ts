@@ -1,60 +1,60 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface OzanOrderInterface {
-  "id"?: number;
-  "userId"?: string;
-  "orderDate"?: Date;
-  "buyerName"?: string;
-  "companyName"?: string;
+export interface OzanorderInterface {
+  "userid"?: string;
+  "orderdate"?: Date;
+  "buyername"?: string;
+  "companyname"?: string;
   "address"?: string;
-  "shippedTo"?: string;
-  "invoiceTo"?: string;
-  "vendorName"?: string;
-  "trackingNo"?: string;
-  "deliveryDate"?: Date;
+  "shippedto"?: string;
+  "invoiceto"?: string;
+  "vendorname"?: string;
+  "trackingno"?: string;
+  "deliverydate"?: Date;
   "amount"?: string;
-  "totalAmount"?: string;
-  "confirmTo"?: string;
-  "productionStatus"?: string;
+  "totalamount"?: string;
+  "confirmto"?: string;
+  "productionstatus"?: string;
   "status"?: string;
+  "id"?: number;
 }
 
-export class OzanOrder implements OzanOrderInterface {
-  "id": number;
-  "userId": string;
-  "orderDate": Date;
-  "buyerName": string;
-  "companyName": string;
+export class Ozanorder implements OzanorderInterface {
+  "userid": string;
+  "orderdate": Date;
+  "buyername": string;
+  "companyname": string;
   "address": string;
-  "shippedTo": string;
-  "invoiceTo": string;
-  "vendorName": string;
-  "trackingNo": string;
-  "deliveryDate": Date;
+  "shippedto": string;
+  "invoiceto": string;
+  "vendorname": string;
+  "trackingno": string;
+  "deliverydate": Date;
   "amount": string;
-  "totalAmount": string;
-  "confirmTo": string;
-  "productionStatus": string;
+  "totalamount": string;
+  "confirmto": string;
+  "productionstatus": string;
   "status": string;
-  constructor(data?: OzanOrderInterface) {
+  "id": number;
+  constructor(data?: OzanorderInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanOrder`.
+   * i.e. `Ozanorder`.
    */
   public static getModelName() {
-    return "OzanOrder";
+    return "Ozanorder";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of OzanOrder for dynamic purposes.
+  * This method creates an instance of Ozanorder for dynamic purposes.
   **/
-  public static factory(data: OzanOrderInterface): OzanOrder{
-    return new OzanOrder(data);
+  public static factory(data: OzanorderInterface): Ozanorder{
+    return new Ozanorder(data);
   }
   /**
   * @method getModelDefinition
@@ -65,74 +65,74 @@ export class OzanOrder implements OzanOrderInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'OzanOrder',
-      plural: 'OzanOrders',
-      path: 'OzanOrders',
+      name: 'Ozanorder',
+      plural: 'Ozanorders',
+      path: 'Ozanorders',
       idName: 'id',
       properties: {
-        "id": {
-          name: 'id',
-          type: 'number'
-        },
-        "userId": {
-          name: 'userId',
+        "userid": {
+          name: 'userid',
           type: 'string'
         },
-        "orderDate": {
-          name: 'orderDate',
+        "orderdate": {
+          name: 'orderdate',
           type: 'Date'
         },
-        "buyerName": {
-          name: 'buyerName',
+        "buyername": {
+          name: 'buyername',
           type: 'string'
         },
-        "companyName": {
-          name: 'companyName',
+        "companyname": {
+          name: 'companyname',
           type: 'string'
         },
         "address": {
           name: 'address',
           type: 'string'
         },
-        "shippedTo": {
-          name: 'shippedTo',
+        "shippedto": {
+          name: 'shippedto',
           type: 'string'
         },
-        "invoiceTo": {
-          name: 'invoiceTo',
+        "invoiceto": {
+          name: 'invoiceto',
           type: 'string'
         },
-        "vendorName": {
-          name: 'vendorName',
+        "vendorname": {
+          name: 'vendorname',
           type: 'string'
         },
-        "trackingNo": {
-          name: 'trackingNo',
+        "trackingno": {
+          name: 'trackingno',
           type: 'string'
         },
-        "deliveryDate": {
-          name: 'deliveryDate',
+        "deliverydate": {
+          name: 'deliverydate',
           type: 'Date'
         },
         "amount": {
           name: 'amount',
           type: 'string'
         },
-        "totalAmount": {
-          name: 'totalAmount',
+        "totalamount": {
+          name: 'totalamount',
           type: 'string'
         },
-        "confirmTo": {
-          name: 'confirmTo',
+        "confirmto": {
+          name: 'confirmto',
           type: 'string'
         },
-        "productionStatus": {
-          name: 'productionStatus',
+        "productionstatus": {
+          name: 'productionstatus',
           type: 'string'
         },
         "status": {
           name: 'status',
           type: 'string'
+        },
+        "id": {
+          name: 'id',
+          type: 'number'
         },
       },
       relations: {

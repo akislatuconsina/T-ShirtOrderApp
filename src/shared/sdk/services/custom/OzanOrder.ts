@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { OzanOrder } from '../../models/OzanOrder';
+import { Ozanorder } from '../../models/Ozanorder';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `OzanOrder` model.
+ * Api services for the `Ozanorder` model.
  */
 @Injectable()
-export class OzanOrderApi extends BaseLoopBackApi {
+export class OzanorderApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -44,13 +44,13 @@ export class OzanOrderApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrder` object.)
+   * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrders";
+    "/Ozanorders";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -63,7 +63,7 @@ export class OzanOrderApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id OzanOrder id
+   * @param {any} id Ozanorder id
    *
    * @param {object} data Request data.
    *
@@ -75,13 +75,13 @@ export class OzanOrderApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrder` object.)
+   * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrders/:id";
+    "/Ozanorders/:id";
     let _routeParams: any = {
       id: id
     };
@@ -108,16 +108,16 @@ export class OzanOrderApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrder` object.)
+   * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
-  public ozanBuying(params: any, customHeaders?: Function): Observable<any> {
+  public ozanBuying(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrders/ozanBuying";
+    "/Ozanorders/ozanBuying";
     let _routeParams: any = {};
     let _postBody: any = {
-      params: params
+      data: data
     };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
@@ -139,13 +139,13 @@ export class OzanOrderApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanOrder` object.)
+   * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
   public ozangetBuying(params: any, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanOrders/ozangetBuying";
+    "/Ozanorders/ozangetBuying";
     let _routeParams: any = {};
     let _postBody: any = {};
     let _urlParams: any = {};
@@ -213,9 +213,9 @@ export class OzanOrderApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanOrder`.
+   * i.e. `Ozanorder`.
    */
   public getModelName() {
-    return "OzanOrder";
+    return "Ozanorder";
   }
 }

@@ -1,16 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { OzanOrderApi } from './../../shared/sdk/services/custom/OzanOrder';
-import { OzanOrder } from './../../shared/sdk/models/OzanOrder';
-import { OzanLibraryApi } from './../../shared/sdk/services/custom/OzanLibrary';
-import { OzanLibrary } from './../../shared/sdk/models/OzanLibrary';
-import { OzanOrderProductApi } from './../../shared/sdk/services/custom/OzanOrderProduct';
+import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
+import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
+import { OzanlibraryApi  } from './../../shared/sdk/services/custom/Ozanlibrary';
+import { Ozanlibrary } from './../../shared/sdk/models/Ozanlibrary';
+import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorderproduct';
 import { UUID } from 'angular2-uuid';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
-
-
-
 
 
 /**
@@ -26,7 +23,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'order.html',
 })
 export class OrderPage {
-  
+  public roleuser: any;
   public userid: any;
   public datatemp: any;
   public idorder: any;
@@ -36,8 +33,8 @@ export class OrderPage {
   public photoName = [];
   public productname = [{}];
   public input = [{}];
-  public ozanmodel: any = OzanOrder;
-  public ozanlibrary: any = OzanLibrary;
+  public ozanmodel: any = Ozanorder;
+  public ozanlibrary: any = Ozanlibrary;
 
   public filesToUpload: Array<File>;
 
@@ -45,9 +42,9 @@ export class OrderPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertctrl: AlertController,
-    public ozanorderapi: OzanOrderApi,
-    public ozanlibraryapi: OzanLibraryApi,
-    public ozanorderproductapi: OzanOrderProductApi,
+    public ozanorderapi: OzanorderApi,
+    public ozanlibraryapi: OzanlibraryApi,
+    public ozanorderproductapi: OzanorderproductApi,
     public transfer: FileTransfer,
     public loadingCtrl: LoadingController,
     public storage : Storage
@@ -57,10 +54,12 @@ export class OrderPage {
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad OrderPage');
-    this.storage.get('OzanUserCredential').then((result)=>{
-      this.userid = result.userId;
-      console.log(this.userid, 'this result userId');      
-    })
+    this.storage.ready().then(() => {
+      this.storage.get('OzanUserCredential').then((result)=>{
+        this.userid = result.userId;
+        console.log(this.userid, 'user id load page');      
+      });
+    });
   }
 
 
@@ -127,18 +126,18 @@ export class OrderPage {
           text: 'Yes',
           handler: () => {
             console.log(this.input, 'INPUT');
-
+            console.log(this.userid, 'ORDER USER ID')
             const dataOrder = {
-              userId : this.userid,
-              buyerName: this.ozanmodel.buyerName,
-              companyName: this.ozanmodel.companyName,
+              userid : this.userid,
+              buyername: this.ozanmodel.buyername,
+              companyname: this.ozanmodel.companyname,
               address: this.ozanmodel.address,
-              shippedTo: this.ozanmodel.shippedTo,
-              confirmTo: '-',
-              productionStatus: '-',
+              shippedto: this.ozanmodel.shippedto,
+              confirmto: '-',
+              productionstatus: '-',
               status: 1
             }
-
+            console.log(dataOrder, '123123')
             this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
               console.log(result, 'hasil buyer n dll')
               this.datatemp = result;
