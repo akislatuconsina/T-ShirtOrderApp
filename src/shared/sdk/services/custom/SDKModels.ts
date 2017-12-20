@@ -1,12 +1,15 @@
 /* tslint:disable */
 import { Injectable } from '@angular/core';
 import { User } from '../../models/User';
-import { OzanUserCredential } from '../../models/OzanUserCredential';
 import { OzanContainer } from '../../models/OzanContainer';
-import { OzanMenuCredential } from '../../models/OzanMenuCredential';
-import { Ozanorder } from '../../models/Ozanorder';
+import { Acl } from '../../models/Acl';
+import { Ozanmenulist } from '../../models/Ozanmenulist';
 import { Ozanorderproduct } from '../../models/Ozanorderproduct';
+import { Accesstoken } from '../../models/Accesstoken';
 import { Ozanlibrary } from '../../models/Ozanlibrary';
+import { Ozanorder } from '../../models/Ozanorder';
+import { Ozanusercredential } from '../../models/Ozanusercredential';
+import { Rolemapping } from '../../models/Rolemapping';
 
 export interface Models { [name: string]: any }
 
@@ -15,12 +18,15 @@ export class SDKModels {
 
   private models: Models = {
     User: User,
-    OzanUserCredential: OzanUserCredential,
     OzanContainer: OzanContainer,
-    OzanMenuCredential: OzanMenuCredential,
-    Ozanorder: Ozanorder,
+    Acl: Acl,
+    Ozanmenulist: Ozanmenulist,
     Ozanorderproduct: Ozanorderproduct,
+    Accesstoken: Accesstoken,
     Ozanlibrary: Ozanlibrary,
+    Ozanorder: Ozanorder,
+    Ozanusercredential: Ozanusercredential,
+    Rolemapping: Rolemapping,
     
   };
 

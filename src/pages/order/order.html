@@ -52,7 +52,7 @@
       <ion-col col-1>
         <ion-item>
           <ion-label stacked color="primary">Size : </ion-label>
-          <ion-select [(ngModel)]="input.sizeOrder">
+          <ion-select [(ngModel)]="input.sizeorder">
             <ion-option value="S">S</ion-option>
             <ion-option value="M">M</ion-option>
             <ion-option value="L">L</ion-option>
@@ -84,12 +84,9 @@
       </ion-col>
     </ion-row>
 
-    <!-- <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" /> -->
     <input type="file"  #fileInput  style="visibility: hidden; height: 0px" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
 
   </ion-grid>
   <button ion-button class="buttonmargin2" (click)="sendorder()">Order</button>
-  <pre>{{input | json}}</pre>
-
 
 </ion-content>

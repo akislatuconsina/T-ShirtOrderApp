@@ -1,38 +1,38 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface OzanMenuCredentialInterface {
-  "id"?: number;
-  "title"?: string;
-  "component"?: string;
-  "icons"?: string;
-  "roleUser"?: string;
-}
-
-export class OzanMenuCredential implements OzanMenuCredentialInterface {
-  "id": number;
+export interface OzanmenulistInterface {
   "title": string;
   "component": string;
   "icons": string;
-  "roleUser": string;
-  constructor(data?: OzanMenuCredentialInterface) {
+  "roleuser": string;
+  "id"?: number;
+}
+
+export class Ozanmenulist implements OzanmenulistInterface {
+  "title": string;
+  "component": string;
+  "icons": string;
+  "roleuser": string;
+  "id": number;
+  constructor(data?: OzanmenulistInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanMenuCredential`.
+   * i.e. `Ozanmenulist`.
    */
   public static getModelName() {
-    return "OzanMenuCredential";
+    return "Ozanmenulist";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of OzanMenuCredential for dynamic purposes.
+  * This method creates an instance of Ozanmenulist for dynamic purposes.
   **/
-  public static factory(data: OzanMenuCredentialInterface): OzanMenuCredential{
-    return new OzanMenuCredential(data);
+  public static factory(data: OzanmenulistInterface): Ozanmenulist{
+    return new Ozanmenulist(data);
   }
   /**
   * @method getModelDefinition
@@ -43,15 +43,11 @@ export class OzanMenuCredential implements OzanMenuCredentialInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'OzanMenuCredential',
-      plural: 'OzanMenuCredentials',
-      path: 'OzanMenuCredentials',
+      name: 'Ozanmenulist',
+      plural: 'Ozanmenulists',
+      path: 'Ozanmenulists',
       idName: 'id',
       properties: {
-        "id": {
-          name: 'id',
-          type: 'number'
-        },
         "title": {
           name: 'title',
           type: 'string'
@@ -64,9 +60,13 @@ export class OzanMenuCredential implements OzanMenuCredentialInterface {
           name: 'icons',
           type: 'string'
         },
-        "roleUser": {
-          name: 'roleUser',
+        "roleuser": {
+          name: 'roleuser',
           type: 'string'
+        },
+        "id": {
+          name: 'id',
+          type: 'number'
         },
       },
       relations: {

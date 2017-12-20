@@ -201,7 +201,7 @@ export class OrderPage {
               address: this.ozanmodel.address,
               shippedto: this.ozanmodel.shippedto,
               confirmto: '-',
-              productionstatus: '-',
+              productionstatus: '1',
               status: 1
             }
             console.log(dataOrder, '123123')

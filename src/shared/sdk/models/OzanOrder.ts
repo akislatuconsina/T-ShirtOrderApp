@@ -2,26 +2,7 @@
 
 declare var Object: any;
 export interface OzanorderInterface {
-  "userid"?: string;
-  "orderdate"?: Date;
-  "buyername"?: string;
-  "companyname"?: string;
-  "address"?: string;
-  "shippedto"?: string;
-  "invoiceto"?: string;
-  "vendorname"?: string;
-  "trackingno"?: string;
-  "deliverydate"?: Date;
-  "amount"?: string;
-  "totalamount"?: string;
-  "confirmto"?: string;
-  "productionstatus"?: string;
-  "status"?: string;
-  "id"?: number;
-}
-
-export class Ozanorder implements OzanorderInterface {
-  "userid": string;
+  "userid": number;
   "orderdate": Date;
   "buyername": string;
   "companyname": string;
@@ -31,11 +12,30 @@ export class Ozanorder implements OzanorderInterface {
   "vendorname": string;
   "trackingno": string;
   "deliverydate": Date;
-  "amount": string;
-  "totalamount": string;
+  "amount": number;
+  "totalamount": number;
   "confirmto": string;
-  "productionstatus": string;
-  "status": string;
+  "productionstatus": number;
+  "status": number;
+  "id"?: number;
+}
+
+export class Ozanorder implements OzanorderInterface {
+  "userid": number;
+  "orderdate": Date;
+  "buyername": string;
+  "companyname": string;
+  "address": string;
+  "shippedto": string;
+  "invoiceto": string;
+  "vendorname": string;
+  "trackingno": string;
+  "deliverydate": Date;
+  "amount": number;
+  "totalamount": number;
+  "confirmto": string;
+  "productionstatus": number;
+  "status": number;
   "id": number;
   constructor(data?: OzanorderInterface) {
     Object.assign(this, data);
@@ -72,7 +72,7 @@ export class Ozanorder implements OzanorderInterface {
       properties: {
         "userid": {
           name: 'userid',
-          type: 'string'
+          type: 'number'
         },
         "orderdate": {
           name: 'orderdate',
@@ -112,11 +112,11 @@ export class Ozanorder implements OzanorderInterface {
         },
         "amount": {
           name: 'amount',
-          type: 'string'
+          type: 'number'
         },
         "totalamount": {
           name: 'totalamount',
-          type: 'string'
+          type: 'number'
         },
         "confirmto": {
           name: 'confirmto',
@@ -124,11 +124,11 @@ export class Ozanorder implements OzanorderInterface {
         },
         "productionstatus": {
           name: 'productionstatus',
-          type: 'string'
+          type: 'number'
         },
         "status": {
           name: 'status',
-          type: 'string'
+          type: 'number'
         },
         "id": {
           name: 'id',

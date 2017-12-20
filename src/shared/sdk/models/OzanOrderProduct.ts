@@ -2,20 +2,20 @@
 
 declare var Object: any;
 export interface OzanorderproductInterface {
-  "idorder"?: string;
-  "descriptionorder"?: string;
-  "sizeorder"?: string;
-  "qtyorder"?: string;
-  "unitprice"?: string;
+  "idorder": number;
+  "descriptionorder": string;
+  "sizeorder": string;
+  "qtyorder": number;
+  "unitprice": number;
   "id"?: number;
 }
 
 export class Ozanorderproduct implements OzanorderproductInterface {
-  "idorder": string;
+  "idorder": number;
   "descriptionorder": string;
   "sizeorder": string;
-  "qtyorder": string;
-  "unitprice": string;
+  "qtyorder": number;
+  "unitprice": number;
   "id": number;
   constructor(data?: OzanorderproductInterface) {
     Object.assign(this, data);
@@ -52,7 +52,7 @@ export class Ozanorderproduct implements OzanorderproductInterface {
       properties: {
         "idorder": {
           name: 'idorder',
-          type: 'string'
+          type: 'number'
         },
         "descriptionorder": {
           name: 'descriptionorder',
@@ -64,11 +64,11 @@ export class Ozanorderproduct implements OzanorderproductInterface {
         },
         "qtyorder": {
           name: 'qtyorder',
-          type: 'string'
+          type: 'number'
         },
         "unitprice": {
           name: 'unitprice',
-          type: 'string'
+          type: 'number'
         },
         "id": {
           name: 'id',

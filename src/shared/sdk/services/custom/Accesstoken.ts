@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { OzanMenuCredential } from '../../models/OzanMenuCredential';
+import { Accesstoken } from '../../models/Accesstoken';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `OzanMenuCredential` model.
+ * Api services for the `Accesstoken` model.
  */
 @Injectable()
-export class OzanMenuCredentialApi extends BaseLoopBackApi {
+export class AccesstokenApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -44,13 +44,13 @@ export class OzanMenuCredentialApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanMenuCredential` object.)
+   * This usually means the response is a `Accesstoken` object.)
    * </em>
    */
   public patchOrCreate(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanMenuCredentials";
+    "/Accesstokens";
     let _routeParams: any = {};
     let _postBody: any = {
       data: data
@@ -63,7 +63,7 @@ export class OzanMenuCredentialApi extends BaseLoopBackApi {
   /**
    * Patch attributes for a model instance and persist it into the data source.
    *
-   * @param {any} id OzanMenuCredential id
+   * @param {any} id Accesstoken id
    *
    * @param {object} data Request data.
    *
@@ -75,13 +75,13 @@ export class OzanMenuCredentialApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanMenuCredential` object.)
+   * This usually means the response is a `Accesstoken` object.)
    * </em>
    */
   public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "PATCH";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanMenuCredentials/:id";
+    "/Accesstokens/:id";
     let _routeParams: any = {
       id: id
     };
@@ -94,41 +94,10 @@ export class OzanMenuCredentialApi extends BaseLoopBackApi {
   }
 
   /**
-   * <em>
-         * (The remote method definition does not provide any description.)
-         * </em>
-   *
-   * @param {object} data Request data.
-   *
-   * This method expects a subset of model properties as request parameters.
-   *
-   * @returns {object[]} An empty reference that will be
-   *   populated with the actual data once the response is returned
-   *   from the server.
-   *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `OzanMenuCredential` object.)
-   * </em>
-   */
-  public ozanFindMenu(params: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "POST";
-    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/OzanMenuCredentials/ozanFindMenu";
-    let _routeParams: any = {};
-    let _postBody: any = {
-      params: params
-    };
-    let _urlParams: any = {};
-    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
-    return result;
-  }
-
-  /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanMenuCredential`.
+   * i.e. `Accesstoken`.
    */
   public getModelName() {
-    return "OzanMenuCredential";
+    return "Accesstoken";
   }
 }

@@ -56,7 +56,7 @@ export class OrderdetailPage {
       this.storage.get('OzanUserData').then((result) => {
       this.datatemp = result;
       console.log(this.datatemp,'data temp')
-        this.roleuser = this.datatemp.roleUser;
+        this.roleuser = this.datatemp.roleuser;
         console.log(this.roleuser, 'ini result user data')
       })
 
