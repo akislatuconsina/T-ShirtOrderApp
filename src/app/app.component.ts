@@ -75,7 +75,7 @@ export class MyApp {
       this.storage.get('OzanUserData').then((result) => {
         this.storageEvent = result;
 
-        this.storageEventUser = this.storageEvent.roleUser;
+        this.storageEventUser = this.storageEvent..realm;
         console.log(this.storageEventUser, 'STORAGE EVENT');
         
         this.storageEventCorporate = this.storageEvent.corporateName;
