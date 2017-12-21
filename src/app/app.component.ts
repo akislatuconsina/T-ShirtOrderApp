@@ -45,10 +45,15 @@ export class MyApp {
           this.nav.setRoot('HomePage');
           this.storage.get('OzanMenuCredential').then(result => {
             this.menuCredential = result;
-          })
+            this.storage.get('OzanUserData').then(result => {
+              this.storageEvent = result;
+              this.realmUser = this.storageEvent.realm;
+              this.storageEventCorporate = this.storageEvent.corporatename;
+            });
+          });
         }
       });
-    })
+    });
 
 
     this.initializeApp();
@@ -76,6 +81,7 @@ export class MyApp {
         this.storageEvent = result;
 
         this.realmUser = this.storageEvent.realm;
+        this.storageEventUser = this.storageEvent.roleuser;
         
         this.storageEventCorporate = this.storageEvent.corporatename;
         console.log(this.storageEventCorporate, 'Hasil Perusahaan');
