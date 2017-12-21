@@ -23,20 +23,21 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'order.html',
 })
 export class OrderPage {
+  @ViewChild('fileInput') fileInput;
+  public companyname: any;
+  public buyername: any;
   public roleuser: any;
   public userid: any;
   public datatemp: any;
   public idorder: any;
-  @ViewChild('fileInput') fileInput;
-
   public photoData: any;
   public photoName = [];
   public productname = [{}];
   public input = [{}];
   public ozanmodel: any = Ozanorder;
   public ozanlibrary: any = Ozanlibrary;
-
   public filesToUpload: Array<File>;
+  
 
   constructor(
     public navCtrl: NavController,
@@ -62,7 +63,6 @@ export class OrderPage {
     });
   }
 
-
   public upload() {
     this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload).then((result) => {
       console.log(result);
@@ -83,7 +83,6 @@ export class OrderPage {
     this.photoName.push(options)
     this.upload();
   }
-
 
   public getPicture() {
     this.fileInput.nativeElement.click();
@@ -117,72 +116,6 @@ export class OrderPage {
   public deleteproduct(index) {
     this.input.splice(index, 1);
   }
-
-  // public sendorder() {
-  //   let confirm = this.alertctrl.create({
-  //     title: 'Are You Sure?',
-  //     buttons: [
-  //       {
-  //         text: 'Yes',
-  //         handler: () => {
-  //           console.log(this.input, 'INPUT');
-  //           console.log(this.userid, 'ORDER USER ID')
-  //           const dataOrder = {
-  //             userid : this.userid,
-  //             buyername: this.ozanmodel.buyername,
-  //             companyname: this.ozanmodel.companyname,
-  //             address: this.ozanmodel.address,
-  //             shippedto: this.ozanmodel.shippedto,
-  //             confirmto: '-',
-  //             productionstatus: '-',
-  //             status: 1
-  //           }
-  //           console.log(dataOrder, '123123')
-  //           this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
-  //             console.log(result, 'hasil buyer n dll')
-  //             this.datatemp = result;
-  //             this.idorder = this.datatemp.id
-
-  //             for (let i = 0; i < this.input.length; i++) {
-  //               this.input[i]['idorder']= this.idorder;
-               
-  //               console.log(this.input[i], 'hasil input');
-
-  //               this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
-
-  //                 this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
-  //                   console.log(result, ' hasil photo');
-                    
-  //                 }, (error) => {
-  //                   console.log('Error Upload Name Photo');
-  //                 });
-  //               }, (error) => {
-  //                 console.log(error);
-  //               })
-  //             }
-
-  //           }, (error) => {
-  //             console.log(error)
-  //           });
-  //         }
-  //       },
-  //       {
-  //         text: 'No',
-  //         handler: () => {
-  //           let confirm = this.alertctrl.create({
-  //             title: 'Your Have Canceled',
-  //             buttons: [{
-  //               text: 'Dismiss',
-
-  //             }]
-  //           })
-  //           confirm.present();
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   confirm.present();
-  // }
 
 
   public sendorder(){
@@ -260,14 +193,12 @@ export class OrderPage {
     });
     alert.present();
   }
+
+
+
   }
 
 
 
-
-
-
-
-//}
 
 
