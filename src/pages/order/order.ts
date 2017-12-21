@@ -23,11 +23,12 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'order.html',
 })
 export class OrderPage {
+  @ViewChild('fileInput') fileInput;
   public roleuser: any;
   public userid: any;
+  public realm: any;
   public datatemp: any;
   public idorder: any;
-  @ViewChild('fileInput') fileInput;
 
   public photoData: any;
   public photoName = [];
@@ -35,6 +36,7 @@ export class OrderPage {
   public input = [{}];
   public ozanmodel: any = Ozanorder;
   public ozanlibrary: any = Ozanlibrary;
+
 
   public filesToUpload: Array<File>;
 
@@ -50,14 +52,16 @@ export class OrderPage {
     public storage : Storage
   ) {
     this.filesToUpload = [];
+    this.ozanmodel.buyername = this.realm;
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad OrderPage');
     this.storage.ready().then(() => {
-      this.storage.get('OzanUserCredential').then((result)=>{
-        this.userid = result.userId;
-        console.log(this.userid, 'user id load page');      
+      this.storage.get('OzanUserData').then((result)=>{
+        this.userid = result.id;
+        this.realm = result.realm;
+        console.log(this.realm, 'Data Storage');      
       });
     });
   }
