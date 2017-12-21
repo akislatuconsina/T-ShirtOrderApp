@@ -24,6 +24,9 @@ import { Storage } from '@ionic/storage';
 })
 export class OrderPage {
   @ViewChild('fileInput') fileInput;
+  public companyname: any;
+  public buyername: any;
+
   public roleuser: any;
   public userid: any;
   public realm: any;
@@ -37,8 +40,8 @@ export class OrderPage {
   public ozanmodel: any = Ozanorder;
   public ozanlibrary: any = Ozanlibrary;
 
-
   public filesToUpload: Array<File>;
+  
 
   constructor(
     public navCtrl: NavController,
@@ -65,7 +68,6 @@ export class OrderPage {
       });
     });
   }
-
 
   public upload() {
 
@@ -121,7 +123,6 @@ export class OrderPage {
       alert.present();
     });
   }
-
 
   public getPicture() {
     this.fileInput.nativeElement.click();
