@@ -20,8 +20,9 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
   templateUrl: 'orderdetail.html',
 })
 export class OrderdetailPage {
+  public confirmpayment: boolean;
+  public cancelpayment: boolean;
   public datatemp: any;
-  public deletedata: boolean;
   public editdata: boolean;
   public detailorder: boolean;
   public roleuser: any;
@@ -54,8 +55,8 @@ export class OrderdetailPage {
       this.userId = result;
       console.log(this.userId, 'this result userId');
       this.storage.get('OzanUserData').then((result) => {
-      this.datatemp = result;
-      console.log(this.datatemp,'data temp')
+        this.datatemp = result;
+        console.log(this.datatemp, 'data temp')
         this.roleuser = this.datatemp.roleuser;
         console.log(this.roleuser, 'ini result user data')
       })
@@ -77,7 +78,7 @@ export class OrderdetailPage {
           } if (this.viewdata[i].status == 2) {
             this.waitingStatus = true;
             this.payStatus = false;
-            this.paid = true;
+            this.cancelpayment = true
           } if (this.viewdata[i].status == 3) {
             this.waitingStatus = true;
             this.payStatus = true;
@@ -89,12 +90,14 @@ export class OrderdetailPage {
         if (this.roleuser == 'user') {
           this.detailorder = false;
           this.editdata = true;
-          this.deletedata = true;
+          this.confirmpayment = false;
+          this.cancelpayment = false;
         }
         if (this.roleuser == 'admin') {
           this.detailorder = false;
           this.editdata = false;
-          this.deletedata = false;
+          this.confirmpayment = false;
+          this.cancelpayment = false;
         }
       }, (error) => { loader.dismiss() })
     })
@@ -109,6 +112,12 @@ export class OrderdetailPage {
 
   Detailorder() {
     let modal = this.modalctrl.create('LookingDetailOrderPage');
+    modal.present();
+  }
+
+  Confirmpayment(event){
+    console.log(event)
+    let modal = this.modalctrl.create('ConfirmpagePage',{event});
     modal.present();
   }
 
