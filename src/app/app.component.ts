@@ -3,8 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { OzanUserCredentialApi } from '../shared/sdk/services/custom/OzanUserCredential';
-import { OzanMenuCredentialApi } from '../shared/sdk/services/custom/OzanMenuCredential';
+import { OzanusercredentialApi } from '../shared/sdk/services/custom/Ozanusercredential';
+import { OzanmenulistApi } from '../shared/sdk/services/custom/Ozanmenulist';
 import { Events } from 'ionic-angular';
 
 
@@ -13,9 +13,9 @@ import { Events } from 'ionic-angular';
 })
 export class MyApp {
   
-  realm: any;
-
   @ViewChild(Nav) nav: Nav;
+  public realmUser: any;
+  public realm: any;
   public storageEvent: any;
   public storageEventUser: any;
   public storageEventNama: any;
@@ -32,8 +32,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public storage: Storage,
     public splashScreen: SplashScreen,
-    public ozanusercredentialApi: OzanUserCredentialApi,
-    public ozanmenucredentialApi: OzanMenuCredentialApi,
+    public ozanusercredentialApi: OzanusercredentialApi,
+    public ozanmenucredentialApi: OzanmenulistApi,
     public events: Events
   ) {
 
@@ -45,10 +45,15 @@ export class MyApp {
           this.nav.setRoot('HomePage');
           this.storage.get('OzanMenuCredential').then(result => {
             this.menuCredential = result;
-          })
+            this.storage.get('OzanUserData').then(result => {
+              this.storageEvent = result;
+              this.realmUser = this.storageEvent.realm;
+              this.storageEventCorporate = this.storageEvent.corporatename;
+            });
+          });
         }
       });
-    })
+    });
 
 
     this.initializeApp();
@@ -75,16 +80,16 @@ export class MyApp {
       this.storage.get('OzanUserData').then((result) => {
         this.storageEvent = result;
 
-        this.storageEventUser = this.storageEvent.roleUser;
-        console.log(this.storageEventUser, 'STORAGE EVENT');
+        this.realmUser = this.storageEvent.realm;
+        this.storageEventUser = this.storageEvent.roleuser;
         
-        this.storageEventCorporate = this.storageEvent.corporateName;
+        this.storageEventCorporate = this.storageEvent.corporatename;
         console.log(this.storageEventCorporate, 'Hasil Perusahaan');
 
 
 
         const dataMenu = {
-          roleUser: this.storageEventUser
+          roleuser: this.storageEventUser
         };
 
         this.ozanmenucredentialApi.ozanFindMenu(dataMenu).subscribe(result => {

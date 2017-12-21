@@ -1,56 +1,56 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface OzanUserCredentialInterface {
+export interface OzanusercredentialInterface {
+  "realm": string;
+  "address": string;
+  "phonenumber": number;
+  "jobposition": string;
+  "corporatename": string;
+  "corporatephonenumber": number;
+  "emailcorporate": string;
+  "username": string;
+  "password": string;
+  "email": string;
+  "emailverified": string;
+  "roleuser": string;
+  "verificationtoken": string;
   "id"?: number;
-  "realm"?: string;
-  "alamat"?: string;
-  "phoneNumber"?: string;
-  "jobPosition"?: string;
-  "corporateName"?: string;
-  "corporatePhoneNumber"?: string;
-  "emailCorporate"?: string;
-  "username"?: string;
-  "email"?: string;
-  "emailVerified"?: string;
-  "roleUser"?: string;
-  "password"?: string;
-  accessTokens?: any[];
 }
 
-export class OzanUserCredential implements OzanUserCredentialInterface {
-  "id": number;
+export class Ozanusercredential implements OzanusercredentialInterface {
   "realm": string;
-  "alamat": string;
-  "phoneNumber": string;
-  "jobPosition": string;
-  "corporateName": string;
-  "corporatePhoneNumber": string;
-  "emailCorporate": string;
+  "address": string;
+  "phonenumber": number;
+  "jobposition": string;
+  "corporatename": string;
+  "corporatephonenumber": number;
+  "emailcorporate": string;
   "username": string;
-  "email": string;
-  "emailVerified": string;
-  "roleUser": string;
   "password": string;
-  accessTokens: any[];
-  constructor(data?: OzanUserCredentialInterface) {
+  "email": string;
+  "emailverified": string;
+  "roleuser": string;
+  "verificationtoken": string;
+  "id": number;
+  constructor(data?: OzanusercredentialInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OzanUserCredential`.
+   * i.e. `Ozanusercredential`.
    */
   public static getModelName() {
-    return "OzanUserCredential";
+    return "Ozanusercredential";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of OzanUserCredential for dynamic purposes.
+  * This method creates an instance of Ozanusercredential for dynamic purposes.
   **/
-  public static factory(data: OzanUserCredentialInterface): OzanUserCredential{
-    return new OzanUserCredential(data);
+  public static factory(data: OzanusercredentialInterface): Ozanusercredential{
+    return new Ozanusercredential(data);
   }
   /**
   * @method getModelDefinition
@@ -61,73 +61,69 @@ export class OzanUserCredential implements OzanUserCredentialInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'OzanUserCredential',
-      plural: 'OzanUserCredentials',
-      path: 'OzanUserCredentials',
+      name: 'Ozanusercredential',
+      plural: 'Ozanusercredentials',
+      path: 'Ozanusercredentials',
       idName: 'id',
       properties: {
-        "id": {
-          name: 'id',
-          type: 'number'
-        },
         "realm": {
           name: 'realm',
           type: 'string'
         },
-        "alamat": {
-          name: 'alamat',
+        "address": {
+          name: 'address',
           type: 'string'
         },
-        "phoneNumber": {
-          name: 'phoneNumber',
+        "phonenumber": {
+          name: 'phonenumber',
+          type: 'number'
+        },
+        "jobposition": {
+          name: 'jobposition',
           type: 'string'
         },
-        "jobPosition": {
-          name: 'jobPosition',
+        "corporatename": {
+          name: 'corporatename',
           type: 'string'
         },
-        "corporateName": {
-          name: 'corporateName',
-          type: 'string'
+        "corporatephonenumber": {
+          name: 'corporatephonenumber',
+          type: 'number'
         },
-        "corporatePhoneNumber": {
-          name: 'corporatePhoneNumber',
-          type: 'string'
-        },
-        "emailCorporate": {
-          name: 'emailCorporate',
+        "emailcorporate": {
+          name: 'emailcorporate',
           type: 'string'
         },
         "username": {
           name: 'username',
           type: 'string'
         },
-        "email": {
-          name: 'email',
-          type: 'string'
-        },
-        "emailVerified": {
-          name: 'emailVerified',
-          type: 'string'
-        },
-        "roleUser": {
-          name: 'roleUser',
-          type: 'string'
-        },
         "password": {
           name: 'password',
           type: 'string'
         },
+        "email": {
+          name: 'email',
+          type: 'string'
+        },
+        "emailverified": {
+          name: 'emailverified',
+          type: 'string'
+        },
+        "roleuser": {
+          name: 'roleuser',
+          type: 'string'
+        },
+        "verificationtoken": {
+          name: 'verificationtoken',
+          type: 'string'
+        },
+        "id": {
+          name: 'id',
+          type: 'number'
+        },
       },
       relations: {
-        accessTokens: {
-          name: 'accessTokens',
-          type: 'any[]',
-          model: '',
-          relationType: 'hasMany',
-                  keyFrom: 'id',
-          keyTo: 'userId'
-        },
       }
     }
   }

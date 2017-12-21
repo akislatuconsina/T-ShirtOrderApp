@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
-import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
+import { OzanusercredentialApi } from '../../shared/sdk/services/custom/Ozanusercredential';
+import { Ozanusercredential } from '../../shared/sdk/models/Ozanusercredential';
 /**
  * Generated class for the RegistrationPage page.
  *
@@ -15,21 +15,21 @@ import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
   templateUrl: 'registration.html',
 })
 export class RegistrationPage {
-  public realm: any;
-  public alamat: any;
-  public phoneNumber: any;
-  public jobPosition: any;
-  public corporateName: any;
-  public corporatePhoneNumber: any;
-  public emailCorporate: any;
+  // public realm: any;
+  // public address: any;
+  // public phonenumber: any;
+  // public jobPosition: any;
+  // public corporateName: any;
+  // public corporatephonenumber: any;
+  // public emailcorporate: any;
 
-  public UserCredential: any = OzanUserCredential
+  public UserCredential: any = Ozanusercredential
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public OzanUserCredentialapi: OzanUserCredentialApi,
+    public OzanUserCredentialapi: OzanusercredentialApi,
 
   ) {
 
@@ -43,29 +43,29 @@ export class RegistrationPage {
     
     const data = {
       realm: this.UserCredential.realm,
-      alamat: this.UserCredential.alamat,
-      phoneNumber: this.UserCredential.phoneNumber,
-      jobPosition: this.UserCredential.jobPosition,
+      address: this.UserCredential.address,
+      phonenumber: this.UserCredential.phonenumber,
+      jobposition: this.UserCredential.jobposition,
       email: this.UserCredential.email,
-      corporateName: this.UserCredential.corporateName,
-      corporatePhoneNumber: this.UserCredential.corporatePhoneNumber,
-      emailCorporate: this.UserCredential.emailCorporate,
+      corporatename: this.UserCredential.corporatename,
+      corporatephonenumber: this.UserCredential.corporatephonenumber,
+      emailcorporate: this.UserCredential.emailcorporate,
       username: this.UserCredential.username,
       password: this.UserCredential.password,
-      emailVerified: true,
-      roleUser: 'user'
+      emailverified: true,
+      roleuser: 'user'
     }
     this.OzanUserCredentialapi.create(data).subscribe(result => {
       console.log(result, 'data');
     
       this.UserCredential.realm = '';
-      this.UserCredential.alamat = '';
-      this.UserCredential.phoneNumber = '';
-      this.UserCredential.jobPosition = '';
+      this.UserCredential.address = '';
+      this.UserCredential.phonenumber = '';
+      this.UserCredential.jobposition = '';
       this.UserCredential.email = '';
-      this.UserCredential.corporateName = '';
-      this.UserCredential.corporatePhoneNumber = ''; 
-      this.UserCredential.emailCorporate = '';
+      this.UserCredential.corporatename = '';
+      this.UserCredential.corporatephonenumber = ''; 
+      this.UserCredential.emailcorporate = '';
       this.UserCredential.username = '';
       this.UserCredential.password = '';
 

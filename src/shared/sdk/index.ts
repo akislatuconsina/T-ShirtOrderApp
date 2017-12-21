@@ -50,12 +50,15 @@ import { SocketDriver } from './sockets/socket.driver';
 import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
-import { OzanUserCredentialApi } from './services/custom/OzanUserCredential';
 import { OzanContainerApi } from './services/custom/OzanContainer';
-import { OzanMenuCredentialApi } from './services/custom/OzanMenuCredential';
-import { OzanorderApi } from './services/custom/Ozanorder';
+import { AclApi } from './services/custom/Acl';
+import { OzanmenulistApi } from './services/custom/Ozanmenulist';
 import { OzanorderproductApi } from './services/custom/Ozanorderproduct';
+import { AccesstokenApi } from './services/custom/Accesstoken';
 import { OzanlibraryApi } from './services/custom/Ozanlibrary';
+import { OzanorderApi } from './services/custom/Ozanorder';
+import { OzanusercredentialApi } from './services/custom/Ozanusercredential';
+import { RolemappingApi } from './services/custom/Rolemapping';
 /**
 * @module SDKBrowserModule
 * @description
@@ -88,12 +91,15 @@ export class SDKBrowserModule {
         SDKModels,
         RealTime,
         UserApi,
-        OzanUserCredentialApi,
         OzanContainerApi,
-        OzanMenuCredentialApi,
-        OzanorderApi,
+        AclApi,
+        OzanmenulistApi,
         OzanorderproductApi,
+        AccesstokenApi,
         OzanlibraryApi,
+        OzanorderApi,
+        OzanusercredentialApi,
+        RolemappingApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

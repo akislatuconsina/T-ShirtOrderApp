@@ -1,7 +1,7 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { OzanUserCredentialApi } from '../../shared/sdk/services/custom/OzanUserCredential';
-import { OzanUserCredential } from '../../shared/sdk/models/OzanUserCredential';
+import { OzanusercredentialApi } from '../../shared/sdk/services/custom/Ozanusercredential';
+import { Ozanusercredential } from '../../shared/sdk/models/Ozanusercredential';
 import { Storage } from '@ionic/storage';
 import { Events, MenuController  } from 'ionic-angular';
 
@@ -80,12 +80,12 @@ export class LoginPage {
   public loginState: any = "in";
   public formState: any = "in";
 
-  public dataLogin: any = OzanUserCredential;
+  public dataLogin: any = Ozanusercredential;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public OzanCredential: OzanUserCredentialApi,
+    public OzanCredential: OzanusercredentialApi,
     public alertCtrl: AlertController,
     public storage: Storage,
     public loadingCtrl: LoadingController,

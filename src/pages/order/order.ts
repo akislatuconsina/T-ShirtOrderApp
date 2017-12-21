@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
-import { OzanlibraryApi  } from './../../shared/sdk/services/custom/Ozanlibrary';
+import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
 import { Ozanlibrary } from './../../shared/sdk/models/Ozanlibrary';
 import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorderproduct';
 import { UUID } from 'angular2-uuid';
@@ -26,75 +26,113 @@ export class OrderPage {
   @ViewChild('fileInput') fileInput;
   public companyname: any;
   public buyername: any;
+
   public roleuser: any;
   public userid: any;
+  public realm: any;
   public datatemp: any;
   public idorder: any;
+
   public photoData: any;
   public photoName = [];
   public productname = [{}];
   public input = [{}];
   public ozanmodel: any = Ozanorder;
   public ozanlibrary: any = Ozanlibrary;
+
   public filesToUpload: Array<File>;
   
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertctrl: AlertController,
+    public alertCtrl: AlertController,
     public ozanorderapi: OzanorderApi,
     public ozanlibraryapi: OzanlibraryApi,
     public ozanorderproductapi: OzanorderproductApi,
     public transfer: FileTransfer,
     public loadingCtrl: LoadingController,
-    public storage : Storage
+    public storage: Storage
   ) {
     this.filesToUpload = [];
+    this.ozanmodel.buyername = this.realm;
   }
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad OrderPage');
     this.storage.ready().then(() => {
-      this.storage.get('OzanUserCredential').then((result)=>{
-        this.userid = result.userId;
-        console.log(this.userid, 'user id load page');      
+      this.storage.get('OzanUserData').then((result) => {
+        this.userid = result.id;
+        this.realm = result.realm;
+        console.log(this.realm, 'Data Storage');
       });
     });
   }
 
   public upload() {
-    this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload).then((result) => {
-      console.log(result);
-    }, (error) => {
-      console.error(error);
-    });
-  }
 
-  fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log(this.filesToUpload, 'OKOKOKOK')
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
     const options: FileUploadOptions = {
       fileKey: 'file',
       fileName: 'IMG_' + UUID.UUID() + '.jpg',
       chunkedMode: false,
       mimeType: 'image/jpg'
     };
-    this.photoName.push(options)
-    this.upload();
+    this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, options).then((result) => {
+      console.log(result);
+      loader.dismiss();
+    }, (error) => {
+      console.error(error);
+      loader.dismiss();
+      let alert = this.alertCtrl.create({
+        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    });
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
+    // const options: FileUploadOptions = {
+    //   fileKey: 'file',
+    //   fileName: 'IMG_' + UUID.UUID() + '.jpg',
+    //   chunkedMode: false,
+    //   mimeType: 'image/jpg'
+    // };
+    const fileName = 'IMG_' + UUID.UUID() + '.jpg';
+    this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, fileName).then((result) => {
+      console.log(result);
+      loader.dismiss();
+    }, (error) => {
+      console.error(error);
+      loader.dismiss();
+      let alert = this.alertCtrl.create({
+        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    });
   }
 
   public getPicture() {
     this.fileInput.nativeElement.click();
   }
 
-  public makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+  public makeFileRequest(url: string, params: Array<string>, files: Array<File>, options) {
     return new Promise((resolve, reject) => {
-      var formData: any = new FormData();
-      var xhr = new XMLHttpRequest();
-      for (var i = 0; i < files.length; i++) {
-        formData.append("uploads[]", files[i], files[i].name);
-      }
+      const formData: any = new FormData();
+      const xhr = new XMLHttpRequest();
+      formData.append('file', files[0], options);
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
           if (xhr.status == 200) {
@@ -104,7 +142,7 @@ export class OrderPage {
           }
         }
       }
-      xhr.open("POST", url, true);
+      xhr.open('POST', url, true);
       xhr.send(formData);
     });
   }
@@ -117,88 +155,64 @@ export class OrderPage {
     this.input.splice(index, 1);
   }
 
-
-  public sendorder(){
-    let alert = this.alertctrl.create({
-      title: 'Are Your Sure',
-      buttons: [
-        {
-          text: 'Yes',
-          handler: () => { 
-            console.log(this.input, 'INPUT');
-            console.log(this.userid, 'ORDER USER ID')
-            const dataOrder = {
-              userid : this.userid,
-              buyername: this.ozanmodel.buyername,
-              companyname: this.ozanmodel.companyname,
-              address: this.ozanmodel.address,
-              shippedto: this.ozanmodel.shippedto,
-              confirmto: '-',
-              productionstatus: '-',
-              status: 1
-            }
-            console.log(dataOrder, '123123')
-            this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
-              console.log(result, 'hasil buyer n dll')
-              this.datatemp = result;
-              this.idorder = this.datatemp.id
-
-              for (let i = 0; i < this.input.length; i++) {
-                this.input[i]['idorder']= this.idorder;
-               
-                console.log(this.input[i], 'hasil input');
-
-                this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
-
-                  this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
-                    console.log(result, ' hasil photo');
-                    
-                  }, (error) => {
-                    console.log('Error Upload Name Photo');
-                  });
-                }, (error) => {
-                  console.log(error);
-                })
-              }
-
-            }, (error) => {
-              console.log(error)
-            });
-
-            let alert = this.alertctrl.create({
-              title: 'Check Detail Order',
-              buttons: [
-                {
-                  text: 'Dismiss',
-                  role: 'cancel',
-                  handler: () => {
-                    this.navCtrl.setRoot('HomePage')
-                    console.log('Cancel clicked');
-                  }
-                },
-              ]
-            });
-            alert.present();         
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'Cancel',
-          handler: () => {
-            console.log('Buy clicked');
-          }
-        }
-      ]
+  public sendorder() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
     });
-    alert.present();
+    loader.present();
+
+    const dataOrder = {
+      userid: this.userid,
+      buyername: this.realm,
+      companyname: this.ozanmodel.companyname,
+      address: this.ozanmodel.address,
+      shippedto: this.ozanmodel.shippedto,
+      confirmto: '-',
+      productionstatus: '1',
+      status: 1
+    }
+    this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
+      console.log('Sukses Save Buying');
+      this.datatemp = result;
+      this.idorder = this.datatemp.id
+
+      for (let i = 0; i < this.input.length; i++) {
+        this.input[i]['idorder'] = this.idorder;
+        this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
+          console.log('Sukses Save Product Detail');
+          this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
+            console.log('Sukses Save Foto');
+            loader.dismiss();
+          }, (error) => {
+            console.log('Error Upload Name Photo');
+            loader.dismiss();
+            let alert = this.alertCtrl.create({
+              subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+              buttons: ['Dismiss']
+            });
+            alert.present();
+          });
+        }, (error) => {
+          console.log(error);
+          loader.dismiss();
+          let alert = this.alertCtrl.create({
+            subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+            buttons: ['Dismiss']
+          });
+          alert.present();
+        });
+      }
+
+    }, (error) => {
+      console.log(error);
+      loader.dismiss();
+      let alert = this.alertCtrl.create({
+        subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    });
   }
-
-
-
-  }
-
-
-
+}
 
 

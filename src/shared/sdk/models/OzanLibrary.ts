@@ -2,13 +2,13 @@
 
 declare var Object: any;
 export interface OzanlibraryInterface {
-  "idorder"?: string;
-  "namefile"?: string;
+  "idorder": number;
+  "namefile": string;
   "id"?: number;
 }
 
 export class Ozanlibrary implements OzanlibraryInterface {
-  "idorder": string;
+  "idorder": number;
   "namefile": string;
   "id": number;
   constructor(data?: OzanlibraryInterface) {
@@ -46,7 +46,7 @@ export class Ozanlibrary implements OzanlibraryInterface {
       properties: {
         "idorder": {
           name: 'idorder',
-          type: 'string'
+          type: 'number'
         },
         "namefile": {
           name: 'namefile',

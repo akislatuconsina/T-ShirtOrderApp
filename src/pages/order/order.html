@@ -20,7 +20,7 @@
       <ion-col col-6>
         <ion-item>
           <ion-label stacked color="primary">Buyer : </ion-label>
-          <ion-input type="text" placeholder="Enter Your Name" [(ngModel)]="ozanmodel.buyername"></ion-input>
+          <ion-input type="text" [(ngModel)]="realm" disabled></ion-input>
         </ion-item>
         <ion-item>
           <ion-label stacked color="primary">Company Name : </ion-label>
@@ -85,7 +85,6 @@
         </button>
       </ion-col>
     </ion-row>
-
     <input type="file" #fileInput style="visibility: hidden; height: 0px" (change)="fileChangeEvent($event)" placeholder="Upload file..."
     />
 
@@ -103,9 +102,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  
-  <pre>{{input | json}}</pre>
-
-
 </ion-content>
