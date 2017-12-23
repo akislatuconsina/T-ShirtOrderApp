@@ -1,0 +1,28 @@
+<!--
+  Generated template for the SettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'Setting' | translate }}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Change Password</ion-label>
+      <ion-select [(ngModel)]="language" (ngModelChange)="onChange($event)">
+        <ion-option value="id">Bahasa Indonesia</ion-option>
+        <ion-option value="en">Bahasa Inggris</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

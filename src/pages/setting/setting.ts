@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
-
 /**
- * Generated class for the ReportorderPage page.
+ * Generated class for the SettingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +11,17 @@ import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-reportorder',
-  templateUrl: 'reportorder.html',
+  selector: 'page-setting',
+  templateUrl: 'setting.html',
 })
-export class ReportorderPage {
+export class SettingPage {
   public language = 'id';
 
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public translateservice : TranslateService,
-    public storage : Storage,
-    public modalCtrl: ModalController) {
-
-
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public translateservice : TranslateService,
+     public storage : Storage
+    ) {
       console.log(this.translateservice.getDefaultLang());
       this.translateservice.get('HELLO').subscribe(
         value => {
@@ -45,13 +41,18 @@ export class ReportorderPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReportorderPage');
-        
+    console.log('ionViewDidLoad SettingPage');
+
   }
 
-
-  view(){
-    this.navCtrl.push('DetailreportPage');
+  
+  public onChange(value): any {
+    console.log(value);
+    this.language = value;
+    this.translateservice.setDefaultLang(value);
+    this.translateservice.use(value);
+    this.storage.set('language', value);
   }
 
+  
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { LookingDetailOrderPage } from './looking-detail-order';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { LookingDetailOrderPage } from './looking-detail-order';
   ],
   imports: [
     IonicPageModule.forChild(LookingDetailOrderPage),
+    TranslateModule
   ],
 })
 export class LookingDetailOrderPageModule {}

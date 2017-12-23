@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -30,6 +31,7 @@ export class OrderdetailPage {
   public viewdata: any;
   public ozanorder: any = Ozanorder;
   public userId: any;
+  public language: any;
 
 
   public waitingStatus: boolean;
@@ -41,8 +43,25 @@ export class OrderdetailPage {
     public navParams: NavParams,
     public modalctrl: ModalController,
     public storage: Storage,
+    public translateservice : TranslateService,
     public loadingCtrl: LoadingController
   ) {
+    console.log(this.translateservice.getDefaultLang());
+      this.translateservice.get('HELLO').subscribe(
+        value => {
+          // value is our translateserviced string
+          console.log(value);
+        });
+      console.log(this.translateservice.getDefaultLang(), 'Defaultnya');
+      this.storage.get('language').then(result => {
+        if (result == null) {
+          console.log(123);
+          this.storage.set('language', 'id');
+          this.translateservice.setDefaultLang('id');
+        } else {
+          this.language = this.translateservice.getDefaultLang();
+        }
+      });
   }
 
   ionViewDidLoad() {

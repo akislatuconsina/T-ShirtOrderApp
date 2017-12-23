@@ -8,6 +8,7 @@ import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorde
 import { UUID } from 'angular2-uuid';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 
 /**
@@ -26,7 +27,7 @@ export class OrderPage {
   @ViewChild('fileInput') fileInput;
   public companyname: any;
   public buyername: any;
-
+  public language: any;
   public roleuser: any;
   public userid: any;
   public realm: any;
@@ -47,6 +48,7 @@ export class OrderPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public translateservice : TranslateService,
     public ozanorderapi: OzanorderApi,
     public ozanlibraryapi: OzanlibraryApi,
     public ozanorderproductapi: OzanorderproductApi,
@@ -54,6 +56,23 @@ export class OrderPage {
     public loadingCtrl: LoadingController,
     public storage: Storage
   ) {
+    console.log(this.translateservice.getDefaultLang());
+    this.translateservice.get('HELLO').subscribe(
+      value => {
+        // value is our translateserviced string
+        console.log(value);
+      });
+    console.log(this.translateservice.getDefaultLang(), 'Defaultnya');
+    this.storage.get('language').then(result => {
+      if (result == null) {
+        console.log(123);
+        this.storage.set('language', 'id');
+        this.translateservice.setDefaultLang('id');
+      } else {
+        this.language = this.translateservice.getDefaultLang();
+      }
+    });
+
     this.filesToUpload = [];
     this.ozanmodel.buyername = this.realm;
   }

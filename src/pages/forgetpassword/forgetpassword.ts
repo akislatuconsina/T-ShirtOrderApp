@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the ForgetpasswordPage page.
@@ -14,11 +16,30 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'forgetpassword.html',
 })
 export class ForgetpasswordPage {
-
+  public language: any;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public translateservice : TranslateService,
+    public storage : Storage,
+    public alertCtrl: AlertController
+  ) {
+    console.log(this.translateservice.getDefaultLang());
+    this.translateservice.get('HELLO').subscribe(
+      value => {
+        // value is our translateserviced string
+        console.log(value);
+      });
+    console.log(this.translateservice.getDefaultLang(), 'Defaultnya');
+    this.storage.get('language').then(result => {
+      if (result == null) {
+        console.log(123);
+        this.storage.set('language', 'id');
+        this.translateservice.setDefaultLang('id');
+      } else {
+        this.language = this.translateservice.getDefaultLang();
+      }
+    });
   }
 
   ionViewDidLoad() {
