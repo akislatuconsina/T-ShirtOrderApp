@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  AccessToken
+} from '../index';
 
 declare var Object: any;
 export interface OzanusercredentialInterface {
@@ -10,12 +13,14 @@ export interface OzanusercredentialInterface {
   "corporatephonenumber": number;
   "emailcorporate": string;
   "username": string;
-  "password": string;
   "email": string;
   "emailverified": string;
   "roleuser": string;
-  "verificationtoken": string;
+  "verificationtoken"?: string;
   "id"?: number;
+  "emailVerified"?: boolean;
+  "password"?: string;
+  accessTokens?: any[];
 }
 
 export class Ozanusercredential implements OzanusercredentialInterface {
@@ -27,12 +32,14 @@ export class Ozanusercredential implements OzanusercredentialInterface {
   "corporatephonenumber": number;
   "emailcorporate": string;
   "username": string;
-  "password": string;
   "email": string;
   "emailverified": string;
   "roleuser": string;
   "verificationtoken": string;
   "id": number;
+  "emailVerified": boolean;
+  "password": string;
+  accessTokens: any[];
   constructor(data?: OzanusercredentialInterface) {
     Object.assign(this, data);
   }
@@ -98,10 +105,6 @@ export class Ozanusercredential implements OzanusercredentialInterface {
           name: 'username',
           type: 'string'
         },
-        "password": {
-          name: 'password',
-          type: 'string'
-        },
         "email": {
           name: 'email',
           type: 'string'
@@ -122,8 +125,24 @@ export class Ozanusercredential implements OzanusercredentialInterface {
           name: 'id',
           type: 'number'
         },
+        "emailVerified": {
+          name: 'emailVerified',
+          type: 'boolean'
+        },
+        "password": {
+          name: 'password',
+          type: 'string'
+        },
       },
       relations: {
+        accessTokens: {
+          name: 'accessTokens',
+          type: 'any[]',
+          model: 'AccessToken',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'userId'
+        },
       }
     }
   }

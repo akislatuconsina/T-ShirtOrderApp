@@ -24,9 +24,12 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'order.html',
 })
 export class OrderPage {
+  public fileName : any;
+  
   @ViewChild('fileInput') fileInput;
   public companyname: any;
   public buyername: any;
+  public corporate: any;
   public roleuser: any;
   public userid: any;
   public realm: any;
@@ -40,7 +43,6 @@ export class OrderPage {
   public ozanlibrary: any = Ozanlibrary;
   public filesToUpload: Array<File>;
   
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -56,6 +58,8 @@ export class OrderPage {
 
     this.filesToUpload = [];
     this.ozanmodel.buyername = this.realm;
+    this.ozanmodel.companyname = this.corporate;
+    // this.input[0]['unitprice'] = 0; 
   }
 
   ionViewDidLoad() {
@@ -64,7 +68,8 @@ export class OrderPage {
       this.storage.get('OzanUserData').then((result) => {
         this.userid = result.id;
         this.realm = result.realm;
-        console.log(this.realm, 'Data Storage');
+        this.corporate = result.corporatename;
+        console.log(this.corporate, 'Data Storage');
       });
     });
   }
@@ -103,14 +108,9 @@ export class OrderPage {
     });
     loader.present();
 
-    // const options: FileUploadOptions = {
-    //   fileKey: 'file',
-    //   fileName: 'IMG_' + UUID.UUID() + '.jpg',
-    //   chunkedMode: false,
-    //   mimeType: 'image/jpg'
-    // };
-    const fileName = 'IMG_' + UUID.UUID() + '.jpg';
-    this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, fileName).then((result) => {
+    this.fileName = 'IMG_' + UUID.UUID() + '.jpg';
+    this.photoName.push(this.fileName)
+    this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, this.fileName).then((result) => {
       console.log(result);
       loader.dismiss();
     }, (error) => {
@@ -148,7 +148,49 @@ export class OrderPage {
   }
 
   public addnewproduct() {
-    this.input.push({})
+    // const priceUnit = this.input[0]['unitprice'] = 0; 
+    this.input.push({});
+    console.log(this.input.length - 1, 'Kurang 1');
+    console.log(this.input.length, 'Length');
+    // this.input[2]['unitprice'] = 0;
+    // for (let i = 0; i < this.input.length; i++) {
+    //   this.input[i]['unitprice'] = 0;
+    // }
+  }
+
+  public onInputTime(event) {
+    console.log(event, 'VAL');
+    // console.log(this.input[i]['unitprice'])
+    for (let i = 0; i < this.input.length; i++) {
+      console.log(this.input[i]['unitprice']);
+      this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
+      // this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
+    }
+  }
+
+  public onChange(value): any {
+    console.log(value, 'VALUE SELECT');
+    console.log(this.input.length, 'SELECT');
+    for (let i = 0; i < this.input.length; i++) {
+      // console.log(this.input[i]['descriptionorder']);
+
+      if(this.input[i]['descriptionorder'] == 'Seragam Pria (Jaring)') {
+        console.log(this.input[i]['sizeorder'] , 'SIZE');
+        if(this.input[i]['sizeorder'] == 'S') {
+          this.input[i]['unitprice'] = 10000;
+        } else if (this.input[i]['sizeorder'] == 'M'){
+          this.input[i]['unitprice'] = 15000;
+        } else if (this.input[i]['sizeorder'] == 'L'){
+          this.input[i]['unitprice'] = 20000;
+        } else if (this.input[i]['sizeorder'] == 'XL'){
+          this.input[i]['unitprice'] = 25000;
+        } else if (this.input[i]['sizeorder'] == 'XXL'){
+          this.input[i]['unitprice'] = 30000;
+        } else if (this.input[i]['sizeorder'] == 'XXXL'){
+          this.input[i]['unitprice'] = 35000;
+        }
+      }
+    }
   }
 
   public deleteproduct(index) {
@@ -156,6 +198,7 @@ export class OrderPage {
   }
 
   public sendorder() {
+    console.log(this.input, "INPUT");
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
@@ -164,15 +207,15 @@ export class OrderPage {
     const dataOrder = {
       userid: this.userid,
       buyername: this.realm,
-      companyname: this.ozanmodel.companyname,
+      companyname: this.corporate,
       address: this.ozanmodel.address,
       shippedto: this.ozanmodel.shippedto,
       confirmto: '-',
-      productionstatus: '1',
+      productionstatus: 1,
       status: 1
     }
     this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
-      console.log('Sukses Save Buying');
+      console.log(result,'Sukses Save Buying');
       this.datatemp = result;
       this.idorder = this.datatemp.id
 
@@ -180,7 +223,12 @@ export class OrderPage {
         this.input[i]['idorder'] = this.idorder;
         this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
           console.log('Sukses Save Product Detail');
-          this.ozanlibraryapi.Ozanlibrary(this.photoName[i]).subscribe(result => {
+          
+          const datafile = {
+            idorder : this.idorder,
+            namefile : this.photoName[i]
+          }
+          this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
             console.log('Sukses Save Foto');
             loader.dismiss();
           }, (error) => {

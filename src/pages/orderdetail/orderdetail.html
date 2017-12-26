@@ -28,18 +28,21 @@
     <ion-col col-3 class="celltitle">{{ 'Action' | translate}}</ion-col>
   </ion-row>
 
-  <ion-row *ngFor = "let datas of viewdata">
+  <ion-row *ngFor="let datas of viewdata">
     <ion-col col-1 class="cell">{{datas.id}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.companyname}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.confirmto}}</ion-col>
-    <ion-col col-2.3 class="cell" [hidden]="waitingStatus">Waiting For Payment</ion-col>
-    <ion-col col-2.3 class="cell" [hidden]="payStatus">Payment 50 %</ion-col>
-    <ion-col col-2.3 class="cell" [hidden]="paid">Paid</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.productionstatus}}</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="waitingStatus">Waiting For Payment</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="payStatus">DP Already In</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="paid">Full Payment</ion-col>
+    <ion-col col-1 class="cell" [hidden]="pending">Pending</ion-col>
+    <ion-col col-1 class="cell" [hidden]="onprogress">On Progress</ion-col>
+    <ion-col col-1 class="cell" [hidden]="finish">Finish</ion-col>
     <ion-col col-3 class="button">
-      <button ion-button (click)="Detailorder()" [hidden]="detailorder">Detail</button>
-      <button ion-button (click)="Editdata()" [hidden]="editdata">Edit</button>
-      <button ion-button  [hidden]="deletedata">Hapus</button>
+      <button ion-button (click)="Detailorder(datas)" [hidden]="detailorder">Detail</button>
+      <button ion-button (click)="Editdata(datas)" [hidden]="editdata">Edit</button>
+      <button ion-button (click)="Confirmpayment(datas)" [hidden]="confirmpayment">Confirm</button>
+      <button ion-button [hidden]="cancelpayment">Cancel</button>
     </ion-col>
   </ion-row>
 

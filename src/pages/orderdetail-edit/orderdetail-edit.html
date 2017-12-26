@@ -38,41 +38,42 @@
     </ion-list>
   </ion-row>
 
-  <ion-row>
+  <ion-row *ngFor="let datas of viewdata">
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">Product Name </ion-label>
-        <ion-input type="text" placeholder="Enter Product Name"></ion-input>
+        <ion-input type="text" [(ngModel)]="datas.descriptionorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-2>
       <ion-item>
         <ion-label stacked color="primary">Size : </ion-label>
-        <ion-select [(ngModel)]="toppings">
-          <ion-option>S</ion-option>
-          <ion-option>M</ion-option>
-          <ion-option>L</ion-option>
-          <ion-option>XL</ion-option>
-          <ion-option>XXL</ion-option>
-          <ion-option>XXXL</ion-option>
-          <ion-option>XXXXL</ion-option>
+        <ion-select [(ngModel)]="datas.sizeorder" disabled>
+          <ion-option value="S">S</ion-option>
+          <ion-option value="M">M</ion-option>
+          <ion-option value="L">L</ion-option>
+          <ion-option value="XL">XL</ion-option>
+          <ion-option value="XXL">XXL</ion-option>
+          <ion-option value="XXXL">XXXL</ion-option>
+          <ion-option value="XXXXL">XXXXL</ion-option>
         </ion-select>
+        <!-- <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.sizeorder" ></ion-input> -->
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">Quantity : </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" [(ngModel)]="datas.qtyorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">Price In Unit </ion-label>
-        <ion-input type="text" placeholder="Automatic But Get Input"></ion-input>
+        <ion-input type="text" [(ngModel)]="datas.unitprice" disabled></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
-  
+
   <ion-row>
     <ion-list class="marginl">
       <ion-item>
@@ -81,5 +82,39 @@
       </ion-item>
     </ion-list>
   </ion-row>
-  <button ion-button class="marginleft">Update</button>
+
+  <ion-row>
+    <ion-col col-4>
+      <ion-item>
+        <ion-label stacked color="primary">Confirm To : </ion-label>
+        <ion-select [(ngModel)]="ozanordermodel.confirmto">
+          <ion-option value="Mrs.Inggrid">Mrs.Inggrid</ion-option>
+          <ion-option value="Mr.Dion">Mrs.Dion</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-4>
+      <ion-item>
+        <ion-label stacked color="primary">Payment Status : </ion-label>
+        <ion-select [(ngModel)]="ozanordermodel.status">
+          <ion-option value="1">Waiting For Payment</ion-option>
+          <ion-option value="2">DP Already In</ion-option>
+          <ion-option value="3">Full Payment</ion-option>
+        </ion-select>
+        <!-- <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.status" ></ion-input> -->
+      </ion-item>
+    </ion-col>
+    <ion-col col-4>
+      <ion-item>
+        <ion-label stacked color="primary">Production Status : </ion-label>
+        <ion-select [(ngModel)]="ozanordermodel.productionstatus">
+          <ion-option value="1">Pending</ion-option>
+          <ion-option value="2">On Progress</ion-option>
+          <ion-option value="3">Finish</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <button ion-button (click)="update()">Update</button>
 </ion-content>

@@ -2,8 +2,8 @@
 
 declare var Object: any;
 export interface OzanlibraryInterface {
-  "idorder": number;
-  "namefile": string;
+  "idorder"?: number;
+  "namefile"?: string;
   "id"?: number;
 }
 
