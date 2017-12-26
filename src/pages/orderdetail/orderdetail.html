@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Order Detail</ion-title>
+    <ion-title class="title">{{ 'History Order' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,11 +21,11 @@
 
   <ion-row>
     <ion-col col-1 class="celltitle">No.</ion-col>
-    <ion-col col-2.3 class="celltitle">Company Name</ion-col>
-    <ion-col col-2.3 class="celltitle">Confirm To</ion-col>
-    <ion-col col-2.3 class="celltitle">Paid Status</ion-col>
-    <ion-col col-2.3 class="celltitle">Production Status</ion-col>
-    <ion-col col-3 class="celltitle">Action</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Company Name' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Confirm To' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Paid Status' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Production Status' | translate}}</ion-col>
+    <ion-col col-3 class="celltitle">{{ 'Action' | translate}}</ion-col>
   </ion-row>
 
   <ion-row *ngFor = "let datas of viewdata">

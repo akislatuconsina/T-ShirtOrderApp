@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -41,6 +42,7 @@ export class OrderdetailPage {
     public navParams: NavParams,
     public modalctrl: ModalController,
     public storage: Storage,
+    public translate : TranslateService,
     public loadingCtrl: LoadingController
   ) {
   }

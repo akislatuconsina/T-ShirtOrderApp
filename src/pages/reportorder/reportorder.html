@@ -5,7 +5,7 @@
           <ion-icon name="menu"></ion-icon>
         </button>
     
-    <ion-title text-center>Report Order</ion-title>
+        <ion-title class="title">{{ 'Report Order' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,7 +19,7 @@
         <ion-item >
           <ion-thumbnail item-start>
           </ion-thumbnail>
-          <p text-center><b> Down Payment </b></p>
+          <p text-center><b> {{ 'Down Payment' | translate}} </b></p>
           <button (click)="view()" ion-button clear item-end >View</button>
         </ion-item>
       </ion-list>
@@ -29,7 +29,7 @@
             <ion-item >
               <ion-thumbnail item-start>
               </ion-thumbnail>
-              <p text-center> <b> Payed </b></p>
+              <p text-center> <b> {{ 'Payed Of' | translate}} </b></p>
               <button (click)="view()" ion-button clear item-end >View</button>
             </ion-item>
           </ion-list>

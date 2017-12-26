@@ -9,6 +9,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FileTransfer } from '@ionic-native/file-transfer';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+
 @NgModule({
   declarations: [
     MyApp
@@ -18,7 +27,15 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     SDKBrowserModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +45,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     StatusBar,
     SplashScreen,
     FileTransfer,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

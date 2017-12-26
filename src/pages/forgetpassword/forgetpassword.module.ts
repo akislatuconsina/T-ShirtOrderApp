@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ForgetpasswordPage } from './forgetpassword';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { ForgetpasswordPage } from './forgetpassword';
   ],
   imports: [
     IonicPageModule.forChild(ForgetpasswordPage),
+    TranslateModule
   ],
 })
 export class ForgetpasswordPageModule {}
