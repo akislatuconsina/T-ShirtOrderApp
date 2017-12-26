@@ -4,9 +4,9 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
 import { Ozanlibrary } from './../../shared/sdk/models/Ozanlibrary';
 import { UUID } from 'angular2-uuid';
-import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
+import { FileUploadOptions } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
-import { LoopBackConfig } from '../../shared/sdk/index';
+
 
 /**
  * Generated class for the ConfirmpagePage page.

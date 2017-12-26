@@ -15,13 +15,13 @@
 
 <ion-content padding>
   <div [hidden]="nochip">
-    <ion-img width="1000" height="1000" src="{{photo}}"></ion-img>
+    <ion-img class="foto-div" src="{{photo}}"></ion-img>
   </div>
 
 
   <div [hidden]="chip">
     <ion-chip #chip1>
-      <ion-img width="100" height="100" src="{{photo}}"></ion-img>
+      <ion-img class="foto-div" src="{{photo}}"></ion-img>
       <button ion-button clear color="light" (click)="delete(chip1)">
         <ion-icon name="close-circle"></ion-icon>
       </button>

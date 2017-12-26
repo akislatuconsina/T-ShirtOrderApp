@@ -111,13 +111,13 @@ export class OzanorderApi extends BaseLoopBackApi {
    * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
-  public ozanBuying(params: any, customHeaders?: Function): Observable<any> {
+  public ozanBuying(data: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
     "/Ozanorders/ozanBuying";
     let _routeParams: any = {};
     let _postBody: any = {
-      params: params
+      data: data
     };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
@@ -158,9 +158,9 @@ export class OzanorderApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {Object} params 
+   * @param {object} data Request data.
    *
-   * @param {object} options 
+   * This method expects a subset of model properties as request parameters.
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -171,12 +171,14 @@ export class OzanorderApi extends BaseLoopBackApi {
    * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
-  public ozanDownPaymentReport(params: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public lookingdetailorder(params: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Ozanorders/ozanDownPaymentReport";
+    "/Ozanorders/lookingdetailorder";
     let _routeParams: any = {};
-    let _postBody: any = {};
+    let _postBody: any = {
+      params: params
+    };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
@@ -187,9 +189,9 @@ export class OzanorderApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {Object} params 
+   * @param {object} data Request data.
    *
-   * @param {object} options 
+   * This method expects a subset of model properties as request parameters.
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -200,12 +202,45 @@ export class OzanorderApi extends BaseLoopBackApi {
    * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
-  public ozanPayedReport(params: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public changedetailorder(params: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Ozanorders/ozanPayedReport";
+    "/Ozanorders/changedetailorder";
     let _routeParams: any = {};
-    let _postBody: any = {};
+    let _postBody: any = {
+      params: params
+    };
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   * This method expects a subset of model properties as request parameters.
+   *
+   * @returns {object[]} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * <em>
+   * (The remote method definition does not provide any description.
+   * This usually means the response is a `Ozanorder` object.)
+   * </em>
+   */
+  public updatedataorder(data: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Ozanorders/updatedataorder";
+    let _routeParams: any = {};
+    let _postBody: any = {
+      data: data
+    };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;

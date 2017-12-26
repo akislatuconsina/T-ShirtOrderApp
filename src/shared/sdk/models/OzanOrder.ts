@@ -2,21 +2,21 @@
 
 declare var Object: any;
 export interface OzanorderInterface {
-  "userid": number;
-  "orderdate": Date;
-  "buyername": string;
-  "companyname": string;
-  "address": string;
-  "shippedto": string;
-  "invoiceto": string;
-  "vendorname": string;
-  "trackingno": string;
-  "deliverydate": Date;
-  "amount": number;
-  "totalamount": number;
-  "confirmto": string;
-  "productionstatus": number;
-  "status": number;
+  "userid"?: number;
+  "orderdate"?: Date;
+  "buyername"?: string;
+  "companyname"?: string;
+  "address"?: string;
+  "shippedto"?: string;
+  "invoiceto"?: string;
+  "vendorname"?: string;
+  "trackingno"?: string;
+  "deliverydate"?: Date;
+  "amount"?: number;
+  "totalamount"?: number;
+  "confirmto"?: string;
+  "productionstatus"?: number;
+  "status"?: number;
   "id"?: number;
 }
 

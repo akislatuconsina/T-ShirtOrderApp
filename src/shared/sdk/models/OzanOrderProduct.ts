@@ -2,11 +2,11 @@
 
 declare var Object: any;
 export interface OzanorderproductInterface {
-  "idorder": number;
-  "descriptionorder": string;
-  "sizeorder": string;
-  "qtyorder": number;
-  "unitprice": number;
+  "idorder"?: number;
+  "descriptionorder"?: string;
+  "sizeorder"?: string;
+  "qtyorder"?: number;
+  "unitprice"?: number;
   "id"?: number;
 }
 

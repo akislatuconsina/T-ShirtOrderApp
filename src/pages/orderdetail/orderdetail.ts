@@ -20,6 +20,10 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
   templateUrl: 'orderdetail.html',
 })
 export class OrderdetailPage {
+  public finish: boolean;
+  public onprogress: boolean;
+  public pending: boolean;
+  public prodstatus: any;
   public confirmpayment: boolean;
   public cancelpayment: boolean;
   public datatemp: any;
@@ -65,9 +69,9 @@ export class OrderdetailPage {
         userid: this.userId
       }
       this.ozanorderapi.ozangetBuying(dataget).subscribe((result) => {
-        console.log(result, 'Data')
+        // console.log(result, 'Data')
         this.viewdata = result;
-        console.log(this.viewdata, 'view')
+        console.log(this.viewdata, 'view');
 
         for (let i = 0; i < this.viewdata.length; i++) {
           console.log('TES')
@@ -78,13 +82,31 @@ export class OrderdetailPage {
           } if (this.viewdata[i].status == 2) {
             this.waitingStatus = true;
             this.payStatus = false;
-            this.cancelpayment = true
+            this.paid = true
           } if (this.viewdata[i].status == 3) {
             this.waitingStatus = true;
             this.payStatus = true;
             this.paid = false;
           }
         }
+        
+        for (let i = 0; i < this.viewdata.length; i++) {
+          console.log('TES')
+          if (this.viewdata[i].productionstatus == 1) {
+            this.pending = false;
+            this.onprogress = true;
+            this.finish = true;
+          } if (this.viewdata[i].productionstatus == 2) {
+            this.pending = true;
+            this.onprogress = false;
+            this.finish = true;
+          } if (this.viewdata[i].productionstatus == 3) {
+            this.pending = true;
+            this.onprogress = true;
+            this.finish = false;
+          }
+        }
+
         loader.dismiss();
 
         if (this.roleuser == 'user') {
@@ -105,13 +127,13 @@ export class OrderdetailPage {
     //console.log('ionViewDidLoad OrderdetailPage');
   }
 
-  Editdata() {
-    let modal = this.modalctrl.create('OrderdetailEditPage');
+  Editdata(event) {
+    let modal = this.modalctrl.create('OrderdetailEditPage',{event});
     modal.present();
   }
 
-  Detailorder() {
-    let modal = this.modalctrl.create('LookingDetailOrderPage');
+  Detailorder(event) {
+    let modal = this.modalctrl.create('LookingDetailOrderPage',{event});
     modal.present();
   }
 

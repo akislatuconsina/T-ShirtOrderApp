@@ -47,14 +47,23 @@
       <ion-col col-2.5>
         <ion-item>
           <ion-label stacked color="primary">Product Name </ion-label>
-          <ion-input type="text" placeholder="Enter Product Name" [(ngModel)]="input.descriptionorder"></ion-input>
-
+          <!-- <ion-input type="text" placeholder="Enter Product Name" [(ngModel)]="input.descriptionorder"></ion-input> -->
+          <ion-select [(ngModel)]="input.descriptionorder" (ngModelChange)="onChange($event)">
+            <ion-option [selected]="true" value="Seragam Pria (Jaring)">Seragam Pria (Jaring)</ion-option>
+            <ion-option value="Seragam Pria">Seragam Pria</ion-option>
+            <ion-option value="Celana Pria">Celana Pria</ion-option>
+            <ion-option value="Seragam Wanita">Seragam Wanita</ion-option>
+            <ion-option value="Celana Seragam Wanit">Celana Seragam Wanita</ion-option>
+            <ion-option value="Baju Driver">Baju Driver</ion-option>
+            <ion-option value="Celana DriverL">Celana Driver</ion-option>
+            <ion-option value="Topi Kerja Hijau">Topi Kerja</ion-option>
+          </ion-select>
         </ion-item>
       </ion-col>
       <ion-col col-2>
         <ion-item>
           <ion-label stacked color="primary">Size : </ion-label>
-          <ion-select [(ngModel)]="input.sizeorder">
+          <ion-select [(ngModel)]="input.sizeorder" (ngModelChange)="onChange($event)">
             <ion-option [selected]="true" value="S">S</ion-option>
             <ion-option value="M">M</ion-option>
             <ion-option value="L">L</ion-option>
@@ -68,13 +77,19 @@
       <ion-col col-2.5>
         <ion-item>
           <ion-label stacked color="primary">Quantity : </ion-label>
-          <ion-input type="text" placeholder="Enter Order Quantity" [(ngModel)]="input.qtyorder"></ion-input>
+          <ion-input type="text" placeholder="Enter Order Quantity" (ngModelChange)="onInputTime($event)" [(ngModel)]="input.qtyorder"></ion-input>
         </ion-item>
+        <!-- <ion-item>
+          <ion-range [(ngModel)]="brightness">
+            <ion-icon range-left small name="sunny"></ion-icon>
+            <ion-icon range-right name="sunny"></ion-icon>
+          </ion-range>
+        </ion-item> -->
       </ion-col>
       <ion-col col-2>
         <ion-item>
           <ion-label stacked color="primary">Unit Price In Rp. : </ion-label>
-          <ion-input type="text" placeholder="Unit Price" [(ngModel)]="input.unitprice"></ion-input>
+          <ion-input type="text" placeholder="0" [(ngModel)]="input.unitprice" disabled></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-2.5>

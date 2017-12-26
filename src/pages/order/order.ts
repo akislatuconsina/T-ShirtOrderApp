@@ -56,6 +56,7 @@ export class OrderPage {
     this.filesToUpload = [];
     this.ozanmodel.buyername = this.realm;
     this.ozanmodel.companyname = this.corporate;
+    // this.input[0]['unitprice'] = 0; 
   }
 
   ionViewDidLoad() {
@@ -144,7 +145,49 @@ export class OrderPage {
   }
 
   public addnewproduct() {
-    this.input.push({})
+    // const priceUnit = this.input[0]['unitprice'] = 0; 
+    this.input.push({});
+    console.log(this.input.length - 1, 'Kurang 1');
+    console.log(this.input.length, 'Length');
+    // this.input[2]['unitprice'] = 0;
+    // for (let i = 0; i < this.input.length; i++) {
+    //   this.input[i]['unitprice'] = 0;
+    // }
+  }
+
+  public onInputTime(event) {
+    console.log(event, 'VAL');
+    // console.log(this.input[i]['unitprice'])
+    for (let i = 0; i < this.input.length; i++) {
+      console.log(this.input[i]['unitprice']);
+      this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
+      // this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
+    }
+  }
+
+  public onChange(value): any {
+    console.log(value, 'VALUE SELECT');
+    console.log(this.input.length, 'SELECT');
+    for (let i = 0; i < this.input.length; i++) {
+      // console.log(this.input[i]['descriptionorder']);
+
+      if(this.input[i]['descriptionorder'] == 'Seragam Pria (Jaring)') {
+        console.log(this.input[i]['sizeorder'] , 'SIZE');
+        if(this.input[i]['sizeorder'] == 'S') {
+          this.input[i]['unitprice'] = 10000;
+        } else if (this.input[i]['sizeorder'] == 'M'){
+          this.input[i]['unitprice'] = 15000;
+        } else if (this.input[i]['sizeorder'] == 'L'){
+          this.input[i]['unitprice'] = 20000;
+        } else if (this.input[i]['sizeorder'] == 'XL'){
+          this.input[i]['unitprice'] = 25000;
+        } else if (this.input[i]['sizeorder'] == 'XXL'){
+          this.input[i]['unitprice'] = 30000;
+        } else if (this.input[i]['sizeorder'] == 'XXXL'){
+          this.input[i]['unitprice'] = 35000;
+        }
+      }
+    }
   }
 
   public deleteproduct(index) {
@@ -152,6 +195,7 @@ export class OrderPage {
   }
 
   public sendorder() {
+    console.log(this.input, "INPUT");
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
@@ -164,7 +208,7 @@ export class OrderPage {
       address: this.ozanmodel.address,
       shippedto: this.ozanmodel.shippedto,
       confirmto: '-',
-      productionstatus: '1',
+      productionstatus: 1,
       status: 1
     }
     this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
