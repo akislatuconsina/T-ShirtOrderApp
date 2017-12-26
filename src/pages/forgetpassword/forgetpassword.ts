@@ -16,30 +16,14 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'forgetpassword.html',
 })
 export class ForgetpasswordPage {
-  public language: any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public translateservice : TranslateService,
+    public translate : TranslateService,
     public storage : Storage,
     public alertCtrl: AlertController
   ) {
-    console.log(this.translateservice.getDefaultLang());
-    this.translateservice.get('HELLO').subscribe(
-      value => {
-        // value is our translateserviced string
-        console.log(value);
-      });
-    console.log(this.translateservice.getDefaultLang(), 'Defaultnya');
-    this.storage.get('language').then(result => {
-      if (result == null) {
-        console.log(123);
-        this.storage.set('language', 'id');
-        this.translateservice.setDefaultLang('id');
-      } else {
-        this.language = this.translateservice.getDefaultLang();
-      }
-    });
   }
 
   ionViewDidLoad() {

@@ -19,41 +19,41 @@
     <ion-row>
       <ion-col col-6>
         <ion-item>
-          <ion-label stacked color="primary">Buyer : </ion-label>
+          <ion-label stacked color="primary">{{'Buyer' | translate}} : </ion-label>
           <ion-input type="text" [(ngModel)]="realm" disabled></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label stacked color="primary">Company Name : </ion-label>
+          <ion-label stacked color="primary">{{'Company Name' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Enter Your Company Name" [(ngModel)]="ozanmodel.companyname"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-6>
         <ion-item>
-          <ion-label stacked color="primary">Address : </ion-label>
+          <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Enter Company Address" [(ngModel)]="ozanmodel.address"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label stacked color="primary">Shipped To : </ion-label>
+          <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Enter Shipping Address" [(ngModel)]="ozanmodel.shippedto"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <button ion-button class="buttonmargin6" (click)="addnewproduct()">Add Form</button>
+  <button ion-button class="buttonmargin6" (click)="addnewproduct()">{{'Add Form' | translate}}</button>
 
   <ion-grid>
     <ion-row *ngFor="let input of input">
       <ion-col col-2.5>
         <ion-item>
-          <ion-label stacked color="primary">Product Name </ion-label>
+          <ion-label stacked color="primary">{{'Product Name' | translate}} </ion-label>
           <ion-input type="text" placeholder="Enter Product Name" [(ngModel)]="input.descriptionorder"></ion-input>
 
         </ion-item>
       </ion-col>
       <ion-col col-2>
         <ion-item>
-          <ion-label stacked color="primary">Size : </ion-label>
+          <ion-label stacked color="primary">{{'Size' | translate}} : </ion-label>
           <ion-select [(ngModel)]="input.sizeorder">
             <ion-option [selected]="true" value="S">S</ion-option>
             <ion-option value="M">M</ion-option>
@@ -67,18 +67,18 @@
       </ion-col>
       <ion-col col-2.5>
         <ion-item>
-          <ion-label stacked color="primary">Quantity : </ion-label>
+          <ion-label stacked color="primary">{{'Quantity' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Enter Order Quantity" [(ngModel)]="input.qtyorder"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-2>
         <ion-item>
-          <ion-label stacked color="primary">Unit Price In Rp. : </ion-label>
+          <ion-label stacked color="primary">{{'Unit Price In Rp' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Unit Price" [(ngModel)]="input.unitprice"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-2.5>
-        <button ion-button class="buttonmargin3" (click)="getPicture()">Upload</button>
+        <button ion-button class="buttonmargin3" (click)="getPicture()">{{'Upload' | translate}}</button>
 
         <button ion-button class="buttonmargin3" (click)="deleteproduct()">
           <ion-icon md="md-close"></ion-icon>
@@ -93,12 +93,12 @@
     <ion-row>
       <ion-col col-2 class="amountmargin">
         <ion-item>
-          <ion-label stacked color="primary">Amount : </ion-label>
+          <ion-label stacked color="primary">{{'Amount' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Total Amount" [(ngModel)]="ozanmodel.amount"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-2>
-        <button ion-button class="buttonmargin3" (click)="sendorder()">Order</button>
+        <button ion-button class="buttonmargin3" (click)="sendorder()">{{'Order' | translate}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>

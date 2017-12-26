@@ -16,32 +16,14 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'reportorder.html',
 })
 export class ReportorderPage {
-  public language = 'id';
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public translateservice : TranslateService,
+    public translate : TranslateService,
     public storage : Storage,
-    public modalCtrl: ModalController) {
-
-
-      console.log(this.translateservice.getDefaultLang());
-      this.translateservice.get('HELLO').subscribe(
-        value => {
-          // value is our translateserviced string
-          console.log(value);
-        });
-      console.log(this.translateservice.getDefaultLang(), 'Defaultnya');
-      this.storage.get('language').then(result => {
-        if (result == null) {
-          console.log(123);
-          this.storage.set('language', 'id');
-          this.translateservice.setDefaultLang('id');
-        } else {
-          this.language = this.translateservice.getDefaultLang();
-        }
-      });
+    public modalCtrl: ModalController
+  ) {
   }
 
   ionViewDidLoad() {
