@@ -14,31 +14,28 @@
 <ion-content padding>
 
   <ion-row>
-    <ion-col col-6>
-      <ion-list class="marginright">
-        <ion-item>
-          <ion-label stacked color="primary">Buyer : </ion-label>
-          <ion-input type="text" [(ngModel)]="ozanordermodel.buyername" disabled></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked color="primary">Company Name : </ion-label>
-          <ion-input type="text" [(ngModel)]="ozanordermodel.companyname" disabled></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-col>
-    <ion-col col-6>
-      <ion-list class="marginright">
-        <ion-item>
-          <ion-label stacked color="primary">Address : </ion-label>
-          <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.address" disabled></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked color="primary">Shipped To : </ion-label>
-          <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.shippedto" disabled></ion-input>
-        </ion-item>
-        
-      </ion-list>
-    </ion-col>
+    <ion-list class="marginright">
+      <ion-item>
+        <ion-label stacked color="primary">{{'Buyer' | translate }}  </ion-label>
+        <ion-input type="text" placeholder="Automatic"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="primary">{{'Company Name' | translate }} :</ion-label>
+        <ion-input type="text" placeholder="Automatic"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="primary">Confirm To :</ion-label>
+        <ion-input type="text" placeholder="Automatic"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="primary">Address : </ion-label>
+        <ion-input type="text" placeholder="Automatic"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked color="primary">Shipped To : </ion-label>
+        <ion-input type="text" placeholder="Automatic"></ion-input>
+      </ion-item>
+    </ion-list>
   </ion-row>
 
   <ion-row *ngFor="let datas of viewdata">

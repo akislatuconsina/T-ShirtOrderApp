@@ -5,6 +5,9 @@ import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
 import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorderproduct';
 import { Ozanorderproduct } from './../../shared/sdk/models/Ozanorderproduct';
 import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the OrderdetailEditPage page.
  *
@@ -31,7 +34,13 @@ export class OrderdetailEditPage {
     public ozanorderapi: OzanorderApi,
     public ozanliblaryapi: OzanlibraryApi,
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+
+    public navCtrl: NavController, 
+    public storage: Storage,
+    public translate : TranslateService,
+    public navParams: NavParams
+  ) {
   }
 
   ionViewDidLoad() {

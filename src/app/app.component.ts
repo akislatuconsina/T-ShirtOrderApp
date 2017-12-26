@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { OzanusercredentialApi } from '../shared/sdk/services/custom/Ozanusercredential';
 import { OzanmenulistApi } from '../shared/sdk/services/custom/Ozanmenulist';
 import { Events } from 'ionic-angular';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class MyApp {
   public storageEventCorporate: any;
   public storageData: any;
   public menuCredential: any;
+  public language = 'id';
   rootPage: any;
 
   pages: Array<{ title: string, component: any, icons: any }>;
@@ -34,7 +36,8 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public ozanusercredentialApi: OzanusercredentialApi,
     public ozanmenucredentialApi: OzanmenulistApi,
-    public events: Events
+    public events: Events,
+    public translate: TranslateService
   ) {
 
     this.storage.ready().then(() => {
@@ -49,6 +52,15 @@ export class MyApp {
               this.storageEvent = result;
               this.realmUser = this.storageEvent.realm;
               this.storageEventCorporate = this.storageEvent.corporatename;
+
+              this.storage.get('language').then((language) => {
+                if (this.language != null && this.language != undefined) {
+                  this.translate.setDefaultLang(this.language);
+                  this.translate.use(this.language);
+                }
+              });
+        
+
             });
           });
         }
@@ -131,5 +143,9 @@ export class MyApp {
       })
     })
 
+  }
+
+  public setting(){
+    this.nav.push('SettingPage');
   }
 }

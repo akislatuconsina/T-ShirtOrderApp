@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the ForgetpasswordPage page.
@@ -18,7 +20,10 @@ export class ForgetpasswordPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public alertCtrl: AlertController) {
+    public translate : TranslateService,
+    public storage : Storage,
+    public alertCtrl: AlertController
+  ) {
   }
 
   ionViewDidLoad() {

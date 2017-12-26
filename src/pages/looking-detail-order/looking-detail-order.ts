@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
 import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorderproduct';
-// import { Ozanorderproduct } from './../../shared/sdk/models/Ozanorderproduct';
 import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the LookingDetailOrderPage page.
@@ -23,15 +24,19 @@ export class LookingDetailOrderPage {
   public viewdata: any;
   public id: any;
   public data: any;
-  public ozanordermodel: any = Ozanorder
-  // public ozanorderproductmodel: any = Ozanorderproduct
+  public ozanordermodel: any = Ozanorder;
 
   constructor(
     public ozanorderproductapi: OzanorderproductApi,
     public ozanorderapi: OzanorderApi,
     public ozanliblaryapi : OzanlibraryApi,
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public navCtrl: NavController,
+    public translate : TranslateService,
+    public storage : Storage,
+    public navParams: NavParams
+  ) {
   }
 
   ionViewDidLoad() {

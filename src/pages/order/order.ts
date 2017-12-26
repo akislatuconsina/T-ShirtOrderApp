@@ -8,6 +8,7 @@ import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorde
 import { UUID } from 'angular2-uuid';
 import { FileTransfer, FileUploadOptions } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 
 /**
@@ -46,6 +47,7 @@ export class OrderPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public translate : TranslateService,
     public ozanorderapi: OzanorderApi,
     public ozanlibraryapi: OzanlibraryApi,
     public ozanorderproductapi: OzanorderproductApi,
@@ -53,6 +55,7 @@ export class OrderPage {
     public loadingCtrl: LoadingController,
     public storage: Storage
   ) {
+
     this.filesToUpload = [];
     this.ozanmodel.buyername = this.realm;
     this.ozanmodel.companyname = this.corporate;

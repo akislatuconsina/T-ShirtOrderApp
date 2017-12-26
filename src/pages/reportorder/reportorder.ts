@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the ReportorderPage page.
@@ -18,7 +20,10 @@ export class ReportorderPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public modalCtrl: ModalController) {
+    public translate : TranslateService,
+    public storage : Storage,
+    public modalCtrl: ModalController
+  ) {
   }
 
   ionViewDidLoad() {

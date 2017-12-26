@@ -11,13 +11,13 @@
       </ion-thumbnail>
 
       <button class="button-menu" menuClose ion-item *ngFor="let p of menuCredential" (click)="openPage(p)">
-        {{p.title}}
+        {{p.title | translate}}
         <ion-icon class="button-menu" name="{{p.icons}}" item-left></ion-icon>
       </button>
     </ion-list>
 
-    <button class="button-menu-logout" ion-item (click)="logout()">
-      <div class="title-logout">Setting</div>
+    <button class="button-menu-logout" ion-item (click)="setting()">
+      <div class="title-logout">{{ 'Setting' | translate}}</div>
       <ion-icon class="button-menu-logout" name="md-settings" item-left></ion-icon>
     </button>
 

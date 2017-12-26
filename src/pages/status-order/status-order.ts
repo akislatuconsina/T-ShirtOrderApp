@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the StatusOrderPage page.
@@ -15,7 +17,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StatusOrderPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public translate : TranslateService,
+    public storage : Storage,
+     public navParams: NavParams
+    ) {
   }
 
   ionViewDidLoad() {
