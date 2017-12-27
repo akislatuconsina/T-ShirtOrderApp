@@ -29,12 +29,10 @@ export class LookingDetailOrderPage {
   constructor(
     public ozanorderproductapi: OzanorderproductApi,
     public ozanorderapi: OzanorderApi,
-    public ozanliblaryapi : OzanlibraryApi,
+    public ozanliblaryapi: OzanlibraryApi,
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public navCtrl: NavController,
-    public translate : TranslateService,
-    public storage : Storage,
+    public translate: TranslateService,
+    public storage: Storage,
     public navParams: NavParams
   ) {
   }
@@ -60,13 +58,10 @@ export class LookingDetailOrderPage {
       this.viewdata = result;
     })
 
-    this.ozanliblaryapi.lookingimageorder(data).subscribe((result)=>{
+    this.ozanliblaryapi.lookingimageorder(data).subscribe((result) => {
       console.log(result, 'ini looking tiga')
       this.viewimage = result;
     })
-
-    
-
   }
 
 }
