@@ -16,9 +16,12 @@
       </button>
     </ion-list>
 
-    <button class="button-menu-logout" ion-item (click)="setting()">
-      <div class="title-logout">{{ 'Setting' | translate}}</div>
-      <ion-icon class="button-menu-logout" name="md-settings" item-left></ion-icon>
+    <div class="button-menu-logout"></div>
+
+
+    <button class="button-menu" ion-item (click)="setting()">
+      <div>{{ 'Setting' | translate}}</div>
+      <ion-icon name="md-settings" item-left></ion-icon>
     </button>
 
     <button class="button-menu" ion-item (click)="logout()">
