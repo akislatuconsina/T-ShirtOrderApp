@@ -34,8 +34,8 @@ export class ForgetpasswordPage {
   send(){
     {
       let alert = this.alertCtrl.create({
-        title: 'Success',
-        subTitle: 'check your email for your password',
+        title: this.translate.instant('Success'),
+        subTitle: this.translate.instant('check your email for your password'),
         buttons: [
           {
             text: 'OK',

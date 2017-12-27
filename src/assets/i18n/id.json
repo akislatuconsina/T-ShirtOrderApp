@@ -20,10 +20,21 @@
     "Shipped To": "Dikirim Ke",
     "Product Name": "Nama Produk",
     "Action": "Aksi",
+    "Success": "Sukses",
+    "Sign-in": "Masuk",
     "Quantity": "Kualitas",
     "Unit Price In Rp": "Harga",
     "Amount": "Total",
     "Add Form": "Tambah Kolom",
     "Upload": "Unggah",
-    "Order": "Pesan"
+    "Registration": "Registrasi",
+    "Register": "Regis",
+    "Order": "Pesan",
+    "Login Failed!": "Gagal Login",
+    "You can be login now": "Sekarang kamu bisa login",
+    "Confirm Your Payment": "Konfirmasi Pembayaran",
+    "Send": "Kirim",
+    "Please check your username and password": "Silahkan cek username dan password anda",
+    "Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!": "Yaa.. Maap. Tidak bisa menguggah foto. silahkan cek ukuran foto anda, maksimal 1 Mb",
+    "Ups.. Sorry. Cant Order. Check your connection! And Try Again.": "Yaa.. Maap. Tidak bisa order. Silahkan cek koneksi! Dan coba lagi"
 }

@@ -94,7 +94,7 @@ export class OrderPage {
       console.error(error);
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!'),
         buttons: ['Dismiss']
       });
       alert.present();
@@ -117,7 +117,7 @@ export class OrderPage {
       console.error(error);
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!'),
         buttons: ['Dismiss']
       });
       alert.present();
@@ -235,7 +235,7 @@ export class OrderPage {
             console.log('Error Upload Name Photo');
             loader.dismiss();
             let alert = this.alertCtrl.create({
-              subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+              subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
               buttons: ['Dismiss']
             });
             alert.present();
@@ -244,7 +244,7 @@ export class OrderPage {
           console.log(error);
           loader.dismiss();
           let alert = this.alertCtrl.create({
-            subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+            subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
             buttons: ['Dismiss']
           });
           alert.present();
@@ -255,7 +255,7 @@ export class OrderPage {
       console.log(error);
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
         buttons: ['Dismiss']
       });
       alert.present();

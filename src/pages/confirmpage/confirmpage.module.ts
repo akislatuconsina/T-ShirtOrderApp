@@ -1,3 +1,4 @@
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ConfirmpagePage } from './confirmpage';
@@ -8,6 +9,7 @@ import { ConfirmpagePage } from './confirmpage';
   ],
   imports: [
     IonicPageModule.forChild(ConfirmpagePage),
+    TranslateModule
   ],
 })
 export class ConfirmpagePageModule {}
