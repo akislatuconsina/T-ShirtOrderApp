@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title text-center>Confirm Your Payment</ion-title>
+    <ion-title text-center>{{'Confirm Your Payment' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -36,8 +36,8 @@
 <ion-footer>
   <ion-toolbar>
     <ion-col col-5>
-      <button ion-button round full (click)="uploadfile()">Upload</button>
-      <button ion-button round full (click)="sendfilepayment()">Send</button>
+      <button ion-button round full (click)="uploadfile()">{{'Upload' | translate}}</button>
+      <button ion-button round full (click)="sendfilepayment()">{{'Send' | translate}}</button>
     </ion-col>
   </ion-toolbar>
 </ion-footer>

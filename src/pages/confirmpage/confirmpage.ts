@@ -6,7 +6,7 @@ import { Ozanlibrary } from './../../shared/sdk/models/Ozanlibrary';
 import { UUID } from 'angular2-uuid';
 import { FileUploadOptions } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
-
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the ConfirmpagePage page.
@@ -46,6 +46,7 @@ export class ConfirmpagePage {
     public alertCtrl: AlertController,
     public storage: Storage,
     public ozanlibraryapi: OzanlibraryApi,
+    public translate: TranslateService
   ) {
     this.filesToUpload = [];
   }
@@ -102,7 +103,7 @@ export class ConfirmpagePage {
       console.error(error);
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!'),
         buttons: ['Dismiss']
       });
       alert.present();
@@ -147,7 +148,7 @@ export class ConfirmpagePage {
       console.error(error);
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Upload Foto. Check your connection or file size too large, Max 1 Mb!'),
         buttons: ['Dismiss']
       });
       alert.present();
@@ -171,7 +172,7 @@ export class ConfirmpagePage {
       console.log('Error Upload Name Photo');
       loader.dismiss();
       let alert = this.alertCtrl.create({
-        subTitle: 'Ups.. Sorry. Cant Order. Check your connection! And Try Again.',
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
         buttons: ['Dismiss']
       });
       alert.present();
