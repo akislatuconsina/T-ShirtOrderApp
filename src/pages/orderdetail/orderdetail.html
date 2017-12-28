@@ -32,17 +32,17 @@
     <ion-col col-1 class="cell">{{datas.id}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.companyname}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.confirmto}}</ion-col>
-    <ion-col col-1.5 class="cell" [hidden]="waitingStatus">Waiting For Payment</ion-col>
-    <ion-col col-1.5 class="cell" [hidden]="payStatus">DP Already In</ion-col>
-    <ion-col col-1.5 class="cell" [hidden]="paid">Full Payment</ion-col>
-    <ion-col col-1 class="cell" [hidden]="pending">Pending</ion-col>
-    <ion-col col-1 class="cell" [hidden]="onprogress">On Progress</ion-col>
-    <ion-col col-1 class="cell" [hidden]="finish">Finish</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="waitingStatus">{{'Waiting For Payment' | translate}}</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="payStatus">{{'DP Already In' | translate}}</ion-col>
+    <ion-col col-1.5 class="cell" [hidden]="paid">{{'Full Payment' | translate}}</ion-col>
+    <ion-col col-1 class="cell" [hidden]="pending">{{'Pending' | translate}}</ion-col>
+    <ion-col col-1 class="cell" [hidden]="onprogress">{{'On Progress' | translate}}</ion-col>
+    <ion-col col-1 class="cell" [hidden]="finish">{{'Finish' | translate}}</ion-col>
     <ion-col col-3 class="button">
-      <button ion-button (click)="Detailorder(datas)" [hidden]="detailorder">Detail</button>
-      <button ion-button (click)="Editdata(datas)" [hidden]="editdata">Edit</button>
-      <button ion-button (click)="Confirmpayment(datas)" [hidden]="confirmpayment">Confirm</button>
-      <button ion-button [hidden]="cancelpayment">Cancel</button>
+      <button ion-button (click)="Detailorder(datas)" [hidden]="detailorder">{{'Detail' | translate}}</button>
+      <button ion-button (click)="Editdata(datas)" [hidden]="editdata">{{'Edit' | translate}}</button>
+      <button ion-button (click)="Confirmpayment(datas)" [hidden]="confirmpayment">{{'Confirm' | translate}}</button>
+      <button ion-button [hidden]="cancelpayment">{{'Cancel' | translate}}</button>
     </ion-col>
   </ion-row>
 
