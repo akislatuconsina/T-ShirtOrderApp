@@ -33,10 +33,10 @@ export class OrderdetailEditPage {
     public ozanorderproductapi: OzanorderproductApi,
     public ozanorderapi: OzanorderApi,
     public ozanliblaryapi: OzanlibraryApi,
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
     public storage: Storage,
     public translate : TranslateService,
-    public navParams: NavParams
   ) {
   }
 
