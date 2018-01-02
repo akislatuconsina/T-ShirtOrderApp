@@ -1,7 +1,4 @@
 /* tslint:disable */
-import {
-  AccessToken
-} from '../index';
 
 declare var Object: any;
 export interface OzanusercredentialInterface {
@@ -138,7 +135,7 @@ export class Ozanusercredential implements OzanusercredentialInterface {
         accessTokens: {
           name: 'accessTokens',
           type: 'any[]',
-          model: 'AccessToken',
+          model: '',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'userId'

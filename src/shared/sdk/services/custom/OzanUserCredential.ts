@@ -14,7 +14,6 @@ import { Ozanusercredential } from '../../models/Ozanusercredential';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
-
 /**
  * Api services for the `Ozanusercredential` model.
  */

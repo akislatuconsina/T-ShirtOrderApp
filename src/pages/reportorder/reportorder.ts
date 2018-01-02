@@ -36,4 +36,7 @@ export class ReportorderPage {
     this.navCtrl.push('DetailreportPage');
   }
 
+  viewfinal(){
+    this.navCtrl.push('DetailreportfinalPage');
+  }
 }

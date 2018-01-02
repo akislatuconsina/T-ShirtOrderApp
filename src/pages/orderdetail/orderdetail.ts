@@ -19,6 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'orderdetail.html',
 })
 export class OrderdetailPage {
+  datatemporary: any;
   public xphoto: any;
   public dataphoto: any;
   public imgname: any;
@@ -60,8 +61,10 @@ export class OrderdetailPage {
     });
     loader.present();
     this.storage.get('OzanUserCredential').then((result) => {
-      this.userId = result;
-      console.log('Succes Reload User Id');
+      this.datatemporary = result;
+      console.log(result,'succes reload result')
+      this.userId = this.datatemporary.userId;
+      console.log(this.userId,'Succes Reload User Id');
       this.storage.get('OzanUserData').then((result) => {
         this.datatemp = result;
         this.roleuser = this.datatemp.roleuser;
@@ -69,8 +72,10 @@ export class OrderdetailPage {
       })
 
       const dataget = {
-        userid: this.userId
+        userid: 3,
+        roleuser : 'user'
       }
+      
       this.ozanorderapi.ozangetBuying(dataget).subscribe((result) => {
         this.viewdata = result;
 
