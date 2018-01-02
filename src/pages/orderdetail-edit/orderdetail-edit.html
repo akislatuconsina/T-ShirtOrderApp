@@ -17,23 +17,19 @@
     <ion-list class="marginright">
       <ion-item>
         <ion-label stacked color="primary">{{'Buyer' | translate }}  </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.buyername"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Company Name' | translate }} :</ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked color="primary">{{'Confirm To' | translate}} :</ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.companyname"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.address"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.shippedto"></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>

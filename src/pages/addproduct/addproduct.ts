@@ -110,7 +110,7 @@ export class AddproductPage {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
       this.photo = (readerEvent.target as any).result;
-      console.log(this.photo);
+      // console.log(this.photo);
      // this.dataphoto.push(this.photo);
     };
     reader.readAsDataURL(event.target.files[0]);
