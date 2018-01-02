@@ -1,15 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, ViewController } from 'ionic-angular';
-import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
-import { Ozanlibrary } from './../../shared/sdk/models/Ozanlibrary';
+import { IonicPage, NavController, NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import { UUID } from 'angular2-uuid';
 import { FileUploadOptions } from '@ionic-native/file-transfer';
-import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
-
-
 /**
- * Generated class for the ConfirmpagePage page.
+ * Generated class for the AddproductPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -17,46 +12,45 @@ import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
-  selector: 'page-confirmpage',
-  templateUrl: 'confirmpage.html',
+  selector: 'page-addproduct',
+  templateUrl: 'addproduct.html',
 })
-export class ConfirmpagePage {
-  @ViewChild('fileInput') fileInput;
-  public namefile: any;
-  public orderid: any;
-  public id: any;
-  public datatemp: any;
-  public data: any;
-  public idorder: NavParams;
-  public photo = 'assets/imgs/camera.png';
-  public dataphoto = [{}];
-  public photoData: any;
-  public photoName = [];
-  public filesToUpload: Array<File>;
-  public fileName: any;
-  public ozanlibrary: any = Ozanlibrary;
-  public chip: boolean;
-  public nochip: boolean;
 
+export class AddproductPage {
+  photoName: any;
+  fileName: string;
+  photo: any;
+  @ViewChild('fileInput') fileInput;
+  public sizeorder: any;
+  public qtyorder: any;
+  public descriptionorder: any;
+  public filesToUpload: Array<File>;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
     public viewCtrl: ViewController,
-    public storage: Storage,
-    public ozanlibraryapi: OzanlibraryApi,
-    public translate: TranslateService
+    public alertCtrl: AlertController,
+    public translate: TranslateService,
+    public loadingCtrl : LoadingController,
   ) {
     this.filesToUpload = [];
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad ConfirmpagePage');
-    this.data = this.navParams.get('event');
-    this.idorder = this.data.id
-    //console.log(this.idorder, 'hasil get id')
+    // console.log('ionViewDidLoad AddproductPage');
+
+  }
+
+  public dismiss() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration : 5000
+    });
+    loader.present();
+    let data = { describe: this.descriptionorder, size: this.sizeorder, quantyorder: this.qtyorder, imagedata : this.fileName, image : this.photo };
+    this.viewCtrl.dismiss(data);
+    loader.dismiss();
   }
 
   uploadfile() {
@@ -117,7 +111,7 @@ export class ConfirmpagePage {
     reader.onload = (readerEvent) => {
       this.photo = (readerEvent.target as any).result;
       console.log(this.photo);
-      this.dataphoto.push(this.photo);
+     // this.dataphoto.push(this.photo);
     };
     reader.readAsDataURL(event.target.files[0]);
 
@@ -135,14 +129,15 @@ export class ConfirmpagePage {
     //   mimeType: 'image/jpg'
     // };
     this.fileName = 'IMG_' + UUID.UUID() + '.jpg';
+    console.log(this.fileName,'NAMA FILE PHOTO')
     //this.photo = this.fileName;
-    this.photoName.push(this.fileName)
+//this.photoName.push(this.fileName)
     //this.photo = this.fileName;
     this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, this.fileName).then((result) => {
-      console.log('file request ');
+      console.log(result, 'file request ');
 
-      this.chip = false;
-      this.nochip = true;
+      // this.chip = false;
+      // this.nochip = true;
       // this.photo = result;
       loader.dismiss();
     }, (error) => {
@@ -155,40 +150,5 @@ export class ConfirmpagePage {
       alert.present();
     });
   }
-
-  sendfilepayment() {
-    let data = { imagedata: this.fileName, image: this.photo };
-    this.viewCtrl.dismiss(data);
-
-    let loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
-    loader.present();
-
-    const datafile = {
-      idorder: this.idorder,
-      namefile: this.photoName
-    }
-    this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
-      console.log('Sukses Save Foto');
-      loader.dismiss();
-    }, (error) => {
-      console.log('Error Upload Name Photo');
-      loader.dismiss();
-      let alert = this.alertCtrl.create({
-        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    });
-
-  }
-
-
-  delete(chip: Element, index) {
-    chip.remove();
-    this.dataphoto.splice(index, 1);
-  }
-
 
 }

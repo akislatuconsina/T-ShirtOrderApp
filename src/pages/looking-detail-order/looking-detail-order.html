@@ -19,11 +19,11 @@
     <ion-col col-6>
       <ion-list class="marginright">
         <ion-item>
-          <ion-label stacked color="primary">Buyer : </ion-label>
+          <ion-label stacked color="primary">{{'Buyer' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.buyername" disabled></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label stacked color="primary">Company Name : </ion-label>
+          <ion-label stacked color="primary">{{'Company Name' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.companyname" disabled></ion-input>
         </ion-item>
       </ion-list>
@@ -31,11 +31,11 @@
     <ion-col col-6>
       <ion-list class="marginright">
         <ion-item>
-          <ion-label stacked color="primary">Address : </ion-label>
+          <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.address" disabled></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label stacked color="primary">Shipped To : </ion-label>
+          <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
           <ion-input type="text" placeholder="Empty Data" [(ngModel)]="ozanordermodel.shippedto" disabled></ion-input>
         </ion-item>
       </ion-list>
@@ -45,25 +45,25 @@
   <ion-row *ngFor ="let datas of viewdata">
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Product Name </ion-label>
+        <ion-label stacked color="primary">{{'Product Name' | translate}} </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.descriptionorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-2>
       <ion-item>
-        <ion-label stacked color="primary">Size : </ion-label>
+        <ion-label stacked color="primary">{{'Size' | translate}} : </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.sizeorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Quantity : </ion-label>
+        <ion-label stacked color="primary">{{'Quantity' | translate}} : </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.qtyorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Price In Unit </ion-label>
+        <ion-label stacked color="primary">{{'Price In Unit' | translate}} </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.unitprice" disabled></ion-input>
       </ion-item>
     </ion-col>
@@ -72,10 +72,13 @@
   <ion-row>
     <ion-list class="marginl">
       <ion-item>
-        <ion-label stacked color="primary">Total Amount </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-label stacked color="primary">{{'Total Amount' | translate}} </ion-label>
+        <ion-input type="text" placeholder="{{'Automatic' | translate}}"></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>
 
+  <button ion-button round (click)="seeingdownpayment()">
+    Bukti DP 
+  </button>
 </ion-content>

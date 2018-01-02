@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title text-center>Edit Data</ion-title>
+    <ion-title text-center>{{'Edit Data' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,15 +24,15 @@
         <ion-input type="text" placeholder="Automatic"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label stacked color="primary">Confirm To :</ion-label>
+        <ion-label stacked color="primary">{{'Confirm To' | translate}} :</ion-label>
         <ion-input type="text" placeholder="Automatic"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label stacked color="primary">Address : </ion-label>
+        <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
         <ion-input type="text" placeholder="Automatic"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label stacked color="primary">Shipped To : </ion-label>
+        <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
         <ion-input type="text" placeholder="Automatic"></ion-input>
       </ion-item>
     </ion-list>
@@ -41,13 +41,13 @@
   <ion-row *ngFor="let datas of viewdata">
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Product Name </ion-label>
+        <ion-label stacked color="primary">{{'Product Name' | translate}} </ion-label>
         <ion-input type="text" [(ngModel)]="datas.descriptionorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-2>
       <ion-item>
-        <ion-label stacked color="primary">Size : </ion-label>
+        <ion-label stacked color="primary">{{'Size' | translate}} : </ion-label>
         <ion-select [(ngModel)]="datas.sizeorder" disabled>
           <ion-option value="S">S</ion-option>
           <ion-option value="M">M</ion-option>
@@ -62,13 +62,13 @@
     </ion-col>
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Quantity : </ion-label>
+        <ion-label stacked color="primary">{{'Quantity' | translate}} : </ion-label>
         <ion-input type="text" [(ngModel)]="datas.qtyorder" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
-        <ion-label stacked color="primary">Price In Unit </ion-label>
+        <ion-label stacked color="primary">{{'Price In Unit' | translate}} </ion-label>
         <ion-input type="text" [(ngModel)]="datas.unitprice" disabled></ion-input>
       </ion-item>
     </ion-col>
@@ -77,7 +77,7 @@
   <ion-row>
     <ion-list class="marginl">
       <ion-item>
-        <ion-label stacked color="primary">Total Amount </ion-label>
+        <ion-label stacked color="primary">{{'Total Amount' | translate}} </ion-label>
         <ion-input type="text" placeholder="Automatic"></ion-input>
       </ion-item>
     </ion-list>
@@ -86,7 +86,7 @@
   <ion-row>
     <ion-col col-4>
       <ion-item>
-        <ion-label stacked color="primary">Confirm To : </ion-label>
+        <ion-label stacked color="primary">{{'Confirm To' | translate}} : </ion-label>
         <ion-select [(ngModel)]="ozanordermodel.confirmto">
           <ion-option value="Mrs.Inggrid">Mrs.Inggrid</ion-option>
           <ion-option value="Mr.Dion">Mrs.Dion</ion-option>
@@ -95,7 +95,7 @@
     </ion-col>
     <ion-col col-4>
       <ion-item>
-        <ion-label stacked color="primary">Payment Status : </ion-label>
+        <ion-label stacked color="primary">{{'Payment Status' | translate}} : </ion-label>
         <ion-select [(ngModel)]="ozanordermodel.status">
           <ion-option value="1">Waiting For Payment</ion-option>
           <ion-option value="2">DP Already In</ion-option>
@@ -106,7 +106,7 @@
     </ion-col>
     <ion-col col-4>
       <ion-item>
-        <ion-label stacked color="primary">Production Status : </ion-label>
+        <ion-label stacked color="primary">{{'Production Status' | translate}} : </ion-label>
         <ion-select [(ngModel)]="ozanordermodel.productionstatus">
           <ion-option value="1">Pending</ion-option>
           <ion-option value="2">On Progress</ion-option>
@@ -116,5 +116,5 @@
     </ion-col>
   </ion-row>
 
-  <button ion-button (click)="update()">Update</button>
+  <button ion-button (click)="update()">{{'Update' | translate}}</button>
 </ion-content>

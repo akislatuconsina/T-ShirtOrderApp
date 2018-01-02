@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="title">{{ 'Order Online' | translate}}</ion-title>
+    <ion-title class="title" text-center>{{ 'Order Online' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -24,93 +24,74 @@
         </ion-item>
         <ion-item>
           <ion-label stacked color="primary">{{'Company Name' | translate}} : </ion-label>
-          <ion-input type="text" placeholder="Enter Your Company Name" [(ngModel)]="ozanmodel.companyname"></ion-input>
+          <ion-input type="text" placeholder="{{ 'Enter Your Company Name' | translate}}" [(ngModel)]="corporate" disabled></ion-input>
         </ion-item>
       </ion-col>
       <ion-col col-6>
         <ion-item>
           <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
-          <ion-input type="text" placeholder="Enter Company Address" [(ngModel)]="ozanmodel.address"></ion-input>
+          <ion-input type="text" placeholder="{{'Enter Company Address' | translate}}" [(ngModel)]="ozanmodel.address"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
-          <ion-input type="text" placeholder="Enter Shipping Address" [(ngModel)]="ozanmodel.shippedto"></ion-input>
+          <ion-input type="text" placeholder="{{'Enter Shipping Address' | translate}}" [(ngModel)]="ozanmodel.shippedto"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <button ion-button class="buttonmargin6" (click)="addnewproduct()">{{'Add Form' | translate}}</button>
+  <div [hidden]="inputform">
+    <ion-grid>
+      <ion-row *ngFor="let input of input">
+        <ion-col col-2.5>
+          <ion-item>
+            <ion-label stacked color="primary">Product Name </ion-label>
+            <ion-input type="text" [(ngModel)]="input.describe" disabled>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-1>
+          <ion-item>
+            <ion-label stacked color="primary">Size : </ion-label>
+            <ion-input type="text" [(ngModel)]="input.size" disabled>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-1>
+          <ion-item>
+            <ion-label stacked color="primary">Quantity : </ion-label>
+            <ion-input type="text" [(ngModel)]="input.quantyorder" disabled></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <ion-item>
+            <ion-label stacked color="primary">Unit Price In Rp. : </ion-label>
+            <ion-input type="text" placeholder="0" [(ngModel)]="input.unitprice" disabled></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-item>
+            <ion-label stacked color="primary">{{'Amount' | translate}} : </ion-label>
+            <ion-input type="text" placeholder="Total Amount" [(ngModel)]="ozanmodel.amount"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2.5>
+          <button ion-button class="buttonmargin3" (click)="getPicture()">{{'Upload' | translate}}</button>
 
-  <ion-grid>
-    <ion-row *ngFor="let input of input">
-      <ion-col col-2.5>
-        <ion-item>
-          <ion-label stacked color="primary">Product Name </ion-label>
-          <ion-select [(ngModel)]="input.descriptionorder" (ngModelChange)="onChange($event)">
-            <ion-option [selected]="true" value="Seragam Pria (Jaring)">Seragam Pria (Jaring)</ion-option>
-            <ion-option value="Seragam Pria">Seragam Pria</ion-option>
-            <ion-option value="Celana Pria">Celana Pria</ion-option>
-            <ion-option value="Seragam Wanita">Seragam Wanita</ion-option>
-            <ion-option value="Celana Seragam Wanit">Celana Seragam Wanita</ion-option>
-            <ion-option value="Baju Driver">Baju Driver</ion-option>
-            <ion-option value="Celana DriverL">Celana Driver</ion-option>
-            <ion-option value="Topi Kerja Hijau">Topi Kerja</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col col-2>
-        <ion-item>
-          <ion-label stacked color="primary">Size : </ion-label>
-          <ion-select [(ngModel)]="input.sizeorder" (ngModelChange)="onChange($event)">
-            <ion-option [selected]="true" value="S">S</ion-option>
-            <ion-option value="M">M</ion-option>
-            <ion-option value="L">L</ion-option>
-            <ion-option value="XL">XL</ion-option>
-            <ion-option value="XXL">XXL</ion-option>
-            <ion-option value="XXXL">XXXL</ion-option>
-            <ion-option value="XXXXL">XXXXL</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col col-2.5>
-        <ion-item>
-          <ion-label stacked color="primary">Quantity : </ion-label>
-          <ion-input type="text" placeholder="Enter Order Quantity" (ngModelChange)="onInputTime($event)" [(ngModel)]="input.qtyorder"></ion-input>
-        </ion-item>
-        <!-- <ion-item>
-          <ion-range [(ngModel)]="brightness">
-            <ion-icon range-left small name="sunny"></ion-icon>
-            <ion-icon range-right name="sunny"></ion-icon>
-          </ion-range>
-        </ion-item> -->
-      </ion-col>
-      <ion-col col-2>
-        <ion-item>
-          <ion-label stacked color="primary">Unit Price In Rp. : </ion-label>
-          <ion-input type="text" placeholder="0" [(ngModel)]="input.unitprice" disabled></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col col-2.5>
-        <button ion-button class="buttonmargin3" (click)="getPicture()">{{'Upload' | translate}}</button>
+          <button ion-button class="buttonmargin3" (click)="deleteproduct()">
+            <ion-icon md="md-close"></ion-icon>
+          </button>
+          <button ion-button (click)="lookingphoto()" class="buttonmargin3">See This Photo</button>
+        </ion-col>
+      </ion-row>
+      <input type="file" #fileInput style="visibility: hidden; height: 0px" (change)="fileChangeEvent($event)" placeholder="Upload file..."
+      />
+    </ion-grid>
+  </div>
 
-        <button ion-button class="buttonmargin3" (click)="deleteproduct()">
-          <ion-icon md="md-close"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" (change)="fileChangeEvent($event)" placeholder="Upload file..."
-    />
-
-  </ion-grid>
   <ion-grid>
     <ion-row>
-      <ion-col col-2 class="amountmargin">
-        <ion-item>
-          <ion-label stacked color="primary">{{'Amount' | translate}} : </ion-label>
-          <ion-input type="text" placeholder="Total Amount" [(ngModel)]="ozanmodel.amount"></ion-input>
-        </ion-item>
-      </ion-col>
       <ion-col col-2>
         <button ion-button class="buttonmargin3" (click)="sendorder()">{{'Order' | translate}}</button>
       </ion-col>
