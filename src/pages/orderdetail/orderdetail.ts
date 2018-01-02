@@ -30,17 +30,18 @@ export class OrderdetailPage {
   public viewdata: any;
   public ozanorder: any = Ozanorder;
   public userId: any;
-  public finish: boolean;
-  public onprogress: boolean;
-  public pending: boolean;
-  public confirmpayment: boolean;
-  public cancelpayment: boolean;
-  public editdata: boolean;
-  public detailorder: boolean;
-  public waitingStatus: boolean;
-  public payStatus: boolean;
-  public paid: boolean;
-  public paidconfirm: boolean;
+
+  public finish: boolean = true;
+  public onprogress: boolean = true;
+  public pending: boolean = true;
+  public confirmpayment: boolean = true;
+  public cancelpayment: boolean = true;
+  public editdata: boolean = true;
+  public detailorder: boolean = true;
+  public waitingStatus: boolean = true;
+  public payStatus: boolean = true;
+  public paid: boolean = true;
+  public paidconfirm: boolean = true;
 
   constructor(
     public ozanorderapi: OzanorderApi,
@@ -72,150 +73,153 @@ export class OrderdetailPage {
       }
       this.ozanorderapi.ozangetBuying(dataget).subscribe((result) => {
         this.viewdata = result;
-        console.log('Success Reload Data');
 
         for (let i = 0; i < this.viewdata.length; i++) {
-          if (this.roleuser == 'user') {
 
+          if (this.roleuser == 'user') {
             this.detailorder = false;
             this.editdata = true;
 
-            if (this.viewdata[i].status == 1 && this.viewdata[i].productionstatus == 1) {
-
-              this.waitingStatus = false;
-              this.payStatus = true;
-              this.paid = true;
-
-              this.pending = false;
-              this.onprogress = true;
-              this.finish = true;
-
-              this.confirmpayment = false;
-              this.paidconfirm = true;
-              this.cancelpayment = false;
-
-            } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
-
-              this.waitingStatus = true;
-              this.payStatus = false;
-              this.paid = true;
-
-              this.pending = true;
-              this.onprogress = false;
-              this.finish = true;
-
-              this.confirmpayment = true;
-              this.paidconfirm = false;
-              this.cancelpayment = true;
-
-            } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 3) {
-
-              this.waitingStatus = true;
-              this.payStatus = false;
-              this.paid = true;
-
-              this.pending = true;
-              this.onprogress = true;
-              this.finish = false;
-
-              this.confirmpayment = true;
-              this.paidconfirm = false;
-              this.cancelpayment = true;
-
-            } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 2) {
-              this.waitingStatus = true;
-              this.payStatus = true;
-              this.paid = false;
-
-              this.pending = true;
-              this.onprogress = false;
-              this.finish = true;
-
-              this.confirmpayment = true;
-              this.paidconfirm = true;
-              this.cancelpayment = true;
-
-            } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 3) {
-
-              this.waitingStatus = true;
-              this.payStatus = true;
-              this.paid = false;
-              this.cancelpayment = true;
-
-              this.pending = true;
-              this.onprogress = true;
-              this.finish = false;
-
-              this.confirmpayment = true;
-              this.paidconfirm = true;
-              this.cancelpayment = true;
-
-            }
-
-          } else if (this.roleuser = 'admin') {
-
+            this.viewdata[i]['detailorder'] = this.detailorder;
+            this.viewdata[i]['editdata'] = this.editdata;
+          } else if (this.roleuser == 'admin') {
             this.detailorder = true;
             this.editdata = false;
             this.confirmpayment = true;
             this.cancelpayment = false;
             this.paidconfirm = true;
 
-            if (this.viewdata[i].status == 1 && this.viewdata[i].productionstatus == 1) {
+            this.viewdata[i]['detailorder'] = this.detailorder;
+            this.viewdata[i]['editdata'] = this.editdata;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+          }
 
-              this.waitingStatus = false;
-              this.payStatus = true;
-              this.paid = true;
+          if (this.viewdata[i].status == 1 && this.viewdata[i].productionstatus == 1) {
 
-              this.pending = false;
-              this.onprogress = true;
-              this.finish = true;
+            this.waitingStatus = false;
+            this.pending = false;
+            this.confirmpayment = false;
+            this.cancelpayment = false;
 
-            } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
+            //False
+            this.viewdata[i]['waitingStatus'] = this.waitingStatus;
+            this.viewdata[i]['pending'] = this.pending;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
 
-              this.waitingStatus = true;
-              this.payStatus = false;
-              this.paid = true;
+            this.payStatus = true;
+            this.paidconfirm = true;
+            this.onprogress = true;
+            this.finish = true;
+            //True
+            this.viewdata[i]['payStatus'] = this.payStatus;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
+            this.viewdata[i]['onprogress'] = this.onprogress;
+            this.viewdata[i]['finish'] = this.finish;
 
-              this.pending = true;
-              this.onprogress = false;
-              this.finish = true;
+          } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
+            this.payStatus = false;
+            this.onprogress = false;
+            this.paidconfirm = false;
+            //False
+            this.viewdata[i]['payStatus'] = this.payStatus;
+            this.viewdata[i]['onprogress'] = this.onprogress;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
 
-            } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 3) {
+            this.waitingStatus = true;
+            
+            this.pending = true;
+            this.finish = true;
+            this.confirmpayment = true;
+            this.cancelpayment = true;
+            //True
+            this.viewdata[i]['waitingStatus'] = this.waitingStatus;
+            this.viewdata[i]['pending'] = this.pending;
+            this.viewdata[i]['finish'] = this.finish;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+            console.log(this.cancelpayment)
+          } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 3) {
+            this.payStatus = false;
+            this.onprogress = false;
+            this.paidconfirm = false;
 
-              this.waitingStatus = true;
-              this.payStatus = false;
-              this.paid = true;
+            //False
+            this.viewdata[i]['payStatus'] = this.payStatus;
+            this.viewdata[i]['finish'] = this.finish;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
 
-              this.pending = true;
-              this.onprogress = true;
-              this.finish = false;
+            this.waitingStatus = true;
+            this.paid = true;
+            this.pending = true;
+            this.onprogress = true;
+            this.confirmpayment = true;
+            this.cancelpayment = true;
+            //True
+            this.viewdata[i]['waitingStatus'] = this.waitingStatus;
+            this.viewdata[i]['paid'] = this.paid;
+            this.viewdata[i]['pending'] = this.pending;
+            this.viewdata[i]['onprogress'] = this.onprogress;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+          } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 2) {
+            this.paid = false;
+            this.onprogress = false;
 
-            } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 3) {
+            //False
+            this.viewdata[i]['paid'] = this.paid;
+            this.viewdata[i]['onprogress'] = this.onprogress;
 
-              this.waitingStatus = true;
-              this.payStatus = true;
-              this.paid = false;
+            this.pending = true;
+            this.finish = true;
+            this.waitingStatus = true;
+            this.payStatus = true;
+            this.confirmpayment = true;
+            this.paidconfirm = true;
+            this.cancelpayment = true;
 
-              this.pending = true;
-              this.onprogress = true;
-              this.finish = false;
+            //True
+            this.viewdata[i]['waitingStatus'] = this.waitingStatus;
+            this.viewdata[i]['payStatus'] = this.payStatus;
+            this.viewdata[i]['pending'] = this.pending;
+            this.viewdata[i]['finish'] = this.finish;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+          } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 3) {
+            this.paid = false;
+            this.finish = false;
 
-            } else if (this.viewdata[i].status == 3 && this.viewdata[i].productionstatus == 2) {
+            //False
+            this.viewdata[i]['paid'] = this.paid;
+            this.viewdata[i]['onprogress'] = this.onprogress;
 
-              this.waitingStatus = true;
-              this.payStatus = true;
-              this.paid = false;
+            this.waitingStatus = true;
+            this.payStatus = true;
+            this.cancelpayment = true;
+            this.pending = true;
+            this.onprogress = true;
+            this.confirmpayment = true;
+            this.paidconfirm = true;
+            this.cancelpayment = true;
 
-              this.pending = true;
-              this.onprogress = false;
-              this.finish = true;
-            }
+            //True
+            this.viewdata[i]['waitingStatus'] = this.waitingStatus;
+            this.viewdata[i]['payStatus'] = this.payStatus;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+            this.viewdata[i]['pending'] = this.pending;
+            this.viewdata[i]['onprogress'] = this.onprogress;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
+            this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+
           }
         }
+        console.log(this.viewdata, 'DATA');
         loader.dismiss();
       }, (error) => { loader.dismiss() })
-    })
-    //console.log('ionViewDidLoad OrderdetailPage');
+    });
   }
 
   Editdata(event) {
@@ -226,21 +230,22 @@ export class OrderdetailPage {
 
 
   Confirmpayment(event) {
-    console.log('Result Event')
+    console.log('Succes Get Event')
     let modal = this.modalctrl.create('ConfirmpagePage', { event });
     modal.onDidDismiss(data => {
       console.log(data, 'Success Get Data Photo');
       this.dataphoto = data;
       this.imgname = this.dataphoto.imagedata;
       console.log(this.imgname, 'Succes Get Name');
+      //this.xp hoto.push(this.imgname)
     });
-    this.xphoto.push(this.imgname)
+
     modal.present();
   }
-  
+
 
   Detailorder(event) {
-    let modal = this.modalctrl.create('LookingDetailOrderPage', { event, img : this.xphoto });
+    let modal = this.modalctrl.create('LookingDetailOrderPage', { event, img: this.xphoto });
     modal.present();
   }
 

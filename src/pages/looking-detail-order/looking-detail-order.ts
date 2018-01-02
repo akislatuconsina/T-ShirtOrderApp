@@ -72,6 +72,11 @@ export class LookingDetailOrderPage {
 
 
   public seeingdownpayment(){
+    let modal = this.modalctrl.create('DownpaymentphotoPage');
+    modal.present();
+  }
+
+  public seeingpaidpayment(){
     let modal = this.modalctrl.create('PaidpaymentphotoPage');
     modal.present();
   }

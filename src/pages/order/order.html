@@ -43,31 +43,31 @@
   <button ion-button class="buttonmargin6" (click)="addnewproduct()">{{'Add Form' | translate}}</button>
   <div [hidden]="inputform">
     <ion-grid>
-      <ion-row *ngFor="let input of input">
+      <ion-row *ngFor="let inputs of input">
         <ion-col col-2.5>
           <ion-item>
             <ion-label stacked color="primary">Product Name </ion-label>
-            <ion-input type="text" [(ngModel)]="input.describe" disabled>
+            <ion-input type="text" [(ngModel)]="inputs.describe" disabled>
             </ion-input>
           </ion-item>
         </ion-col>
         <ion-col col-1>
           <ion-item>
             <ion-label stacked color="primary">Size : </ion-label>
-            <ion-input type="text" [(ngModel)]="input.size" disabled>
+            <ion-input type="text" [(ngModel)]="inputs.size" disabled>
             </ion-input>
           </ion-item>
         </ion-col>
         <ion-col col-1>
           <ion-item>
             <ion-label stacked color="primary">Quantity : </ion-label>
-            <ion-input type="text" [(ngModel)]="input.quantyorder" disabled></ion-input>
+            <ion-input type="text" [(ngModel)]="inputs.quantyorder" disabled></ion-input>
           </ion-item>
         </ion-col>
         <ion-col col-2>
           <ion-item>
             <ion-label stacked color="primary">Unit Price In Rp. : </ion-label>
-            <ion-input type="text" placeholder="0" [(ngModel)]="input.unitprice" disabled></ion-input>
+            <ion-input type="text" placeholder="0" [(ngModel)]="inputs.unitprice" disabled></ion-input>
           </ion-item>
         </ion-col>
         <ion-col col-3>
@@ -77,12 +77,10 @@
           </ion-item>
         </ion-col>
         <ion-col col-2.5>
-          <button ion-button class="buttonmargin3" (click)="getPicture()">{{'Upload' | translate}}</button>
-
           <button ion-button class="buttonmargin3" (click)="deleteproduct()">
             <ion-icon md="md-close"></ion-icon>
           </button>
-          <button ion-button (click)="lookingphoto()" class="buttonmargin3">See This Photo</button>
+          <button ion-button (click)="lookingphoto(inputs)" class="buttonmargin3">See This Photo</button>
         </ion-col>
       </ion-row>
       <input type="file" #fileInput style="visibility: hidden; height: 0px" (change)="fileChangeEvent($event)" placeholder="Upload file..."

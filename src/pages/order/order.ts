@@ -300,8 +300,10 @@ export class OrderPage {
     });
   }
 
-  public lookingphoto() {
-    let modal = this.modalCtrl.create('LookingimageproductPage', {photo : this.xphoto});
+  public lookingphoto(inputs) {
+    console.log(inputs.imagedata, 'EVENT BRE');
+    const photox = inputs.imagedata;
+    let modal = this.modalCtrl.create('LookingimageproductPage', { photo: photox  });
     modal.present();
   }
 
