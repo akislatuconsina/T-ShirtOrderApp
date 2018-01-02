@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
@@ -53,7 +54,6 @@ export class LookingDetailOrderPage {
     const data = {
       id: this.id
     }
-
     this.ozanorderapi.lookingdetailorder(data).subscribe((result) => {
       console.log(result, 'hasil looking');
       this.ozanordermodel = result;

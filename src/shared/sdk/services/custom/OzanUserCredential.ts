@@ -12,7 +12,6 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
 import { Ozanusercredential } from '../../models/Ozanusercredential';
 import { SocketConnection } from '../../sockets/socket.connections';
-import { AccessToken } from '../../models/AccessToken';
 
 
 /**

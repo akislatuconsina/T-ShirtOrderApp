@@ -1,7 +1,4 @@
 /* tslint:disable */
-import {
-  AccessToken
-} from '../index';
 
 declare var Object: any;
 export interface UserInterface {
@@ -84,7 +81,7 @@ export class User implements UserInterface {
         accessTokens: {
           name: 'accessTokens',
           type: 'any[]',
-          model: 'AccessToken',
+          model: '',
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'userId'
