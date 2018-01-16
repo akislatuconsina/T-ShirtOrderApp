@@ -129,9 +129,9 @@ export class OzanorderApi extends BaseLoopBackApi {
          * (The remote method definition does not provide any description.)
          * </em>
    *
-   * @param {Object} params 
+   * @param {object} data Request data.
    *
-   * @param {object} options 
+   * This method expects a subset of model properties as request parameters.
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -142,12 +142,14 @@ export class OzanorderApi extends BaseLoopBackApi {
    * This usually means the response is a `Ozanorder` object.)
    * </em>
    */
-  public ozangetBuying(params: any, customHeaders?: Function): Observable<any> {
-    let _method: string = "GET";
+  public getorderdetail(params: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Ozanorders/ozangetBuying";
+    "/Ozanorders/getorderdetail";
     let _routeParams: any = {};
-    let _postBody: any = {};
+    let _postBody: any = {
+      params: params
+    };
     let _urlParams: any = {};
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;

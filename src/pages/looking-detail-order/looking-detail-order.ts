@@ -21,6 +21,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'looking-detail-order.html',
 })
 export class LookingDetailOrderPage {
+  xphoto: any;
   public photo: any;
   public viewimage: any;
   public viewdata: any;
@@ -50,6 +51,7 @@ export class LookingDetailOrderPage {
 
     this.photo = this.navParams.get('imgname');
     console.log(this.photo,'Succes get Photo')
+    
 
     const data = {
       id: this.id
@@ -71,8 +73,8 @@ export class LookingDetailOrderPage {
   }
 
 
-  public seeingdownpayment(){
-    let modal = this.modalctrl.create('DownpaymentphotoPage');
+  public seeingdownpayment(){ 
+    let modal = this.modalctrl.create('DownpaymentphotoPage',{data : this.data});
     modal.present();
   }
 

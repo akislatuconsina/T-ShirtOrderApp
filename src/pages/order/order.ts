@@ -186,11 +186,11 @@ export class OrderPage {
     modal.onDidDismiss(data => {
       console.log(data);
       this.input.push(data);
-      console.log(this.input, 'DATA OPERAN')
+      console.log(this.input, 'DATA OPERAN');
       this.inputform = false;
       this.datatemporary = data;
       this.xphoto = this.datatemporary.imagedata;
-      console.log(this.xphoto,'Operan Photo')
+      console.log(this.xphoto,'Operan Photo');
       this.photoName.push(this.xphoto);
     });
     modal.present();
@@ -264,7 +264,8 @@ export class OrderPage {
 
           const datafile = {
             idorder: this.idorder,
-            namefile: this.photoName[i]
+            namefile: this.photoName[i],
+            typeimg : 'product'
           }
           this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
             console.log('Sukses Save Foto');
