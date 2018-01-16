@@ -30,12 +30,18 @@
     "@ngx-translate/http-loader": "^2.0.1",
     "angular2-uuid": "^1.1.1",
     "cordova-plugin-camera": "^3.0.0",
+    "cordova-plugin-file-transfer": {},
+    "cordova-plugin-file": {},
+    "cordova-plugin-file-opener2": {},
     "ionic-angular": "3.9.2",
+    "pdfmake": "^0.1.31",
     "ionicons": "3.0.0",
     "rxjs": "5.5.2",
     "socket.io-client": "^2.0.4",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "@ionic-native/file": "^3.14.0",
+    "@ionic-native/file-opener": "^3.14.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.1",

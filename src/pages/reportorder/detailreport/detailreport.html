@@ -3,7 +3,7 @@
 
   <ion-navbar color="primary">
     <ion-title text-center>Down Payment Report</ion-title>
-    <button ion-button (click)="downloadPDF()" class="segment2">PRINT DATA</button>
+    <button ion-button (click)="testPdf()" class="segment2">PRINT DATA</button>
   </ion-navbar>
 
 </ion-header>
@@ -19,13 +19,23 @@
     
   </ion-row>
 
+  
+  <!-- <ion-row>
+    <ion-col col-1 class="celltitle">No.</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Company Name' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Confirm To' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Paid Status' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Detail Order' | translate}}</ion-col>
+    
+  </ion-row>
+
   <ion-row *ngFor = "let datas of viewdataDP">
     <ion-col col-1 class="cell">{{datas.id}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.companyname}}</ion-col>
     <ion-col col-2.3 class="cell">{{datas.confirmto}}</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="payStatus">Payment 50 %</ion-col>
     <ion-col col-2.3 class="cell"> <button ion-button round (click)="lookingdetailDP(datas)">Looking Detail</button> </ion-col>  
-  </ion-row>
+  </ion-row> -->
 
 
 </ion-content>
