@@ -12,8 +12,6 @@ export interface OzanorderInterface {
   "vendorname"?: string;
   "trackingno"?: string;
   "deliverydate"?: Date;
-  "amount"?: number;
-  "totalamount"?: number;
   "confirmto"?: string;
   "productionstatus"?: number;
   "status"?: number;
@@ -31,8 +29,6 @@ export class Ozanorder implements OzanorderInterface {
   "vendorname": string;
   "trackingno": string;
   "deliverydate": Date;
-  "amount": number;
-  "totalamount": number;
   "confirmto": string;
   "productionstatus": number;
   "status": number;
@@ -109,14 +105,6 @@ export class Ozanorder implements OzanorderInterface {
         "deliverydate": {
           name: 'deliverydate',
           type: 'Date'
-        },
-        "amount": {
-          name: 'amount',
-          type: 'number'
-        },
-        "totalamount": {
-          name: 'totalamount',
-          type: 'number'
         },
         "confirmto": {
           name: 'confirmto',

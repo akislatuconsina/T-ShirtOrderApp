@@ -6,7 +6,8 @@ export interface OzanorderproductInterface {
   "descriptionorder"?: string;
   "sizeorder"?: string;
   "qtyorder"?: number;
-  "unitprice"?: number;
+  "amount"?: number;
+  "totalamount"?: number;
   "id"?: number;
 }
 
@@ -15,7 +16,8 @@ export class Ozanorderproduct implements OzanorderproductInterface {
   "descriptionorder": string;
   "sizeorder": string;
   "qtyorder": number;
-  "unitprice": number;
+  "amount": number;
+  "totalamount": number;
   "id": number;
   constructor(data?: OzanorderproductInterface) {
     Object.assign(this, data);
@@ -66,8 +68,12 @@ export class Ozanorderproduct implements OzanorderproductInterface {
           name: 'qtyorder',
           type: 'number'
         },
-        "unitprice": {
-          name: 'unitprice',
+        "amount": {
+          name: 'amount',
+          type: 'number'
+        },
+        "totalamount": {
+          name: 'totalamount',
           type: 'number'
         },
         "id": {
