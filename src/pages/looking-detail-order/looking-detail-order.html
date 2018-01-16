@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-  <ion-title class="title">{{ 'Report Order' | translate}}</ion-title>
+    <ion-title class="title">{{ 'Report Order' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -42,7 +42,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor ="let datas of viewdata">
+  <ion-row *ngFor="let datas of viewdata">
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">{{'Product Name' | translate}} </ion-label>
@@ -55,7 +55,7 @@
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.sizeorder" disabled></ion-input>
       </ion-item>
     </ion-col>
-    <ion-col col-3>
+    <ion-col col-2>
       <ion-item>
         <ion-label stacked color="primary">{{'Quantity' | translate}} : </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.qtyorder" disabled></ion-input>
@@ -66,6 +66,15 @@
         <ion-label stacked color="primary">{{'Price In Unit' | translate}} </ion-label>
         <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.unitprice" disabled></ion-input>
       </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <ion-item>
+        <ion-label stacked color="primary">{{'Amount' | translate}} </ion-label>
+        <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.amount" disabled></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-3>
+      <button ion-button class="buttonmargin3">See Product Image</button>
     </ion-col>
   </ion-row>
 
@@ -79,7 +88,7 @@
   </ion-row>
 
   <button ion-button round (click)="seeingdownpayment()">
-    Bukti DP 
+    Bukti DP
   </button>
   <button ion-button round (click)="seeingpaidpayment()">
     Bukti Lunas

@@ -4,12 +4,14 @@ declare var Object: any;
 export interface OzanlibraryInterface {
   "idorder"?: number;
   "namefile"?: string;
+  "typeimg"?: string;
   "id"?: number;
 }
 
 export class Ozanlibrary implements OzanlibraryInterface {
   "idorder": number;
   "namefile": string;
+  "typeimg": string;
   "id": number;
   constructor(data?: OzanlibraryInterface) {
     Object.assign(this, data);
@@ -50,6 +52,10 @@ export class Ozanlibrary implements OzanlibraryInterface {
         },
         "namefile": {
           name: 'namefile',
+          type: 'string'
+        },
+        "typeimg": {
+          name: 'typeimg',
           type: 'string'
         },
         "id": {
