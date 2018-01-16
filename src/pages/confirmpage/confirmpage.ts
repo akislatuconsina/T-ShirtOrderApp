@@ -167,7 +167,8 @@ export class ConfirmpagePage {
 
     const datafile = {
       idorder: this.idorder,
-      namefile: this.photoName
+      namefile: this.photoName,
+      typeimg : 'downpayment'
     }
     this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
       console.log('Sukses Save Foto');

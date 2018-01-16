@@ -43,10 +43,13 @@ export class OrderPage {
   public photoName = [];
   public productname = [{}];
   public input = [{}];
+  public inputData = [{}];
   public ozanmodel: any = Ozanorder;
   public ozanlibrary: any = Ozanlibrary;
   public filesToUpload: Array<File>;
 
+
+  public amount: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -63,7 +66,6 @@ export class OrderPage {
     this.filesToUpload = [];
     this.ozanmodel.buyername = this.realm;
     this.ozanmodel.companyname = this.corporate;
-    // this.input[0]['unitprice'] = 0; 
     console.log(this.input, 'Input')
     if (this.input.length == 1) {
       this.inputform = true;
@@ -72,7 +74,6 @@ export class OrderPage {
 
   ionViewDidLoad(index) {
     this.input.splice(index, 1);
-    //console.log('ionViewDidLoad OrderPage');
     this.storage.ready().then(() => {
       this.storage.get('OzanUserData').then((result) => {
         this.userid = result.id;
@@ -119,19 +120,13 @@ export class OrderPage {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
       this.photo = (readerEvent.target as any).result;
-      // console.log(this.photo);
     };
-     reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(event.target.files[0]);
 
     this.filesToUpload = <Array<File>>event.target.files;
-    // let loader = this.loadingCtrl.create({
-    //   content: "Please wait..."
-    // });
-    // loader.present();
 
     this.fileName = 'IMG_' + UUID.UUID() + '.jpg';
-    //this.photoName.push(this.fileName)
-    console.log(this.photoName,'dataphoto')
+    console.log(this.photoName, 'dataphoto')
     this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, this.fileName).then((result) => {
       console.log(result);
       loader.dismiss();
@@ -169,141 +164,469 @@ export class OrderPage {
     });
   }
 
-  // public addnewproduct() {
-  // const priceUnit = this.input[0]['unitprice'] = 0; 
-  // this.input.push({});
-  // console.log(this.input.length - 1, 'Kurang 1');
-  // console.log(this.input.length, 'Length');
-  // this.input[2]['unitprice'] = 0;
-  // for (let i = 0; i < this.input.length; i++) {
-  //   this.input[i]['unitprice'] = 0;
-  // }
-  // }
-
-
   public addnewproduct() {
     let modal = this.modalCtrl.create('AddproductPage');
     modal.onDidDismiss(data => {
       console.log(data);
-      this.input.push(data);
-      console.log(this.input, 'DATA OPERAN')
+      /**
+       * ----------------------------------------Unit Price----------------------------------------
+       */
+      if (data.describe == 'Seragam Pria (Jaring)') {
+        if (data.size == 'S') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Seragam Pria') {
+        if (data.size == 'S') {
+          this.amount = '15000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Celana Pria') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Seragam Wanita') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Celana Seragam Wanita') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Baju Driver') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Celana Driver') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      } else if (data.describe == 'Topi Kerja Hijau') {
+        if (data.size == 'S') {
+          this.amount = '13000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'M') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'L') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXL') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        } if (data.size == 'XXXX') {
+          this.amount = '10000';
+          const totalamount = data.quantyorder * this.amount;
+          data['amount'] = this.amount;
+          data['totalamount'] = totalamount;
+          this.input.push(data);
+        }
+      }
+      /**------------------------------------------------------------------------------------------ */
+
+
+
       this.inputform = false;
       this.datatemporary = data;
       this.xphoto = this.datatemporary.imagedata;
-      console.log(this.xphoto,'Operan Photo')
+      console.log(this.xphoto, 'Operan Photo');
       this.photoName.push(this.xphoto);
     });
     modal.present();
   }
-
-  // public onInputTime(event) {
-  //   console.log(event, 'VAL');
-  //   // console.log(this.input[i]['unitprice'])
-  //   for (let i = 0; i < this.input.length; i++) {
-  //     console.log(this.input[i]['unitprice']);
-  //     this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
-  //     // this.input[i]['unitprice'] = event * this.input[i]['unitprice'];
-  //   }
-  // }
-
-  // public onChange(value): any {
-  //   console.log(value, 'VALUE SELECT');
-  //   console.log(this.input.length, 'SELECT');
-  //   for (let i = 0; i < this.input.length; i++) {
-  //     // console.log(this.input[i]['descriptionorder']);
-
-  //     if(this.input[i]['descriptionorder'] == 'Seragam Pria (Jaring)') {
-  //       console.log(this.input[i]['sizeorder'] , 'SIZE');
-  //       if(this.input[i]['sizeorder'] == 'S') {
-  //         this.input[i]['unitprice'] = 10000;
-  //       } else if (this.input[i]['sizeorder'] == 'M'){
-  //         this.input[i]['unitprice'] = 15000;
-  //       } else if (this.input[i]['sizeorder'] == 'L'){
-  //         this.input[i]['unitprice'] = 20000;
-  //       } else if (this.input[i]['sizeorder'] == 'XL'){
-  //         this.input[i]['unitprice'] = 25000;
-  //       } else if (this.input[i]['sizeorder'] == 'XXL'){
-  //         this.input[i]['unitprice'] = 30000;
-  //       } else if (this.input[i]['sizeorder'] == 'XXXL'){
-  //         this.input[i]['unitprice'] = 35000;
-  //       }
-  //     }
-  //   }
-  // }
 
   public deleteproduct(index) {
     this.input.splice(index, 1);
   }
 
   public sendorder() {
-    console.log(this.input, "INPUT");
-    let loader = this.loadingCtrl.create({
-      content: "Please wait..."
-    });
-    loader.present();
+    if (this.input.length !== 0) {
+      /**----------------------------------------INSERT DATA ORDER---------------------------------------------------------------------- */
+      const dataOrder = {
+        userid: this.userid,
+        buyername: this.realm,
+        companyname: this.corporate,
+        address: this.ozanmodel.address,
+        shippedto: this.ozanmodel.shippedto,
+        confirmto: '-',
+        invoiceto: '-',
+        vendorname: '-',
+        trackingno: '-',
+        productionstatus: 1,
+        status: 1
+      }
+      console.log(dataOrder, 'DataOrder');
+      this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
+        console.log('Sukses ozanBuying');
+        this.datatemp = result;
+        this.idorder = this.datatemp.id
+        this.navCtrl.setRoot('OrderdetailPage');
 
-    const dataOrder = {
-      userid: this.userid,
-      buyername: this.realm,
-      companyname: this.corporate,
-      address: this.ozanmodel.address,
-      shippedto: this.ozanmodel.shippedto,
-      confirmto: '-',
-      productionstatus: 1,
-      status: 1
-    }
-    this.ozanorderapi.ozanBuying(dataOrder).subscribe(result => {
-      console.log(result, 'Sukses Save Buying');
-      this.datatemp = result;
-      this.idorder = this.datatemp.id
+        /**----------------------------------------INSERT DATA PRODUCT---------------------------------------------------------------------- */
+        for (let i = 0; i < this.input.length; i++) {
+          this.input[i]['idorder'] = this.idorder;
+          console.log(this.input, 'DATAAAAAAAA');
+          this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
+            console.log('Sukses ozanProduct');
 
-      for (let i = 0; i < this.input.length; i++) {
-        this.input[i]['idorder'] = this.idorder;
-        this.ozanorderproductapi.ozanProduct(this.input[i]).subscribe(result => {
-          console.log('Sukses Save Product Detail');
+            /**----------------------------------------INSERT DATA FILE---------------------------------------------------------------------- */
+            const datafile = {
+              idorder: this.idorder,
+              namefile: this.photoName[i],
+              // typeimg: 'product'
+            }
 
-          const datafile = {
-            idorder: this.idorder,
-            namefile: this.photoName[i]
-          }
-          this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
-            console.log('Sukses Save Foto');
-            loader.dismiss();
+            this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
+              console.log('Sukses Ozanlibrary');
+            }, (error) => {
+              console.log('Error Upload Name Photo');
+              let alert = this.alertCtrl.create({
+                subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
+                buttons: ['Dismiss']
+              });
+              alert.present();
+            });
+
+            /**-------------------------------------------------------------------------------------------------------------- */
           }, (error) => {
-            console.log('Error Upload Name Photo');
-            loader.dismiss();
+            console.log(error);
             let alert = this.alertCtrl.create({
               subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
               buttons: ['Dismiss']
             });
             alert.present();
           });
-        }, (error) => {
-          console.log(error);
-          loader.dismiss();
-          let alert = this.alertCtrl.create({
-            subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
-            buttons: ['Dismiss']
-          });
-          alert.present();
+          /**-------------------------------------------------------------------------------------------------------------- */
+        }
+        let alert = this.alertCtrl.create({
+          subTitle: this.translate.instant('Sukses Order.'),
+          buttons: ['Dismiss']
         });
-      }
-
-    }, (error) => {
-      console.log(error);
-      loader.dismiss();
+        alert.present();
+      }, (error) => {
+        console.log(error);
+        let alert = this.alertCtrl.create({
+          subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      });
+      /**-------------------------------------------------------------------------------------------------------------- */
+    } else {
       let alert = this.alertCtrl.create({
-        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
+        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Cant empty the product detail.'),
         buttons: ['Dismiss']
       });
       alert.present();
-    });
+    }
   }
 
   public lookingphoto(inputs) {
     console.log(inputs.imagedata, 'EVENT BRE');
     const photox = inputs.imagedata;
-    let modal = this.modalCtrl.create('LookingimageproductPage', { photo: photox  });
+    let modal = this.modalCtrl.create('LookingimageproductPage', { photo: photox });
     modal.present();
   }
 
