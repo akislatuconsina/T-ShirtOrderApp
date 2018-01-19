@@ -64,13 +64,13 @@
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">{{'Price In Unit' | translate}} </ion-label>
-        <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.unitprice" disabled></ion-input>
+        <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.amount" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">{{'Amount' | translate}} </ion-label>
-        <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.amount" disabled></ion-input>
+        <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.totalamount" disabled></ion-input>
       </ion-item>
     </ion-col>
     <ion-col col-3>
@@ -82,7 +82,7 @@
     <ion-list class="marginl">
       <ion-item>
         <ion-label stacked color="primary">{{'Total Amount' | translate}} </ion-label>
-        <ion-input type="text" placeholder="{{'Automatic' | translate}}"></ion-input>
+        <ion-input type="text" placeholder="{{'Automatic' | translate}}" ></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>

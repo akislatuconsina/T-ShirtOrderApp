@@ -127,29 +127,32 @@ export class OrderdetailPage {
             this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['onprogress'] = this.onprogress;
             this.viewdata[i]['finish'] = this.finish;
-            this.viewdata[i]['paid'] = this.paid;
+            
 
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
             this.payStatus = false;
             this.onprogress = false;
-            this.paidconfirm = false;
+          
+            this.confirmpayment = false;
             //False
             this.viewdata[i]['payStatus'] = this.payStatus;
             this.viewdata[i]['onprogress'] = this.onprogress;
-            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
+          
+            this.viewdata[i]['confrimpayment'] = this.confirmpayment;
 
             this.waitingStatus = true;
-            
             this.pending = true;
             this.finish = true;
-            this.confirmpayment = true;
+            this.paidconfirm = true;
             this.cancelpayment = true;
+            this.paid = true;
             //True
             this.viewdata[i]['waitingStatus'] = this.waitingStatus;
             this.viewdata[i]['pending'] = this.pending;
             this.viewdata[i]['finish'] = this.finish;
-            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
+            this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['cancelpayment'] = this.cancelpayment;
+            this.viewdata[i]['paid'] = this.paid;
            // console.log(this.cancelpayment)
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 3) {
             this.payStatus = false;
@@ -256,7 +259,7 @@ export class OrderdetailPage {
 
 
   Detailorder(event) {
-    let modal = this.modalctrl.create('LookingDetailOrderPage', { event, img: this.xphoto });
+    let modal = this.modalctrl.create('LookingDetailOrderPage', { data: event });
     modal.present();
   }
 
