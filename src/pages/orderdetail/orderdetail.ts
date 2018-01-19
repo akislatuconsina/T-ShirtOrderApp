@@ -256,7 +256,7 @@ export class OrderdetailPage {
 
 
   Detailorder(event) {
-    let modal = this.modalctrl.create('LookingDetailOrderPage', { event, img: this.xphoto });
+    let modal = this.modalctrl.create('LookingDetailOrderPage', { data: event });
     modal.present();
   }
 
