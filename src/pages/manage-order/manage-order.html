@@ -1,18 +1,52 @@
 <!--
-  Generated template for the ManageOrderPage page.
+  Generated template for the OrderdetailPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
 
-  <ion-navbar>
-  <ion-title class="title">{{ 'Manage Order' | translate}}</ion-title>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="title" text-center>{{ 'History Order' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-row>
+    <ion-col col-1 class="celltitle">No.</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Company Name' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Confirm To' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Paid Status' | translate}}</ion-col>
+    <ion-col col-2.3 class="celltitle">{{ 'Production Status' | translate}}</ion-col>
+    <ion-col col-3 class="celltitle">{{ 'Action' | translate}}</ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let datas of viewdata">
+    <ion-col col-1 class="cell" align-center>{{datas.id}}</ion-col>
+    <ion-col col-2.3 class="cell" text-center>{{datas.companyname}}</ion-col>
+    <ion-col col-2.3 class="cell" text-center>{{datas.confirmto}}</ion-col>
+
+    <ion-col col-2.3 class="cell" text-center [hidden]="datas.waitingStatus">{{'Waiting For Payment' | translate}}</ion-col>
+    <ion-col col-2.3 class="cell" text-center [hidden]="datas.payStatus">{{'DP Already In' | translate}}</ion-col>
+    <ion-col col-2.31.5 class="cell" text-center [hidden]="datas.paid">{{'Full Payment' | translate}}</ion-col>
+
+    <ion-col col-2.3 class="cell" [hidden]="datas.pending" align-center>{{'Pending' | translate}}</ion-col>
+    <ion-col col-2.3 class="cell" [hidden]="datas.onprogress" text-center>{{'On Progress' | translate}}</ion-col>
+    <ion-col col-2.3 class="cell" [hidden]="datas.finish" text-center>{{'Finish' | translate}}</ion-col>
+    
+    <ion-col col-3 class="button">
+      <button ion-button (click)="Detailorder(datas)" [hidden]="datas.detailorder">{{'Detail' | translate}}</button>
+      <button ion-button (click)="Editdata(datas)" [hidden]="datas.editdata">{{'Detail Order' | translate}}</button>
+      <button ion-button (click)="Confirmpayment(datas)" [hidden]="datas.confirmpayment">{{'Confirm' | translate}}</button>
+      <button ion-button (click)="Paidconfirm(datas)" [hidden]="datas.paidconfirm">{{'Paid Confirm' | translate}}</button>
+      <button ion-button [hidden]="datas.cancelpayment">{{'Cancel' | translate}}</button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>
