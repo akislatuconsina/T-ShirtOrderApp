@@ -37,48 +37,53 @@ export class LookingDetailOrderPage {
     public translate: TranslateService,
     public storage: Storage,
     public navParams: NavParams,
-    public modalctrl : ModalController
+    public modalctrl: ModalController
   ) {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad LookingDetailOrderPage');
-    this.data = this.navParams.get('event')
-    this.photo = this.navParams.get('img');
-    // console.log(this.data,'result')
+    this.data = this.navParams.get('data');
     this.id = this.data.id;
-    // console.log(this.id);
-
-    this.photo = this.navParams.get('imgname');
-    console.log(this.photo,'Succes get Photo')
-    
+    console.log(this.id, 'ID DATA');
 
     const data = {
       id: this.id
     }
+
     this.ozanorderapi.lookingdetailorder(data).subscribe((result) => {
-      console.log(result, 'hasil looking');
       this.ozanordermodel = result;
+      console.log(this.ozanordermodel, 'Data Order');
+      
+      this.ozanorderproductapi.lookingdetailorderproduct(data).subscribe((result) => {
+        this.viewdata = result;
+        console.log(this.viewdata, 'Data Product');
+      })
+
     })
 
-    this.ozanorderproductapi.lookingdetailorderproduct(data).subscribe((result) => {
-      console.log(result, 'ini looking dua')
-      this.viewdata = result;
-    })
+    // console.log('ionViewDidLoad LookingDetailOrderPage');
+    // this.data = this.navParams.get('event')
+    // this.photo = this.navParams.get('img');
+    // console.log(this.data,'result')
+    // this.id = this.data.id;
+    // console.log(this.id);
 
-    this.ozanliblaryapi.lookingimageorder(data).subscribe((result) => {
-      console.log(result, 'ini looking tiga')
-      this.viewimage = result;
-    })
+    // this.photo = this.navParams.get('imgname');
+    // console.log(this.photo, 'Succes get Photo')
+
+    // this.ozanliblaryapi.lookingimageorder(data).subscribe((result) => {
+    //   console.log(result, 'ini looking tiga')
+    //   this.viewimage = result;
+    // })
   }
 
 
-  public seeingdownpayment(){ 
-    let modal = this.modalctrl.create('DownpaymentphotoPage',{data : this.data});
+  public seeingdownpayment() {
+    let modal = this.modalctrl.create('DownpaymentphotoPage', { data: this.data });
     modal.present();
   }
 
-  public seeingpaidpayment(){
+  public seeingpaidpayment() {
     let modal = this.modalctrl.create('PaidpaymentphotoPage');
     modal.present();
   }
