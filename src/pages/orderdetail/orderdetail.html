@@ -39,13 +39,16 @@
     <ion-col col-2.3 class="cell" [hidden]="datas.pending" align-center>{{'Pending' | translate}}</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="datas.onprogress" text-center>{{'On Progress' | translate}}</ion-col>
     <ion-col col-2.3 class="cell" [hidden]="datas.finish" text-center>{{'Finish' | translate}}</ion-col>
-    
+
     <ion-col col-3 class="button">
-      <button ion-button (click)="Detailorder(datas)" [hidden]="datas.detailorder">{{'Detail' | translate}}</button>
-      <button ion-button (click)="Editdata(datas)" [hidden]="datas.editdata">{{'Detail Order' | translate}}</button>
-      <button ion-button (click)="Confirmpayment(datas)" [hidden]="datas.confirmpayment">{{'Confirm' | translate}}</button>
-      <button ion-button (click)="Paidconfirm(datas)" [hidden]="datas.paidconfirm">{{'Paid Confirm' | translate}}</button>
-      <button ion-button [hidden]="datas.cancelpayment">{{'Cancel' | translate}}</button>
+      <ion-row>
+          <button ion-button (click)="Detailorder(datas)" [hidden]="datas.detailorder">{{'Detail' | translate}}</button>
+          <button ion-button (click)="Editdata(datas)" [hidden]="datas.editdata">{{'Detail Order' | translate}}</button>
+          <button ion-button (click)="Confirmpayment(datas)" [hidden]="datas.confirmpayment">{{'Confirm' | translate}}</button>
+
+          <button ion-button (click)="Paidconfirm(datas)" [hidden]="datas.paidconfirm">{{'Paid Confirm' | translate}}</button>
+          <button ion-button [hidden]="datas.cancelpayment">{{'Cancel' | translate}}</button>
+      </ion-row>
     </ion-col>
   </ion-row>
 

@@ -82,7 +82,7 @@
     <ion-list class="marginl">
       <ion-item>
         <ion-label stacked color="primary">{{'Total Amount' | translate}} </ion-label>
-        <ion-input type="text" placeholder="{{'Automatic' | translate}}" ></ion-input>
+        <ion-input type="text" [(ngModel)]="totalsAmount"  disabled></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>
