@@ -23,7 +23,7 @@ export class MyApp {
   public storageEventCorporate: any;
   public storageData: any;
   public menuCredential: any;
-  public language = 'id';
+  public language = 'en';
   rootPage: any;
 
   pages: Array<{ title: string, component: any, icons: any }>;

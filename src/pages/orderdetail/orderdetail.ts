@@ -62,26 +62,26 @@ export class OrderdetailPage {
     loader.present();
     this.storage.get('OzanUserCredential').then((result) => {
       this.datatemporary = result;
-     console.log(result,'succes reload result')
+      console.log(result, 'succes reload result')
       this.userId = this.datatemporary.userId;
-     console.log(this.userId,'Succes Reload User Id');
+      console.log(this.userId, 'Succes Reload User Id');
       this.storage.get('OzanUserData').then((result) => {
         this.datatemp = result;
         this.roleUser = this.datatemp.roleuser;
-       console.log(this.roleUser, 'Success Reload Role')
+        console.log(this.roleUser, 'Success Reload Role')
       })
 
 
-      
+
       const dataget = {
         userid: this.userId,
-        roleuser : this.roleUser
-      }    
-      
+        roleuser: this.roleUser
+      }
+
 
       this.ozanorderapi.getorderdetail(dataget).subscribe((result) => {
         console.log(result)
-        this.viewdata = result; 
+        this.viewdata = result;
 
         for (let i = 0; i < this.viewdata.length; i++) {
 
@@ -127,17 +127,18 @@ export class OrderdetailPage {
             this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['onprogress'] = this.onprogress;
             this.viewdata[i]['finish'] = this.finish;
-            
+            this.viewdata[i]['paid'] = this.paid;
+
 
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
             this.payStatus = false;
             this.onprogress = false;
-          
+
             this.confirmpayment = false;
             //False
             this.viewdata[i]['payStatus'] = this.payStatus;
             this.viewdata[i]['onprogress'] = this.onprogress;
-          
+
             this.viewdata[i]['confrimpayment'] = this.confirmpayment;
 
             this.waitingStatus = true;
@@ -153,7 +154,7 @@ export class OrderdetailPage {
             this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['cancelpayment'] = this.cancelpayment;
             this.viewdata[i]['paid'] = this.paid;
-           // console.log(this.cancelpayment)
+            // console.log(this.cancelpayment)
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 3) {
             this.payStatus = false;
             this.onprogress = false;
@@ -230,7 +231,7 @@ export class OrderdetailPage {
 
           }
         }
-       // console.log(this.viewdata, 'DATA');
+        // console.log(this.viewdata, 'DATA');
         loader.dismiss();
       }, (error) => { loader.dismiss() })
     });
@@ -244,13 +245,13 @@ export class OrderdetailPage {
 
 
   Confirmpayment(event) {
-   // console.log('Succes Get Event')
+    // console.log('Succes Get Event')
     let modal = this.modalctrl.create('ConfirmpagePage', { event });
     modal.onDidDismiss(data => {
-    //  console.log(data, 'Success Get Data Photo');
+      //  console.log(data, 'Success Get Data Photo');
       this.dataphoto = data;
       this.imgname = this.dataphoto.imagedata;
-     // console.log(this.imgname, 'Succes Get Name');
+      // console.log(this.imgname, 'Succes Get Name');
       //this.xp hoto.push(this.imgname)
     });
 

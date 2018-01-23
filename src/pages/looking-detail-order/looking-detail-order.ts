@@ -28,6 +28,7 @@ export class LookingDetailOrderPage {
   public id: any;
   public data: any;
   public ozanordermodel: any = Ozanorder;
+  public totalsAmount: any;
 
   constructor(
     public ozanorderproductapi: OzanorderproductApi,
@@ -56,6 +57,11 @@ export class LookingDetailOrderPage {
       
       this.ozanorderproductapi.lookingdetailorderproduct(data).subscribe((result) => {
         this.viewdata = result;
+        let data = 0;
+        for (let i = 0; i < this.viewdata.length; i++) {
+          data +=this.viewdata[i].totalamount
+        }
+        this.totalsAmount = data;
         console.log(this.viewdata, 'Data Product');
       })
 
