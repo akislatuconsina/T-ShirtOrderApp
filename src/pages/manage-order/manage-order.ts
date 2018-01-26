@@ -110,13 +110,11 @@ export class ManageOrderPage {
 
             this.waitingStatus = false;
             this.pending = false;
-            this.confirmpayment = false;
             this.cancelpayment = false;
 
             //False
             this.viewdata[i]['waitingStatus'] = this.waitingStatus;
             this.viewdata[i]['pending'] = this.pending;
-            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
             this.viewdata[i]['cancelpayment'] = this.cancelpayment;
 
             this.payStatus = true;
@@ -124,12 +122,14 @@ export class ManageOrderPage {
             this.onprogress = true;
             this.finish = true;
             this.paid = true;
+            this.confirmpayment = true;
             //True
             this.viewdata[i]['payStatus'] = this.payStatus;
             this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['onprogress'] = this.onprogress;
             this.viewdata[i]['finish'] = this.finish;
             this.viewdata[i]['paid'] = this.paid;
+            this.viewdata[i]['confirmpayment'] = this.confirmpayment;
 
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
             this.payStatus = false;

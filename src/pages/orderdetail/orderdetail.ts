@@ -44,6 +44,8 @@ export class OrderdetailPage {
   public paid: boolean = true;
   public paidconfirm: boolean = true;
 
+  public listData: boolean;
+  public dataEmpty: boolean;
   constructor(
     public ozanorderapi: OzanorderApi,
     public navCtrl: NavController,
@@ -82,6 +84,15 @@ export class OrderdetailPage {
       this.ozanorderapi.getorderdetail(dataget).subscribe((result) => {
         console.log(result)
         this.viewdata = result;
+
+        console.log(this.viewdata, 'DATAAaaa');
+        if (this.viewdata.length == 0) {
+          this.listData = true;
+          this.dataEmpty = false;
+        } else if (this.viewdata.length != 0) {
+          this.listData = false;
+          this.dataEmpty = true;
+        }
 
         for (let i = 0; i < this.viewdata.length; i++) {
 
@@ -122,12 +133,14 @@ export class OrderdetailPage {
             this.onprogress = true;
             this.finish = true;
             this.paid = true;
+            this.editdata = true;
             //True
             this.viewdata[i]['payStatus'] = this.payStatus;
             this.viewdata[i]['paidconfirm'] = this.paidconfirm;
             this.viewdata[i]['onprogress'] = this.onprogress;
             this.viewdata[i]['finish'] = this.finish;
             this.viewdata[i]['paid'] = this.paid;
+            this.viewdata[i]['editdata'] = this.editdata;
 
 
           } else if (this.viewdata[i].status == 2 && this.viewdata[i].productionstatus == 2) {
@@ -231,6 +244,7 @@ export class OrderdetailPage {
 
           }
         }
+
         // console.log(this.viewdata, 'DATA');
         loader.dismiss();
       }, (error) => { loader.dismiss() })
@@ -248,11 +262,12 @@ export class OrderdetailPage {
     // console.log('Succes Get Event')
     let modal = this.modalctrl.create('ConfirmpagePage', { event });
     modal.onDidDismiss(data => {
-      //  console.log(data, 'Success Get Data Photo');
-      this.dataphoto = data;
-      this.imgname = this.dataphoto.imagedata;
-      // console.log(this.imgname, 'Succes Get Name');
-      //this.xp hoto.push(this.imgname)
+      if (data == null || data == undefined) {
+        console.log(data, 'data dismiss confirm button')
+      } else {
+        this.dataphoto = data;
+        this.imgname = this.dataphoto.imagedata;
+      }
     });
 
     modal.present();

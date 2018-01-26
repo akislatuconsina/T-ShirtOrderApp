@@ -17,19 +17,19 @@
     <ion-list class="marginright">
       <ion-item>
         <ion-label stacked color="primary">{{'Buyer' | translate }}  </ion-label>
-        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.buyername"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.buyername" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Company Name' | translate }} :</ion-label>
-        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.companyname"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.companyname" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Address' | translate}} : </ion-label>
-        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.address"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.address" disabled></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked color="primary">{{'Shipped To' | translate}} : </ion-label>
-        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.shippedto"></ion-input>
+        <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.shippedto" disabled></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>
@@ -53,7 +53,6 @@
           <ion-option value="XXXL">XXXL</ion-option>
           <ion-option value="XXXXL">XXXXL</ion-option>
         </ion-select>
-        <!-- <ion-input type="text" placeholder="Empty" [(ngModel)]="datas.sizeorder" ></ion-input> -->
       </ion-item>
     </ion-col>
     <ion-col col-3>
@@ -65,7 +64,7 @@
     <ion-col col-3>
       <ion-item>
         <ion-label stacked color="primary">{{'Price In Unit' | translate}} </ion-label>
-        <ion-input type="text" [(ngModel)]="datas.unitprice" disabled></ion-input>
+        <ion-input type="text" [(ngModel)]="datas.amount" disabled></ion-input>
       </ion-item>
     </ion-col>
   </ion-row>
@@ -74,7 +73,7 @@
     <ion-list class="marginl">
       <ion-item>
         <ion-label stacked color="primary">{{'Total Amount' | translate}} </ion-label>
-        <ion-input type="text" placeholder="Automatic"></ion-input>
+        <ion-input type="text" [(ngModel)]="totalsAmount" disabled></ion-input>
       </ion-item>
     </ion-list>
   </ion-row>
@@ -84,8 +83,8 @@
       <ion-item>
         <ion-label stacked color="primary">{{'Confirm To' | translate}} : </ion-label>
         <ion-select [(ngModel)]="ozanordermodel.confirmto">
-          <ion-option value="Mrs.Inggrid">Mrs.Inggrid</ion-option>
-          <ion-option value="Mr.Dion">Mrs.Dion</ion-option>
+          <ion-option [selected]="true" value="Mrs.Inggrid">Mrs. Inggrid</ion-option>
+          <ion-option value="Mr.Dion">Mrs. Dion</ion-option>
         </ion-select>
       </ion-item>
     </ion-col>
@@ -112,5 +111,13 @@
     </ion-col>
   </ion-row>
 
+  <div *ngFor="let images of library">
+      <div class="foto-div" [ngStyle]="{'background-image': 'url(' + images.url + ')'}" menuClose></div>
+  </div>
+  
+
+  <!-- <button ion-button (click)="dpPayment(library)" [hidden]="dp">{{'Bukti DP' | translate}}</button>
+  <button ion-button (click)="fullPayment(library)" [hidden]="full">{{'Bukti Pelunasan' | translate}}</button> -->
+  
   <button ion-button (click)="update()">{{'Update' | translate}}</button>
 </ion-content>

@@ -35,9 +35,14 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-col col-5>
-      <button ion-button round full (click)="uploadfile()">{{'Upload' | translate}}</button>
-      <button ion-button round full (click)="sendfilepayment()">{{'Send' | translate}}</button>
-    </ion-col>
+    <ion-item>
+      <ion-label stacked color="primary">Pilih Metode Pembayaran :</ion-label>
+      <ion-select [(ngModel)]="payment">
+        <ion-option [selected]="true" value="2">Pembayaran DP</ion-option>
+        <ion-option value="3">Pembayaran Full</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button round full (click)="uploadfile()">{{'Upload' | translate}}</button>
+    <button ion-button round full (click)="sendfilepayment()">{{'Send' | translate}}</button>
   </ion-toolbar>
 </ion-footer>

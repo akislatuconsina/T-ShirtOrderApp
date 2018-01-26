@@ -575,6 +575,7 @@ export class OrderPage {
             const datafile = {
               idorder: this.idorder,
               namefile: this.photoName[i],
+              flag: 'foto-product'
               // typeimg: 'product'
             }
 

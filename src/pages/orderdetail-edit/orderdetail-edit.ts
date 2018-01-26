@@ -8,6 +8,7 @@ import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
+
 /**
  * Generated class for the OrderdetailEditPage page.
  *
@@ -25,9 +26,14 @@ export class OrderdetailEditPage {
   public id: any;
   public data: any;
   public ozanordermodel: any = Ozanorder
-  public ozanorderproduct : any = Ozanorderproduct
+  public ozanorderproduct: any = Ozanorderproduct
 
-  // public dataEdit = [{}];
+  public library: any;
+  public totalsAmount: any;
+  public dp: boolean;
+  public full: boolean;
+
+  public fullPath: any;
 
   constructor(
     public ozanorderproductapi: OzanorderproductApi,
@@ -36,35 +42,50 @@ export class OrderdetailEditPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
-    public translate : TranslateService,
+    public translate: TranslateService
   ) {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad OrderdetailEditPage');
     this.data = this.navParams.get('event')
     this.id = this.data.id;
 
-
-    const data = {
+    const dataId = {
       id: this.id
     }
 
-    this.ozanorderapi.changedetailorder(data).subscribe((result) => {
-      console.log(result, 'hasil looking');
+    this.ozanorderapi.lookingdetailorder(dataId).subscribe((result) => {
       this.ozanordermodel = result;
-    })
-    
-    this.ozanorderproductapi.changedetailproduct(data).subscribe((result)=>{
-      console.log(result, 'hasil looking 2')
-      this.viewdata = result;
-    })
+      console.log(this.ozanordermodel, 'Data Order');
 
+      this.ozanorderproductapi.lookingdetailorderproduct(dataId).subscribe((result) => {
+        this.viewdata = result;
+        let data = 0;
+        for (let i = 0; i < this.viewdata.length; i++) {
+          data += this.viewdata[i].totalamount
+        }
+        this.totalsAmount = data;
 
+        this.ozanliblaryapi.lookingimageorder(dataId).subscribe((result) => {
+          this.library = result;
+          for(let i=0; i < this.library.length; i++){
+            this.library[i]['url'] = 'http://localhost:3000/api/OzanContainers/ozan/download/'+this.library[i].namefile;
+          }
+          console.log(this.library, 'Library');
+        })
+      })
+    })
+  }
+
+  dpPayment(event) {
+    console.log(event, 'Data DP');
+  }
+
+  fullPayment(event) {
+    console.log(event, 'Data Full');
   }
 
   update() {
-
     const dataorder = {
       buyername: this.ozanordermodel.buyername,
       companyname: this.ozanordermodel.companyname,
@@ -80,17 +101,16 @@ export class OrderdetailEditPage {
     })
 
     const dataproduct = {
-      descriptionorder : this.viewdata.descriptionorder,
-      sizeorder : this.viewdata.sizeorder,
-      qtyorder : this.viewdata.qtyorder,
-      unitprice : this.viewdata.unitprice,
+      descriptionorder: this.viewdata.descriptionorder,
+      sizeorder: this.viewdata.sizeorder,
+      qtyorder: this.viewdata.qtyorder,
+      unitprice: this.viewdata.unitprice,
     }
     console.log(this.viewdata, 'DATA EDIT')
 
-    this.ozanorderproductapi.changedetailproduct(dataproduct).subscribe((result)=>{
+    this.ozanorderproductapi.changedetailproduct(dataproduct).subscribe((result) => {
       console.log(result, 'hasil replace')
     })
-
   }
 
 }

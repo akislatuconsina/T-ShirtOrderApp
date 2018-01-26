@@ -38,6 +38,8 @@ export class ConfirmpagePage {
   public chip: boolean;
   public nochip: boolean;
 
+  public payment: any;
+
 
   constructor(
     public navCtrl: NavController,
@@ -165,24 +167,44 @@ export class ConfirmpagePage {
     });
     loader.present();
 
-    const datafile = {
-      idorder: this.idorder,
-      namefile: this.photoName,
-      typeimg : 'downpayment'
-    }
-    this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
-      console.log('Sukses Save Foto');
-      loader.dismiss();
-    }, (error) => {
-      console.log('Error Upload Name Photo');
-      loader.dismiss();
-      let alert = this.alertCtrl.create({
-        subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
-        buttons: ['Dismiss']
-      });
-      alert.present();
-    });
+    if (this.payment == 2) {
+      const datafile = {
+        idorder: this.idorder,
+        namefile: this.photoName,
+        flag: 'payment-dp'
+      }
 
+      this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
+        console.log('Sukses Save Foto');
+        loader.dismiss();
+      }, (error) => {
+        console.log('Error Upload Name Photo');
+        loader.dismiss();
+        let alert = this.alertCtrl.create({
+          subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      });
+    } else if (this.payment == 3) {
+      const datafile = {
+        idorder: this.idorder,
+        namefile: this.photoName,
+        flag: 'payment-full'
+      }
+      this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
+        console.log('Sukses Save Foto');
+        loader.dismiss();
+      }, (error) => {
+        console.log('Error Upload Name Photo');
+        loader.dismiss();
+        let alert = this.alertCtrl.create({
+          subTitle: this.translate.instant('Ups.. Sorry. Cant Order. Check your connection! And Try Again.'),
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      });
+    }
   }
 
 
