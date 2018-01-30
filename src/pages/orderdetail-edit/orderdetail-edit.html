@@ -16,7 +16,7 @@
   <ion-row>
     <ion-list class="marginright">
       <ion-item>
-        <ion-label stacked color="primary">{{'Buyer' | translate }}  </ion-label>
+        <ion-label stacked color="primary">{{'Buyer' | translate }} </ion-label>
         <ion-input type="text" placeholder="Automatic" [(ngModel)]="ozanordermodel.buyername" disabled></ion-input>
       </ion-item>
       <ion-item>
@@ -111,13 +111,13 @@
     </ion-col>
   </ion-row>
 
-  <div *ngFor="let images of library">
-      <div class="foto-div" [ngStyle]="{'background-image': 'url(' + images.url + ')'}" menuClose></div>
-  </div>
-  
-
   <!-- <button ion-button (click)="dpPayment(library)" [hidden]="dp">{{'Bukti DP' | translate}}</button>
   <button ion-button (click)="fullPayment(library)" [hidden]="full">{{'Bukti Pelunasan' | translate}}</button> -->
-  
+
   <button ion-button (click)="update()">{{'Update' | translate}}</button>
+
+
+  <div *ngFor="let images of library">
+    <div class="foto-div" [ngStyle]="{'background-image': 'url(' + images.url + ')'}" menuClose></div>
+  </div>
 </ion-content>

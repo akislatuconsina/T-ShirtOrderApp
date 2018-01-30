@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController  } from 'ionic-angular';
 import { OzanorderApi } from './../../shared/sdk/services/custom/Ozanorder';
 import { Ozanorder } from './../../shared/sdk/models/Ozanorder';
 import { OzanorderproductApi } from './../../shared/sdk/services/custom/Ozanorderproduct';
@@ -42,7 +42,8 @@ export class OrderdetailEditPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public viewCtrl: ViewController
   ) {
   }
 
@@ -98,18 +99,20 @@ export class OrderdetailEditPage {
 
     this.ozanorderapi.updatedataorder(dataorder).subscribe((result) => {
       console.log(result, 'hasil change data')
-    })
 
-    const dataproduct = {
-      descriptionorder: this.viewdata.descriptionorder,
-      sizeorder: this.viewdata.sizeorder,
-      qtyorder: this.viewdata.qtyorder,
-      unitprice: this.viewdata.unitprice,
-    }
-    console.log(this.viewdata, 'DATA EDIT')
+      const dataproduct = {
+        descriptionorder: this.viewdata.descriptionorder,
+        sizeorder: this.viewdata.sizeorder,
+        qtyorder: this.viewdata.qtyorder,
+        unitprice: this.viewdata.unitprice,
+      }
+      console.log(this.viewdata, 'DATA EDIT')
+  
+      this.ozanorderproductapi.changedetailproduct(dataproduct).subscribe((result) => {
+        console.log(result, 'hasil replace');
 
-    this.ozanorderproductapi.changedetailproduct(dataproduct).subscribe((result) => {
-      console.log(result, 'hasil replace')
+        this.viewCtrl.dismiss();
+      })
     })
   }
 
