@@ -1,3 +1,4 @@
+import { OzanusercredentialApi } from '../../shared/sdk/services/custom/Ozanusercredential';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,12 +22,17 @@ export class MemberListPage {
     public navCtrl: NavController,
     public translate : TranslateService,
     public storage : Storage,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public ozanMember: OzanusercredentialApi
     ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MemberListPage');
+
+    this.ozanMember.find().subscribe(result => {
+      console.log(result, 'Member Data');
+    })
   }
 
 }

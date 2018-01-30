@@ -138,7 +138,7 @@ export class ConfirmpagePage {
     // };
     this.fileName = 'IMG_' + UUID.UUID() + '.jpg';
     //this.photo = this.fileName;
-    this.photoName.push(this.fileName)
+    this.photoName = this.fileName;
     //this.photo = this.fileName;
     this.makeFileRequest("http://localhost:3000/api/OzanContainers/ozan/upload", [], this.filesToUpload, this.fileName).then((result) => {
       console.log('file request ');
@@ -170,7 +170,7 @@ export class ConfirmpagePage {
     if (this.payment == 2) {
       const datafile = {
         idorder: this.idorder,
-        namefile: this.photoName,
+        namefile: this.fileName,
         flag: 'payment-dp'
       }
 
@@ -189,7 +189,7 @@ export class ConfirmpagePage {
     } else if (this.payment == 3) {
       const datafile = {
         idorder: this.idorder,
-        namefile: this.photoName,
+        namefile: this.fileName,
         flag: 'payment-full'
       }
       this.ozanlibraryapi.Ozanlibrary(datafile).subscribe(result => {
