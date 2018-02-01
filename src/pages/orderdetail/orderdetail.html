@@ -49,7 +49,7 @@
         <button ion-button (click)="Confirmpayment(datas)" [hidden]="datas.confirmpayment">{{'Confirm' | translate}}</button>
 
         <button ion-button (click)="Paidconfirm(datas)" [hidden]="datas.paidconfirm">{{'Paid Confirm' | translate}}</button>
-        <button ion-button [hidden]="datas.cancelpayment">{{'Cancel' | translate}}</button>
+        <button ion-button (click)="isCancel(datas)" [hidden]="datas.cancelpayment">{{'Cancel' | translate}}</button>
       </ion-row>
     </ion-col>
   </ion-row>
