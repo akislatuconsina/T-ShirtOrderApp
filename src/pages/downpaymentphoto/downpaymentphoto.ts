@@ -1,9 +1,6 @@
-import { Ozanlibrary } from './../../shared/sdk/models/OzanLibrary';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OzanlibraryApi } from './../../shared/sdk/services/custom/Ozanlibrary';
-import { LoopBackConfig } from '../../shared/sdk';
-
 /**
  * Generated class for the DownpaymentphotoPage page.
  *

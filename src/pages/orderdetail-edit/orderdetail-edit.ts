@@ -48,7 +48,9 @@ export class OrderdetailEditPage {
   }
 
   ionViewDidLoad() {
-    this.data = this.navParams.get('event')
+    this.data = this.navParams.get('event');
+   
+
     this.id = this.data.id;
 
     const dataId = {
@@ -88,6 +90,7 @@ export class OrderdetailEditPage {
 
   update() {
     const dataorder = {
+      id: this.data.id,
       buyername: this.ozanordermodel.buyername,
       companyname: this.ozanordermodel.companyname,
       address: this.ozanordermodel.address,
@@ -96,6 +99,8 @@ export class OrderdetailEditPage {
       productionstatus: this.ozanordermodel.productionstatus,
       status: this.ozanordermodel.status
     }
+    console.log(dataorder, 'Data Update');
+    console.log(this.data, 'Data Order Nya');
 
     this.ozanorderapi.updatedataorder(dataorder).subscribe((result) => {
       console.log(result, 'hasil change data')

@@ -111,11 +111,7 @@
     </ion-col>
   </ion-row>
 
-  <!-- <button ion-button (click)="dpPayment(library)" [hidden]="dp">{{'Bukti DP' | translate}}</button>
-  <button ion-button (click)="fullPayment(library)" [hidden]="full">{{'Bukti Pelunasan' | translate}}</button> -->
-
   <button ion-button (click)="update()">{{'Update' | translate}}</button>
-
 
   <div *ngFor="let images of library">
     <div class="foto-div" [ngStyle]="{'background-image': 'url(' + images.url + ')'}" menuClose></div>

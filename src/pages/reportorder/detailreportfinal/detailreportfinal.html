@@ -1,29 +1,25 @@
-
 <ion-header>
 
   <ion-navbar color="primary">
     <ion-title text-center>Ful Payment Report</ion-title>
-    <button ion-button (click)="downloadPDF()" class="segment2">PRINT DATA</button>
+    <!-- <button ion-button (click)="downloadPDF()" class="segment2">PRINT DATA</button> -->
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
   <ion-row>
-    <ion-col col-1 class="celltitle">No.</ion-col>
-    <ion-col col-2.3 class="celltitle">{{ 'Company Name'}}</ion-col>
-    <ion-col col-2.3 class="celltitle">{{ 'Confirm To'}}</ion-col>
-    <ion-col col-2.3 class="celltitle">{{ 'Paid Status'}}</ion-col>
-    <ion-col col-2.3 class="celltitle">{{ 'Detail Order'}}</ion-col>
+    <ion-col col-3 class="celltitle">No.</ion-col>
+    <ion-col col-3 class="celltitle">{{ 'Company Name'}}</ion-col>
+    <ion-col col-3 class="celltitle">{{ 'Confirm To'}}</ion-col>
+    <ion-col col-3 class="celltitle">{{ 'Paid Status'}}</ion-col>
   </ion-row>
 
-  <ion-row *ngFor = "let datas of viewdataFP">
-    <ion-col col-1 class="cell">{{datas.id}}</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.companyname}}</ion-col>
-    <ion-col col-2.3 class="cell">{{datas.confirmto}}</ion-col>
-    <ion-col col-2.3 class="cell" [hidden]="fullpayment">Full Payment</ion-col>
-    <ion-col col-2.3 class="cell"> <button ion-button round (click)="lookingdetailFP(datas)">Looking Detail</button> </ion-col>  
+  <ion-row *ngFor="let datas of viewdataFP">
+    <ion-col col-3 class="cell">{{datas.id}}</ion-col>
+    <ion-col col-3 class="cell">{{datas.companyname}}</ion-col>
+    <ion-col col-3 class="cell">{{datas.confirmto}}</ion-col>
+    <ion-col col-3 class="cell">Full Payment</ion-col>
   </ion-row>
-
 
 </ion-content>
